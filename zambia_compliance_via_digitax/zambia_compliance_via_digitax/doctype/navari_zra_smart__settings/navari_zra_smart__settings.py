@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class NavariZRASmartInvoiceSettings(Document):
+class NavariZRASmartSettings(Document):
 	pass

@@ -13,9 +13,9 @@ IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
 
 
-class IntegrationTestNavariZRASmartInvoiceSettings(IntegrationTestCase):
+class IntegrationTestNavariZRASmartSettings(IntegrationTestCase):
 	"""
-	Integration tests for NavariZRASmartInvoiceSettings.
+	Integration tests for NavariZRASmartSettings.
 	Use this class for testing interactions between multiple components.
 	"""
 

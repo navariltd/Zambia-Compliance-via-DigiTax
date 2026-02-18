@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class NavariZRASmartInvoiceItemClassification(Document):
+class NavariZRASmartItemClassificationCodes(Document):
 	pass
