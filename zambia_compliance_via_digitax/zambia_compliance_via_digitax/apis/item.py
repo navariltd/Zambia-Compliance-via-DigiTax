@@ -4,7 +4,7 @@ from datetime import datetime
 import frappe
 from frappe import _
 from frappe.utils.background_jobs import enqueue
-
+from ..utils.payload_utils import generate_vsdc_item_payload
 from ..utils.settings_utils import get_settings
 from ..utils.payload_utils import (
 	generate_custom_item_code_smart,
@@ -44,7 +44,7 @@ def perform_item_registration(
 	# Fetch settings
 	settings = get_settings(settings_name)
 	if not settings:
-		frappe.throw(_("No active Smart API Settings found."))
+		frappe.throw(_("No active ZRA SIS API Settings found."))
 
 	settings_name = settings.get("name")
 
@@ -106,7 +106,90 @@ def perform_item_registration(
 		"item": item.name,
 		"message": _("Item registration has been queued for Smart Invoice System."),
 	}
+def _process_item_registration(
+	item_name: str,
+	settings_name: str,
+	branch: str | None = None,
+	branch_code: str | None = None,
+):
+	"""
+	Background job:
+	Registers item to Smart Invoice System (ZRA SIS)
+	for one or multiple branches.
+	"""
 
+	try:
+		item = frappe.get_doc("Item", item_name)
+
+		settings = get_settings(settings_name)
+		if not settings:
+			frappe.log_error(
+				title="[SMART] Missing Settings",
+				message=f"No Smart API Settings found for {settings_name}",
+			)
+			return
+
+		settings_name = settings.get("name")
+
+		# --------------------------------------------------
+		# Determine branches to process
+		# --------------------------------------------------
+		if branch and branch_code:
+			branch_mappings = [{
+				"branch": branch,
+				"bhfid": branch_code,
+			}]
+		# else:
+		# 	branch_mappings = get_all_branch_mappings(settings_name)
+
+		if not branch_mappings:
+			frappe.log_error(
+				title="[SMART] No Branch Mappings",
+				message="No branch mappings found for Smart registration.",
+			)
+			return
+
+		# --------------------------------------------------
+		# Process each branch
+		# --------------------------------------------------
+		for row in branch_mappings:
+
+			branch_name = row.get("branch")
+			branch_bhfid = row.get("bhfid")
+
+			frappe.logger().info(
+				f"[SMART] Processing item {item.name} "
+				f"for branch {branch_name} (bhfId={branch_bhfid})"
+			)
+
+			# Generate payload
+			request_data = generate_vsdc_item_payload(
+				item.name,
+				branch_bhfid,
+				settings_name,
+			)
+
+			# Always saveItem (lookup removed)
+			response = process_request(
+				doctype="Item",
+				request_data=request_data,
+				route_key="saveItem",
+				handler_function=handle_registration_response,
+				request_method="POST",
+				branch=branch_name,
+				settings_name=settings_name,
+			)
+
+			frappe.logger().info(
+				f"[SMART] Response for item {item.name} "
+				f"branch {branch_name}: {response}"
+			)
+
+	except Exception:
+		frappe.log_error(
+			title="[SMART] Item Registration Failed",
+			message=frappe.get_traceback(),
+		)
 def validate_required_fields(item) -> list:
 	"""Validate required fields for item registration"""
 	required_fields = [
@@ -119,6 +202,8 @@ def validate_required_fields(item) -> list:
 	]
 	return [field for field in required_fields if not item.get(field)]
 
+def handle_registration_response():
+	pass
 
 def generate_and_set_smart_code(item) -> None:
 	"""Generate and set Smart code for item"""
