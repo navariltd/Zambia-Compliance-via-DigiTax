@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-03 09:55:11.956912",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company_name",
+  "tpin",
+  "column_break_voyc",
+  "api_server_url",
+  "section_break_vmzu",
+  "environment",
+  "sandbox_environment",
+  "column_break_hwfg",
+  "is_active",
+  "auto_create_branch_accounting_dimension",
+  "auth_tab",
+  "api_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "tpin",
+   "fieldtype": "Data",
+   "label": "Tax Payer's PIN"
+  },
+  {
+   "fieldname": "column_break_voyc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "api_server_url",
+   "fieldtype": "Data",
+   "label": "Server URL"
+  },
+  {
+   "fieldname": "section_break_vmzu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "environment",
+   "fieldtype": "Select",
+   "label": "Environment",
+   "options": "Production\nSandbox"
+  },
+  {
+   "default": "0",
+   "description": "Marks current environment as either Sandbox, or Production.",
+   "fieldname": "sandbox_environment",
+   "fieldtype": "Check",
+   "label": "Sandbox Environment"
+  },
+  {
+   "fieldname": "column_break_hwfg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "default": "0",
+   "description": "Auto creates the \"Branch\" Accounting Dimension which will be mandatory for all P&L transactions. Recommended.",
+   "fieldname": "auto_create_branch_accounting_dimension",
+   "fieldtype": "Check",
+   "label": "Auto Create Branch Accounting Dimension"
+  },
+  {
+   "fieldname": "auth_tab",
+   "fieldtype": "Tab Break",
+   "label": "Auth"
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Small Text",
+   "label": "API Key"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-03 10:18:52.497123",
+ "modified_by": "Administrator",
+ "module": "Zambia Compliance Via Digitax",
+ "name": "ZRA SIS Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

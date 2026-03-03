@@ -54,7 +54,7 @@ def get_server_url(
 	settings_name: str | None = None,
 ) -> str | None:
 	"""
-	Fetch the Digitax API server URL from Navari ZRA Smart Settings.
+	Fetch the Digitax API server URL from  ZRA SIS Settings.
 	"""
 	settings = get_settings(settings_name)
 
