@@ -22,7 +22,7 @@ def build_headers(settings_name: str | None = None) -> dict[str, str] | None:
 
 	# Build base headers
 	headers = {
-		"X-API-Key": {api_key},
+		"X-API-Key": api_key,
 		"Content-Type": "application/json",
 		"Accept": "application/json",
 	}

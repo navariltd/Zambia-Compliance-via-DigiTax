@@ -8,10 +8,9 @@ import frappe
 import requests
 from frappe.integrations.utils import create_request_log
 from frappe.model.document import Document
-# from ..utils.routes_utils import update_last_request_date
+from ..utils.routes_utils import update_last_request_date
 
-def update_last_request_date():
-    pass
+
 
 
 class BaseEndpointsBuilder:

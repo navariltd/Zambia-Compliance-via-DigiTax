@@ -64,14 +64,14 @@ def perform_item_registration(
 
 	# Update Item Tax Templates if VAT category changed
 	if hasattr(item, "has_value_changed"):
-		is_tax_type_changed = item.has_value_changed("custom_vat_category_code")
+		is_tax_type_changed = item.has_value_changed("custom_smart_tax_type_code")
 	else:
 		is_tax_type_changed = True
 
-	if item.custom_vat_category_code and is_tax_type_changed:
+	if item.custom_smart_tax_type_code and is_tax_type_changed:
 		relevant_tax_templates = frappe.get_all(
 			"Item Tax Template",
-			filters={"custom_taxation_type": item.custom_vat_category_code},
+			filters={"custom_taxation_type": item.custom_smart_tax_type_code},
 			fields=["name"],
 		)
 
@@ -91,7 +91,7 @@ def perform_item_registration(
 
 	# Enqueue direct registration (no lookup)
 	enqueue(
-		"ca_erpnext_zra.ca_erpnext_zra.apis.item_api._process_item_registration",
+		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item._process_item_registration",
 		queue="default",
 		job_name=f"[SMART] Register item {item.name}",
 		timeout=300,
@@ -131,58 +131,27 @@ def _process_item_registration(
 
 		settings_name = settings.get("name")
 
-		# --------------------------------------------------
-		# Determine branches to process
-		# --------------------------------------------------
-		if branch and branch_code:
-			branch_mappings = [{
-				"branch": branch,
-				"bhfid": branch_code,
-			}]
-		# else:
-		# 	branch_mappings = get_all_branch_mappings(settings_name)
 
-		if not branch_mappings:
-			frappe.log_error(
-				title="[SMART] No Branch Mappings",
-				message="No branch mappings found for Smart registration.",
-			)
-			return
-
-		# --------------------------------------------------
-		# Process each branch
-		# --------------------------------------------------
-		for row in branch_mappings:
-
-			branch_name = row.get("branch")
-			branch_bhfid = row.get("bhfid")
-
-			frappe.logger().info(
-				f"[SMART] Processing item {item.name} "
-				f"for branch {branch_name} (bhfId={branch_bhfid})"
-			)
-
-			# Generate payload
-			request_data = generate_vsdc_item_payload(
+		
+		# Generate payload
+		request_data = generate_vsdc_item_payload(
 				item.name,
-				branch_bhfid,
+			
 				settings_name,
 			)
-
-			# Always saveItem (lookup removed)
-			response = process_request(
+		response = process_request(
 				doctype="Item",
 				request_data=request_data,
 				route_key="saveItem",
 				handler_function=handle_registration_response,
 				request_method="POST",
-				branch=branch_name,
+				# branch=branch_name,
 				settings_name=settings_name,
 			)
 
-			frappe.logger().info(
+		frappe.logger().info(
 				f"[SMART] Response for item {item.name} "
-				f"branch {branch_name}: {response}"
+				# f"branch {branch_name}: {response}"
 			)
 
 	except Exception:
@@ -190,6 +159,7 @@ def _process_item_registration(
 			title="[SMART] Item Registration Failed",
 			message=frappe.get_traceback(),
 		)
+	
 def validate_required_fields(item) -> list:
 	"""Validate required fields for item registration"""
 	required_fields = [

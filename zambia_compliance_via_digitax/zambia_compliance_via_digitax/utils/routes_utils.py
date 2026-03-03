@@ -11,7 +11,7 @@ from ..doctype.doctype_names_mapping import (
 
 def get_route_path(
 	search_field: str,
-	vendor: str = "Digitax API",
+	vendor: str = "Digitax",
 	routes_table_doctype: str = ROUTES_TABLE_CHILD_DOCTYPE_NAME,
 	parent_doctype: str = ROUTES_TABLE_DOCTYPE_NAME,
 ) -> tuple[str, str] | None:

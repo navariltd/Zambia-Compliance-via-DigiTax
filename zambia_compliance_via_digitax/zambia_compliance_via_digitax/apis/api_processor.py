@@ -64,7 +64,7 @@ def process_request(
 	server_url = get_server_url(company_name, branch_id, settings_name)
 
 	# Resolve route from key (specific to ZRA VSDC)
-	route_path, _ = get_route_path(route_key, "Digitax API")
+	route_path, _ = get_route_path(route_key, "Digitax")
 	dynamic_route_path = process_dynamic_url(route_path, request_data)
 	url = f"{server_url}{dynamic_route_path}"
 

@@ -3,7 +3,7 @@ from frappe.model.document import Document
 
 
 
-def generate_vsdc_item_payload(item_name: str, bhfid, settings_name: str) -> dict:
+def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 	item = frappe.get_doc("Item", item_name)
 
 	def get_code(fieldname: str) -> str | None:
@@ -16,13 +16,13 @@ def generate_vsdc_item_payload(item_name: str, bhfid, settings_name: str) -> dic
 		field_map = {
 			"custom_smart_item_classification_code": "item_cls_cd",
 			"custom_smart_item_type_code": "class_code",
-			"custom_smart_origin_country_code": "class_code",
-			"custom_smart_packaging_unit_code": "class_code",
-			"custom_smart_quantity_unit_code": "class_code",
-			"custom_smart_tax_type_code": "code",
-			"custom_smart_insurance_premium_levy": "class_code",
+			"custom_smart_origin_country_code": "code",
+			"custom_smart_packaging_unit_code": "code",
+			"custom_smart_quantity_unit_code": "code",
+			"custom_smart_tax_type_code": "tax_category_code",
+			"custom_smart_insurance_premium_levy": "code",
 			# "trade_levy_category": "class_code",
-			"custom_smart_excise_duty_category_code": "class_code",
+			"custom_smart_excise_duty_category_code": "code",
 			# "rental_income_status": "class_code",
 			"custom_smart_insurance_applicable": "class_code",
 		}
@@ -41,26 +41,26 @@ def generate_vsdc_item_payload(item_name: str, bhfid, settings_name: str) -> dic
 		# "itemCd": item.custom_smart_item_code,  
 		"item_class_code": get_code("custom_smart_item_classification_code"),
 		"item_type_code": item.custom_smart_item_type_code,
-		# "item_name": item.item_name,
+		"item_name": item.item_name,
 		# "itemStdNm": item.item_name,
 		"origin_nation_code": get_code("custom_smart_origin_country_code"),
 		"package_unit_code": get_code("custom_smart_packaging_unit_code"),
 		"quantity_unit_code": get_code("custom_smart_quantity_unit_code"),
 		"vat_category_code": get_code("custom_smart_tax_type_code"),
-		"ipl_category_code": get_code("custom_smart_insurance_premium_levy"),
-		"tl_category_code": get_code("custom_smart_tourism_levy"),
-		"excise_category_code": get_code("custom_smart_excise_duty_category_code"),
+		"ipl_category_code": get_code("custom_smart_insurance_premium_levy") or "",
+		"tl_category_code": get_code("custom_smart_tourism_levy") or "",
+		"excise_category_code": get_code("custom_smart_excise_duty_category_code") or "",
 		# "btchNo": item.get("batch_number") or None,
-		"bar_code": item.get("barcode") or None,
+		"bar_code": item.get("barcode") or "",
 		"default_unit_price": float(item.valuation_rate),
-		"tot_category_code": item.get("custom_smart_turn_over_tax_category_code") or None,
+		"tot_category_code": item.get("custom_smart_turn_over_tax_category_code") or "",
 		# "manufacturerItemCd": item.get("custom_manufacturer_item_code") or None,
 		"recommended_retail_price": float(item.get("standard_rate") or 0),
 		# "svcChargeYn": "Y" if item.get("is_service_charge_applicable") else "N",
 		# "rentalYn": "Y" if item.get("custom_smart_rental_income_applicable") else "N",
 		# "addInfo": item.get("additional_info") or None,
 		"stock_quantity": float(item.get("opening_stock") or 0),
-		"insurable": "Y" if item.get("custom_smart_insurance_applicable") else "N",
+		"insurable":item.get("custom_smart_insurance_applicable") == "1"
 		# "useYn": "Y" if item.disabled == 0 else "N",
 		# "regrNm": frappe.session.user,
 		# "regrId": frappe.session.user,

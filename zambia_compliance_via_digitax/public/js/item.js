@@ -125,7 +125,7 @@ function executeSmartItemAction(frm, actionType, settingsName) {
 
 	switch (actionType) {
 		case "register_item":
-			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.item.perform_item_registration";
+			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.perform_item_registration";
 			break;
 
 

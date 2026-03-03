@@ -2,13 +2,13 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "field:code",
- "creation": "2026-02-18 10:45:52.024617",
+ "creation": "2026-03-03 11:56:43.394161",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "code",
   "code_name",
-  "column_break_dsgl",
+  "column_break_ihui",
   "description"
  ],
  "fields": [
@@ -24,7 +24,7 @@
    "label": "Code Name"
   },
   {
-   "fieldname": "column_break_dsgl",
+   "fieldname": "column_break_ihui",
    "fieldtype": "Column Break"
   },
   {
@@ -36,10 +36,10 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-18 10:47:16.688607",
+ "modified": "2026-03-03 11:58:34.770609",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
- "name": "ZRA SIS  Country Codes",
+ "name": "ZRA SIS Country Codes",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [

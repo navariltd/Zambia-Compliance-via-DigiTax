@@ -2,14 +2,14 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "field:item_cls_cd",
- "creation": "2026-02-17 14:36:40.074877",
+ "creation": "2026-03-03 11:46:56.892618",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "item_cls_cd",
   "item_classification_name",
   "item_cls_lvl",
-  "column_break_utmk",
+  "column_break_kfql",
   "tax_ty_cd",
   "is_used",
   "is_major_target"
@@ -32,7 +32,7 @@
    "label": "Item Classification Level"
   },
   {
-   "fieldname": "column_break_utmk",
+   "fieldname": "column_break_kfql",
    "fieldtype": "Column Break"
   },
   {
@@ -56,10 +56,10 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-17 14:44:09.753608",
+ "modified": "2026-03-03 11:49:53.557613",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
- "name": "ZRA SIS  Item Classification Codes",
+ "name": "ZRA SIS Item Classification Codes",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
