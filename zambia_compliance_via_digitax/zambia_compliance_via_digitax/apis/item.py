@@ -9,10 +9,10 @@ from ..utils.settings_utils import get_settings
 from ..utils.payload_utils import (
 	generate_custom_item_code_smart,
 )
-from .response_handlers import handle_item_registration_response
+
 from ..apis.api_processor import process_request
 from ..utils.routes_utils import get_route_path
-
+from .response_handlers import handle_registration_response
 
 @frappe.whitelist()
 def perform_item_registration(
@@ -147,6 +147,7 @@ def _process_item_registration(
 				request_method="POST",
 				# branch=branch_name,
 				settings_name=settings_name,
+				 document_name=item.name, 
 			)
 
 		frappe.logger().info(
@@ -172,8 +173,7 @@ def validate_required_fields(item) -> list:
 	]
 	return [field for field in required_fields if not item.get(field)]
 
-def handle_registration_response():
-	pass
+
 
 def generate_and_set_smart_code(item) -> None:
 	"""Generate and set Smart code for item"""
