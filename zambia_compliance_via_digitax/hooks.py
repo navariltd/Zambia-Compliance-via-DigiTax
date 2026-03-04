@@ -135,13 +135,17 @@ doctype_js = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+doc_events = {
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 # 	}
-# }
+	"Item": {
+         "validate": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.validate"],
+		 "on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.on_update"],
+	},
+}
 
 # Scheduled Tasks
 # ---------------
