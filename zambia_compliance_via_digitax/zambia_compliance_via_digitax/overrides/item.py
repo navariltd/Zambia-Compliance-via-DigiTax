@@ -19,7 +19,7 @@ def on_update(doc, method=None):
             item_name=doc.name,
             settings_name=setting.get("name"),
             queue="long",
-            retry=3
+            
         )
 
 
@@ -42,5 +42,5 @@ def validate(doc: Document, method: str = None) -> None:
         item_name=doc.name,
         tax_type=doc.custom_smart_tax_type_code,
         queue="long",
-        retry=3
+        
     )

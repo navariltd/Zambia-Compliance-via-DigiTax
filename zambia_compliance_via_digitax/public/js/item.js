@@ -43,6 +43,13 @@ frappe.ui.form.on(itemDoctypeName, {
 				}));
 
 		
+				frm.add_custom_button(
+					__("Fetch Item Details"),
+					function () {
+						showCompanySelectionModal(frm, "fetch_item_details", mappedCompanies);
+					},
+					__("SIS Actions")
+				);
 			
 
 			}
@@ -127,7 +134,9 @@ function executeSmartItemAction(frm, actionType, settingsName) {
 		case "register_item":
 			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.perform_item_registration";
 			break;
-
+		case "fetch_item_details":
+			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.fetch_item_details";
+			break;
 
 	
 
@@ -142,6 +151,7 @@ function executeSmartItemAction(frm, actionType, settingsName) {
 			doc: frm.doc,
 			item_name: frm.doc.item_name,
 			item_code: frm.doc.item_code,
+			item_id: frm.doc.custom_smart_remote_id,
 			settings_name: settingsName,
 		
 		},

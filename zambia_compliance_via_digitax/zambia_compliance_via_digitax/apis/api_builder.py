@@ -76,6 +76,7 @@ class EndpointsBuilder(BaseEndpointsBuilder):
 
 	def __init__(self) -> None:
 		super().__init__()
+		self._query_params: dict | None = None
 		self._url: str | None = None
 		self._request_description: str | None = None
 		self._payload: dict | None = None
@@ -88,6 +89,7 @@ class EndpointsBuilder(BaseEndpointsBuilder):
 		self.attach(ErrorObserver())
 
 	# ---------- Properties ---------- #
+	
 	@property
 	def url(self):
 		return self._url
@@ -95,6 +97,14 @@ class EndpointsBuilder(BaseEndpointsBuilder):
 	@url.setter
 	def url(self, val: str):
 		self._url = val
+
+	@property
+	def query_params(self):
+		return self._query_params
+
+	@query_params.setter
+	def query_params(self, val: dict):
+		self._query_params = val
 
 	@property
 	def route_path(self) -> str | None:

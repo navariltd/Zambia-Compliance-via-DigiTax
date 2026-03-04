@@ -106,6 +106,37 @@ def perform_item_registration(
 		"item": item.name,
 		"message": _("Item registration has been queued for Smart Invoice System."),
 	}
+
+
+@frappe.whitelist()
+def fetch_item_details(item_id: str,settings_name: str = None) -> None:
+	"""Fetch Item details from Smart Zambia API."""
+	settings = get_settings(settings_name)
+	if not settings:
+		frappe.throw(_("No active Smart API Settings found"))
+
+
+	payload = {
+		"item_id": item_id,
+	}
+
+	frappe.enqueue(
+		process_request,
+		queue="default",
+		is_async=True,
+		request_data=payload,
+		route_key="selectItem",
+		handler_function=item_search_on_success,
+		request_method="GET",
+		doctype="Item",
+		settings_name=settings["name"],
+	)
+	return {"queued": True, "item": item_id}
+
+def item_search_on_success():
+	pass
+
+
 def _process_item_registration(
 	item_name: str,
 	settings_name: str,
