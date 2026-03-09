@@ -9,7 +9,7 @@ from ..utils.settings_utils import get_settings
 from ..utils.payload_utils import (
 	generate_custom_item_code_smart,
 )
-
+from .response_handlers import item_search_on_success
 from ..apis.api_processor import process_request
 from ..utils.routes_utils import get_route_path
 from .response_handlers import handle_registration_response
@@ -133,8 +133,7 @@ def fetch_item_details(item_id: str,settings_name: str = None) -> None:
 	)
 	return {"queued": True, "item": item_id}
 
-def item_search_on_success():
-	pass
+
 
 
 def _process_item_registration(
