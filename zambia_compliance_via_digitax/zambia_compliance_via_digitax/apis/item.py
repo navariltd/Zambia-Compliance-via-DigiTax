@@ -9,7 +9,7 @@ from ..utils.settings_utils import get_settings
 from ..utils.payload_utils import (
 	generate_custom_item_code_smart,
 )
-
+from .response_handlers import item_search_on_success
 from ..apis.api_processor import process_request
 from ..utils.routes_utils import get_route_path
 from .response_handlers import handle_registration_response
@@ -106,6 +106,36 @@ def perform_item_registration(
 		"item": item.name,
 		"message": _("Item registration has been queued for Smart Invoice System."),
 	}
+
+
+@frappe.whitelist()
+def fetch_item_details(item_id: str,settings_name: str = None) -> None:
+	"""Fetch Item details from Smart Zambia API."""
+	settings = get_settings(settings_name)
+	if not settings:
+		frappe.throw(_("No active Smart API Settings found"))
+
+
+	payload = {
+		"item_id": item_id,
+	}
+
+	frappe.enqueue(
+		process_request,
+		queue="default",
+		is_async=True,
+		request_data=payload,
+		route_key="selectItem",
+		handler_function=item_search_on_success,
+		request_method="GET",
+		doctype="Item",
+		settings_name=settings["name"],
+	)
+	return {"queued": True, "item": item_id}
+
+
+
+
 def _process_item_registration(
 	item_name: str,
 	settings_name: str,
