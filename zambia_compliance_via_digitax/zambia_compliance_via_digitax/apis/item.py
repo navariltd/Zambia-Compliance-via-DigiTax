@@ -9,10 +9,61 @@ from ..utils.settings_utils import get_settings
 from ..utils.payload_utils import (
 	generate_custom_item_code_smart,
 )
-from .response_handlers import item_search_on_success
+from .response_handlers import (item_search_on_success,handle_update_response,handle_registration_response)
 from ..apis.api_processor import process_request
 from ..utils.routes_utils import get_route_path
-from .response_handlers import handle_registration_response
+
+
+@frappe.whitelist()
+def update_item(doc, method=None, settings_name=None, branch=None) -> dict | None:
+	"""Update Item details in Digitax API."""
+	import json
+
+	# Convert string from JS to dict
+	if isinstance(doc, str):
+		doc = json.loads(doc)
+
+	# Extract item name
+	if isinstance(doc, dict):
+		docname = doc.get("name")
+	else:
+		docname = getattr(doc, "name", None)
+
+	if not docname:
+		frappe.throw("No Item name provided for update.")
+
+	item = frappe.get_doc("Item", docname)
+
+	if not is_item_eligible_for_registration(item):
+		return None
+
+	# Build payload matching Digitax API
+	payload = {
+		"item_id":item.get("custom_smart_remote_id"),
+		"item_name": item.item_name,
+		
+		"default_unit_price": item.valuation_rate or 0,
+		"recommended_retail_price": item.standard_rate or 0
+	}
+
+	# Item ID stored in custom field (adjust if different)
+	
+
+	
+
+	frappe.enqueue(
+		process_request,
+		queue="default",
+		is_async=True,
+		request_data=payload,
+		route_key="updateItem",
+		handler_function=handle_update_response,
+		request_method="PUT",
+		doctype="Item",
+		document_name=item.name,
+	)
+
+	return {"queued": True, "item": item.name}
 
 @frappe.whitelist()
 def perform_item_registration(

@@ -51,6 +51,13 @@ frappe.ui.form.on(itemDoctypeName, {
 					__("SIS Actions")
 				);
 			
+				frm.add_custom_button(
+					__("Update Item (Smart)"),
+					function () {
+						showCompanySelectionModal(frm, "update_item", mappedCompanies);
+					},
+					__("SIS Actions")
+				);
 
 			}
 		}
@@ -138,6 +145,9 @@ function executeSmartItemAction(frm, actionType, settingsName) {
 			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.fetch_item_details";
 			break;
 
+		case "update_item":
+			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.update_item";
+			break;
 	
 
 		default:
