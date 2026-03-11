@@ -301,8 +301,8 @@ class EndpointsBuilder(BaseEndpointsBuilder):
 							doctype=doctype,
 							document_name=document_name,
 							payload=self._payload,
-							bhfid=bhfid,
-							branch=branch,
+							
+							
 							settings_name=self._settings.name if self._settings else None,
 						)
 					except Exception:
