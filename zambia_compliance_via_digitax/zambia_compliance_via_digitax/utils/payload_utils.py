@@ -1,7 +1,95 @@
 import frappe
 from frappe.model.document import Document
 
+from datetime import datetime
+import frappe
 
+
+def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
+	
+
+	customer = frappe.get_doc("Customer", invoice.customer)
+
+	# Sale date
+	sale_date = datetime.strptime(str(invoice.posting_date), "%Y-%m-%d").date()
+
+	# Determine sale kind
+	kind = "NORMAL"
+	if invoice.get("custom_is_export"):
+		kind = "Export"
+	elif invoice.get("custom_lpo_number"):
+		kind = "LPO"
+
+	payload = {
+		"kind": kind,
+		"sale_date": sale_date.isoformat(),
+		"currency_code": invoice.currency,
+		"customer_tpin": customer.tax_id,
+		"customer_name": "",
+		"customer_phone":"",
+		"customer_id": "",
+		"trader_invoice_number": invoice.name,
+		"payment_type_code": "01",
+		"items": [],
+	}
+
+	# Exchange rate (required for foreign currency)
+	if invoice.currency != frappe.defaults.get_global_default("currency"):
+		payload["exchange_rate"] = invoice.conversion_rate
+
+	# Export sale
+	if kind == "Export":
+		payload["destination_country_code"] = invoice.get("custom_destination_country")
+
+	# LPO sale
+	if kind == "LPO":
+		payload["lpo_number"] = invoice.get("custom_lpo_number")
+
+	# Discount
+	if invoice.get("discount_amount"):
+		payload["cash_discount_amount"] = round(invoice.discount_amount, 4)
+
+	if invoice.get("additional_discount_percentage"):
+		payload["cash_discount_rate"] = round(
+			invoice.additional_discount_percentage / 100, 4
+		)
+
+	
+
+	
+	# Items
+	for item in invoice.items:
+		  # Fetch remote ID from Item master
+		item_doc = frappe.get_doc("Item", item.item_code)
+		remote_id = item_doc.get("custom_smart_remote_id") or item.item_code  # fallback to item_code
+
+
+		qty = float(item.qty)
+		unit_price = round(float(item.rate), 4)
+
+		# Discount
+		discount_percentage = float(item.get("discount_percentage") or 0)
+		discount_rate = round(discount_percentage / 100, 4)
+
+		discount_amount = round(float(item.get("discount_amount") or 0), 4)
+
+		# Total amount after discount
+		gross_amount = qty * unit_price
+		total_amount = round(gross_amount - discount_amount, 4)
+
+		payload["items"].append(
+			{
+				"item_id": remote_id,
+				"quantity": qty,
+				"unit_price": unit_price,
+				"total_amount": total_amount,
+				"package_unit_quantity": item.get("package_qty") or 1,
+				"discount_rate": discount_rate,
+				"discount_amount": discount_amount,
+			}
+		)
+
+	return payload
 
 def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 	item = frappe.get_doc("Item", item_name)

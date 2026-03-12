@@ -16,7 +16,7 @@ def register_item_with_smart(item_name: str, settings_name: str):
             frappe.logger().info(f"[SMART] Item {item_name} already registered. Skipping.")
             return
 
-        from ..apis.item import perform_item_registration
+      
 
         perform_item_registration(
             doc=item_doc,

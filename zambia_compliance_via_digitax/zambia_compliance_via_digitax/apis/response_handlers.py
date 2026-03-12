@@ -2,11 +2,6 @@ import frappe
 
 
 def handle_update_response(response: dict, branch: str, settings_name: str, **kwargs) -> None:
-    """
-    Processes an item update response from ZRA Smart Invoice.
-    Creates or updates Item records in ERPNext based on the response.
-    Updates status, stock quantity, pricing, and other key fields.
-    """
 
     try:
         if not response:
@@ -93,12 +88,7 @@ def handle_update_response(response: dict, branch: str, settings_name: str, **kw
         )
 
 def item_search_on_success(response: dict, branch: str, settings_name: str, **kwargs) -> None:
-    """
-    Handles item search response from the ZRA Smart Invoice system.
-    Creates or updates Item records in ERPNext based on ZRA item data.
-    Ensures status, stock quantity, and pricing are always updated.
-    """
-
+ 
     try:
         if not response:
             frappe.log_error("ZRA Item Sync", "Empty response received.")
