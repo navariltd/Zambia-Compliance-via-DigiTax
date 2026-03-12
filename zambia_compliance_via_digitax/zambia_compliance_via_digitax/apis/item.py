@@ -61,6 +61,7 @@ def update_item(doc, method=None, settings_name=None, branch=None) -> dict | Non
 		request_method="PUT",
 		doctype="Item",
 		document_name=item.name,
+		retry=0,
 	)
 
 	return {"queued": True, "item": item.name}
@@ -146,10 +147,12 @@ def perform_item_registration(
 		queue="default",
 		job_name=f"[SMART] Register item {item.name}",
 		timeout=300,
+		
 		item_name=item.name,
 		branch=branch,
 		branch_code=branch_code,
 		settings_name=settings_name,
+		retry=0,
 	)
 
 	return {
@@ -187,61 +190,58 @@ def fetch_item_details(item_id: str,settings_name: str = None) -> None:
 
 
 
-def _process_item_registration(
-	item_name: str,
-	settings_name: str,
-	branch: str | None = None,
-	branch_code: str | None = None,
-):
-	"""
-	Background job:
-	Registers item to Smart Invoice System (ZRA SIS)
-	for one or multiple branches.
-	"""
+def _process_item_registration(item_name, settings_name, branch=None, branch_code=None, **kwargs):
+    """
+    Registers item to Smart Invoice System (ZRA SIS).
+    Completely wraps exceptions to prevent retries.
+    """
+    try:
+        item = frappe.get_doc("Item", item_name)
 
-	try:
-		item = frappe.get_doc("Item", item_name)
+        settings = get_settings(settings_name)
+        if not settings:
+            frappe.log_error(
+                title="[SMART] Missing Settings",
+                message=f"No Smart API Settings found for {settings_name}",
+            )
+            return  # exit safely, no retry
 
-		settings = get_settings(settings_name)
-		if not settings:
-			frappe.log_error(
-				title="[SMART] Missing Settings",
-				message=f"No Smart API Settings found for {settings_name}",
-			)
-			return
+        settings_name = settings.get("name")
 
-		settings_name = settings.get("name")
+        # Generate payload
+        try:
+            request_data = generate_vsdc_item_payload(item.name, settings_name)
+        except Exception:
+            frappe.log_error(
+                title="[SMART] Payload Generation Failed",
+                message=frappe.get_traceback()
+            )
+            return
 
+        try:
+            response = process_request(
+                doctype="Item",
+                request_data=request_data,
+                route_key="saveItem",
+                handler_function=handle_registration_response,
+                request_method="POST",
+                settings_name=settings_name,
+                document_name=item.name,
+            )
+            frappe.logger().info(f"[SMART] Response for item {item.name}: {response}")
+        except Exception:
+            frappe.log_error(
+                title="[SMART] Request Processing Failed",
+                message=frappe.get_traceback()
+            )
+            return
 
-		
-		# Generate payload
-		request_data = generate_vsdc_item_payload(
-				item.name,
-			
-				settings_name,
-			)
-		response = process_request(
-				doctype="Item",
-				request_data=request_data,
-				route_key="saveItem",
-				handler_function=handle_registration_response,
-				request_method="POST",
-				# branch=branch_name,
-				settings_name=settings_name,
-				 document_name=item.name, 
-			)
-
-		frappe.logger().info(
-				f"[SMART] Response for item {item.name} "
-				# f"branch {branch_name}: {response}"
-			)
-
-	except Exception:
-		frappe.log_error(
-			title="[SMART] Item Registration Failed",
-			message=frappe.get_traceback(),
-		)
-	
+    except Exception:
+        frappe.log_error(
+            title="[SMART] Item Registration Failed",
+            message=frappe.get_traceback()
+        )
+        return  # exit safely, prevents retry
 def validate_required_fields(item) -> list:
 	"""Validate required fields for item registration"""
 	required_fields = [

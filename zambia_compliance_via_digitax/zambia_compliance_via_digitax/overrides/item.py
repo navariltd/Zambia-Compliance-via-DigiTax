@@ -18,6 +18,7 @@ def on_update(doc, method=None):
             "zambia_compliance_via_digitax.zambia_compliance_via_digitax.tasks.tasks.register_item_with_smart",
             item_name=doc.name,
             settings_name=setting.get("name"),
+                retry=0, 
             queue="long",
             
         )
