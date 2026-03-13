@@ -4,7 +4,7 @@ from ..apis.item import perform_item_registration
 
 
 @frappe.whitelist()
-def register_item_with_smart(item_name: str, settings_name: str):
+def register_item_with_smart(item_name: str, settings_name: str, **kwargs):
     """
     Safely call perform_item_registration in a background job.
     """
