@@ -8,6 +8,7 @@ from ..apis.api_builder import EndpointsBuilder
 from ..apis.api_processor import process_request
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 from ..utils.payload_utils import build_invoice_payload
+from ..apis.sales_invoice import get_invoice_details
 
 @frappe.whitelist()
 def send_invoice_details(name: str) -> None:
@@ -140,13 +141,13 @@ def sales_information_submission_on_success(
     invoice.save(ignore_permissions=True)
 
     # Enqueue background fetch for reconciliation
-    # frappe.enqueue(
-    #     get_vsdc_invoice_details,
-    #     queue="long",
-    #     document_name=document_name,
-    #     invoice_type=doctype,
-    #     settings_name=settings_name,
-    # )
+    frappe.enqueue(
+        get_invoice_details,
+        queue="long",
+        document_name=document_name,
+        invoice_type=doctype,
+        settings_name=settings_name,
+    )
 
 def sales_information_submission_on_error(
 	response: dict | str | None,
@@ -164,3 +165,5 @@ def sales_information_submission_on_error(
 		f"Payload: {payload}\n"
 		f"Response: {response}",
 	)
+
+
