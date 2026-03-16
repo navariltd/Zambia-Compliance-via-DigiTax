@@ -16,8 +16,8 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 	# Determine sale kind
 	kind = "NORMAL"
 	if invoice.get("custom_is_export"):
-		kind = "Export"
-	elif invoice.get("custom_lpo_number"):
+		kind = "EXPORT"
+	elif invoice.get("po_no"):
 		kind = "LPO"
 
 	payload = {
