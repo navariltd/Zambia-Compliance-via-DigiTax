@@ -1,8 +1,9 @@
 import frappe
 from frappe.model.document import Document
+from frappe.utils import getdate
 
 from datetime import datetime
-import frappe
+
 
 
 def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
@@ -24,7 +25,7 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 		"kind": kind,
 		"sale_date": sale_date.isoformat(),
 		"currency_code": invoice.currency,
-		"customer_tpin": customer.tax_id,
+		"customer_tpin": "",
 		"customer_name": "",
 		"customer_phone":"",
 		"customer_id": "",
@@ -158,6 +159,58 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 
 	return payload
 
+def build_credit_note_payload(doc, settings_name, callback_url=None):
+    """
+    Build Credit Note (Return Invoice) payload matching the new API format.
+
+    Body Params:
+        - return_date (date)
+        - sale_id (string)
+        - refund_reason_code (string)
+        - trader_invoice_number (string)
+        - callback_url (string, optional)
+        - items (array of objects)
+            - item_id
+            - quantity
+            - unit_price
+            - total_amount
+            - package_unit_quantity
+            - discount_rate
+            - discount_amount
+    """
+  
+    original_invoice = frappe.get_doc("Sales Invoice", doc.return_against)
+
+    payload = {
+        "return_date": getdate(doc.posting_date).strftime("%Y-%m-%d"),
+        "sale_id": original_invoice.custom_sales_id,
+        "refund_reason_code": doc.get("return_reason") or "01",
+        "trader_invoice_number": doc.name,
+        "callback_url": callback_url or "",
+        "items": []
+    }
+	
+	
+
+    for item in doc.items:
+        unit_price = float(item.rate or 0)
+
+        quantity = int(round(abs(item.qty) or 0))
+        discount_amount = float(item.discount_amount or 0)
+        discount_rate = float(item.discount_percentage or 0)
+        total_amount = round(abs((unit_price * quantity) - discount_amount), 2)
+        package_unit_quantity = float(item.get("package_qty") or 1)
+        payload["items"].append({
+            "item_id": item.get("custom_sis_item_id") or item.item_code,
+            "quantity": quantity,
+            "unit_price": unit_price,
+            "total_amount": total_amount,
+            "package_unit_quantity": package_unit_quantity,
+            "discount_rate": discount_rate,
+            "discount_amount": discount_amount
+        })
+
+    return payload
 
 def generate_custom_item_code_smart(doc: Document) -> str:
 	"""

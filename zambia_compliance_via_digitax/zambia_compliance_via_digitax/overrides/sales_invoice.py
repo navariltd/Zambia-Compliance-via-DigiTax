@@ -7,7 +7,7 @@ from ..utils.settings_utils import get_settings
 from ..apis.api_builder import EndpointsBuilder
 from ..apis.api_processor import process_request
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
-from ..utils.payload_utils import build_invoice_payload
+from ..utils.payload_utils import (build_invoice_payload, build_credit_note_payload)
 from ..apis.sales_invoice import get_invoice_details
 
 @frappe.whitelist()
@@ -39,17 +39,22 @@ def generic_invoices_on_submit_override(
     if doc.custom_prevent_sis_submission or getattr(doc, "vsdc_invoice_number", None):
         return
 
+# ================= CREDIT NOTE =================
+    if doc.is_return and doc.return_against:
+        payload = build_credit_note_payload(doc, settings_doc.name)
+        route_key = "saveCreditNote"
    
     # =============== NORMAL SALES INVOICE SUBMISSION ==================
-  
-    payload = build_invoice_payload(doc, settings_doc.name)
+    else:
+        payload = build_invoice_payload(doc, settings_doc.name)
+        route_key = "saveSales"
 
     frappe.enqueue(
         process_request,
         queue="default",
         is_async=True,
         request_data=payload,
-        route_key="saveSales",
+        route_key=route_key,
         handler_function=sales_information_submission_on_success,
         request_method="POST",
         document_name=doc.name,
