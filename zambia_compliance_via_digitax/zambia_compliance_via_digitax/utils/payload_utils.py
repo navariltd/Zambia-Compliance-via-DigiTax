@@ -159,47 +159,57 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 
 	return payload
 
-def build_credit_note_payload(doc, settings_name, callback_url=None):
-    """
-    Build Credit Note (Return Invoice) payload matching the new API format.
 
-    Body Params:
-        - return_date (date)
-        - sale_id (string)
-        - refund_reason_code (string)
-        - trader_invoice_number (string)
-        - callback_url (string, optional)
-        - items (array of objects)
-            - item_id
-            - quantity
-            - unit_price
-            - total_amount
-            - package_unit_quantity
-            - discount_rate
-            - discount_amount
+
+def build_note_payload(doc, settings_name, note_type="credit", callback_url=None):
     """
-  
-    original_invoice = frappe.get_doc("Sales Invoice", doc.return_against)
+    Build payload for Credit Note or Debit Note dynamically.
+
+    note_type: "credit" | "debit"
+    """
+
+    # Map dynamic fields
+    field_map = {
+        "credit": {
+            "date_field": "return_date",
+            "reason_field": "refund_reason_code",
+            "default_reason": "01",
+            "source_field": "return_against",
+        },
+        "debit": {
+            "date_field": "debit_date",
+            "reason_field": "debit_reason_code",
+            "default_reason": "01",
+            "source_field": "return_against",  # adjust if needed
+        },
+    }
+
+    config = field_map.get(note_type)
+    if not config:
+        frappe.throw(f"Unsupported note type: {note_type}")
+
+    # Get original invoice
+    original_invoice = frappe.get_doc("Sales Invoice", doc.get(config["source_field"]))
 
     payload = {
-        "return_date": getdate(doc.posting_date).strftime("%Y-%m-%d"),
+        config["date_field"]: getdate(doc.posting_date).strftime("%Y-%m-%d"),
         "sale_id": original_invoice.custom_sales_id,
-        "refund_reason_code": doc.get("return_reason") or "01",
+        config["reason_field"]: doc.get("return_reason") or config["default_reason"],
         "trader_invoice_number": doc.name,
         "callback_url": callback_url or "",
-        "items": []
+        "items": [],
     }
-	
-	
 
+    # Build items (shared logic)
     for item in doc.items:
         unit_price = float(item.rate or 0)
-
         quantity = int(round(abs(item.qty) or 0))
         discount_amount = float(item.discount_amount or 0)
         discount_rate = float(item.discount_percentage or 0)
+
         total_amount = round(abs((unit_price * quantity) - discount_amount), 2)
         package_unit_quantity = float(item.get("package_qty") or 1)
+
         payload["items"].append({
             "item_id": item.get("custom_sis_item_id") or item.item_code,
             "quantity": quantity,
@@ -207,10 +217,11 @@ def build_credit_note_payload(doc, settings_name, callback_url=None):
             "total_amount": total_amount,
             "package_unit_quantity": package_unit_quantity,
             "discount_rate": discount_rate,
-            "discount_amount": discount_amount
+            "discount_amount": discount_amount,
         })
 
     return payload
+
 
 def generate_custom_item_code_smart(doc: Document) -> str:
 	"""

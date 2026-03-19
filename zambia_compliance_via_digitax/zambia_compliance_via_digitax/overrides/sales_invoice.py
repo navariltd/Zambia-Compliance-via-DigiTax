@@ -7,7 +7,7 @@ from ..utils.settings_utils import get_settings
 from ..apis.api_builder import EndpointsBuilder
 from ..apis.api_processor import process_request
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
-from ..utils.payload_utils import (build_invoice_payload, build_credit_note_payload)
+from ..utils.payload_utils import (build_invoice_payload, build_note_payload)
 
 
 
@@ -43,9 +43,12 @@ def generic_invoices_on_submit_override(
 
 # ================= CREDIT NOTE =================
     if doc.is_return and doc.return_against:
-        payload = build_credit_note_payload(doc, settings_doc.name)
+        payload = build_note_payload(doc, settings_doc.name,note_type="credit")
         route_key = "saveCreditNote"
-   
+   # ================= CREDIT NOTE =================
+    elif hasattr(doc, "is_debit_note") and doc.is_debit_note:
+        payload = build_note_payload(doc, settings_doc.name, note_type="debit")
+        route_key = "saveDebitNote"
     # =============== NORMAL SALES INVOICE SUBMISSION ==================
     else:
         payload = build_invoice_payload(doc, settings_doc.name)
