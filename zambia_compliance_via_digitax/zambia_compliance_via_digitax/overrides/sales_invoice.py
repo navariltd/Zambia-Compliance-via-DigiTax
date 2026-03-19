@@ -8,18 +8,20 @@ from ..apis.api_builder import EndpointsBuilder
 from ..apis.api_processor import process_request
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 from ..utils.payload_utils import (build_invoice_payload, build_credit_note_payload)
-from ..apis.sales_invoice import get_invoice_details
 
-@frappe.whitelist()
-def send_invoice_details(name: str) -> None:
-	"""Manual trigger to push a Sales Invoice to Crystal VSDC."""
-	doc = frappe.get_doc("Sales Invoice", name)
 
-	# Skip opening entries
-	if doc.is_opening == "Yes":
-		return
 
-	generic_invoices_on_submit_override(doc, "Sales Invoice")
+def on_submit(doc, method=None):
+    # Enqueue background job for each active Smart API setting
+  
+    frappe.enqueue(
+        "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.send_invoice_details",
+        name=doc.name,
+         
+        queue="long",
+        
+    )
+
 
 
 
@@ -70,6 +72,7 @@ def sales_information_submission_on_success(
     Callback executed after a successful Sales Invoice submission to ZRA Smart Invoice.
     Updates the ERPNext document with ZRA response details and triggers reconciliation.
     """
+    from ..apis.sales_invoice import get_invoice_details
     if not response:
         frappe.throw("Empty response from ZRA Smart Invoice system.")
 
@@ -126,24 +129,23 @@ def sales_information_submission_on_success(
     for item in item_list:
         row = next((r for r in invoice.items if r.custom_sis_item_id == item.get("item_id")), None)
         if not row:
-            # fallback by item_code
             row = next((r for r in invoice.items if r.item_code == item.get("item_code")), None)
         if not row:
             frappe.logger().warning(f"Could not match item {item.get('item_code')} in invoice {document_name}")
             continue
 
-        row.custom_vat_taxable_amount = item.get("vat_taxable_amount")
-        row.custom_vat_tax_amount = item.get("vat_tax_amount")
-        row.custom_ipl_taxable_amount = item.get("ipl_taxable_amount")
-        row.custom_ipl_tax_amount = item.get("ipl_tax_amount")
-        row.custom_tl_taxable_amount = item.get("tl_taxable_amount")
-        row.custom_tl_tax_amount = item.get("tl_tax_amount")
-        row.custom_excise_taxable_amount = item.get("excise_taxable_amount")
-        row.custom_excise_tax_amount = item.get("excise_tax_amount")
-        row.custom_tot_taxable_amount = item.get("tot_taxable_amount")
-        row.custom_tot_tax_amount = item.get("tot_tax_amount")
-
-    invoice.save(ignore_permissions=True)
+        frappe.db.set_value("Sales Invoice Item", row.name, {
+            "custom_vat_taxable_amount": item.get("vat_taxable_amount"),
+            "custom_vat_tax_amount": item.get("vat_tax_amount"),
+            "custom_ipl_taxable_amount": item.get("ipl_taxable_amount"),
+            "custom_ipl_tax_amount": item.get("ipl_tax_amount"),
+            "custom_tl_taxable_amount": item.get("tl_taxable_amount"),
+            "custom_tl_tax_amount": item.get("tl_tax_amount"),
+            "custom_excise_taxable_amount": item.get("excise_taxable_amount"),
+            "custom_excise_tax_amount": item.get("excise_tax_amount"),
+            "custom_tot_taxable_amount": item.get("tot_taxable_amount"),
+            "custom_tot_tax_amount": item.get("tot_tax_amount"),
+        })
 
     # Enqueue background fetch for reconciliation
     frappe.enqueue(

@@ -35,7 +35,7 @@ frappe.ui.form.on(parentDoctype, {
 				__("Send Invoice"),
 				function () {
 					executeVSDCAction("Send Invoice", activeSetting, (settings_name) => ({
-						method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.sales_invoice.send_invoice_details",
+						method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.send_invoice_details",
 						args: { name: frm.doc.name, settings_name: settings_name },
 						success_msg: "Invoice submission queued",
 					}));

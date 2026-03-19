@@ -1,8 +1,23 @@
 import frappe
 from .api_processor import process_request
 from frappe.utils import get_datetime
-
+from ..overrides.sales_invoice import generic_invoices_on_submit_override
 from ..utils.qr_utils import generate_and_attach_qr_code
+
+
+@frappe.whitelist()
+def send_invoice_details(name: str) -> None:
+	"""Manual trigger to push a Sales Invoice to Crystal VSDC."""
+	doc = frappe.get_doc("Sales Invoice", name)
+
+	# Skip opening entries
+	if doc.is_opening == "Yes":
+		return
+
+	generic_invoices_on_submit_override(doc, "Sales Invoice")
+
+
+
 @frappe.whitelist()
 def get_invoice_details(
 	document_name: str,

@@ -146,7 +146,10 @@ doc_events = {
          "validate": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.validate"],
 		 "on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.on_update"],
 	},
-}
+		"Sales Invoice": {
+         "on_submit": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.sales_invoice.on_submit"],
+		
+}}
 
 # Scheduled Tasks
 # ---------------
