@@ -1,8 +1,23 @@
 import frappe
 from frappe.model.document import Document
 from ..apis.item import perform_item_registration
+from ..overrides.stock_ledger_entry import submit_stock
+def send_stock_information(*args, **kwargs) -> None:
+	all_stock_ledger_entries: list[Document] = frappe.get_all(
+		"Stock Ledger Entry",
+		{"docstatus": 1, "custom_inventory_submitted_successfuly": 0},
+		["name"],
+	)
+	for entry in all_stock_ledger_entries:
+		doc = frappe.get_doc("Stock Ledger Entry", entry.name, for_update=False)
+		# max_tries = get_max_submission_attempts("Stock Ledger Entry", company=doc.company)
+		# if doc.custom_submission_tries and int(doc.custom_submission_tries) >= max_tries:
+		# 	return
+		try:
+			submit_stock(doc, method=None)
 
-
+		except TypeError:
+			continue
 @frappe.whitelist()
 def register_item_with_smart(item_name: str, settings_name: str, **kwargs):
     """

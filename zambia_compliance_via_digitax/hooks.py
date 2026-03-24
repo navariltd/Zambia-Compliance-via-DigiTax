@@ -149,15 +149,19 @@ doc_events = {
 		"Sales Invoice": {
          "on_submit": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.sales_invoice.on_submit"],
 		
-}}
+},
+ 
+
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"zambia_compliance_via_digitax.tasks.all"
-# 	],
+scheduler_events = {
+ 	"all": [
+		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.tasks.tasks.send_stock_information",
+		
+	]
 # 	"daily": [
 # 		"zambia_compliance_via_digitax.tasks.daily"
 # 	],
@@ -170,7 +174,7 @@ doc_events = {
 # 	"monthly": [
 # 		"zambia_compliance_via_digitax.tasks.monthly"
 # 	],
-# }
+	}
 
 # Testing
 # -------
