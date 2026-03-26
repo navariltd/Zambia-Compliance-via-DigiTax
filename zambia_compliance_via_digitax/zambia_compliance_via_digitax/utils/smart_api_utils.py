@@ -57,9 +57,23 @@ def get_smart_action_data(doctype: str, docname: str = None) -> dict[str, Any]:
 				}
 			)
 	else:
-		# Fallback to single flag
-		if doc.get("custom_item_registered"):
-			registered_mappings = active_settings
+		 # ---------------- GENERIC REGISTRATION CHECK ----------------
+		is_registered = False
+
+		if doctype == "Item":
+			is_registered = doc.get("custom_item_registered")
+
+		elif doctype == "Customer":
+			is_registered = doc.get("custom_registered_successfuly") or doc.get("custom_sis_customer_id")
+
+		if is_registered:
+			registered_mappings = [
+				{
+					"smart_setup": s["name"],
+					"company": s.get("company"),
+				}
+				for s in active_settings
+			]
 
 	registered_setup_names = [r["smart_setup"] for r in registered_mappings if r.get("smart_setup")]
 	unregistered_settings = [s for s in active_settings if s["name"] not in registered_setup_names]

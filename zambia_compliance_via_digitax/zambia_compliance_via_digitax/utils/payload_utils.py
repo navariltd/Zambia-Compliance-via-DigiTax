@@ -159,8 +159,6 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 
 	return payload
 
-
-
 def build_note_payload(doc, settings_name, note_type="credit", callback_url=None):
     """
     Build payload for Credit Note or Debit Note dynamically.
@@ -221,7 +219,6 @@ def build_note_payload(doc, settings_name, note_type="credit", callback_url=None
         })
 
     return payload
-
 
 def generate_custom_item_code_smart(doc: Document) -> str:
 	"""
@@ -289,3 +286,72 @@ def generate_custom_item_code_smart(doc: Document) -> str:
 	frappe.logger().info(f"[SIS] Generated SIS Code: {new_code}")
 
 	return new_code
+
+import frappe
+
+
+def build_customer_payload(doc) -> dict:
+    """
+    Build DigiTax customer payload.
+
+    Expected output:
+    {
+        "customer_name": str,
+        "customer_tin": str,
+        "email": str | None,
+        "is_lpo": bool,
+        "phone": str,
+        "address": str | None
+    }
+    """
+
+    if not doc:
+        frappe.throw("Customer document is required")
+
+    payload = {
+        "customer_name": doc.customer_name,
+        "customer_tin": doc.tax_id,
+        "email": doc.email_id or None,
+        "is_lpo": bool(getattr(doc, "custom_is_lpo", 0)),
+        "phone": doc.mobile_no or "",
+        "address": get_customer_address(doc)
+    }
+
+    # ----------------------------
+    # REQUIRED FIELD VALIDATION
+    # ----------------------------
+    if not payload["customer_name"]:
+        frappe.throw("Customer Name is required")
+
+    if not payload["customer_tin"]:
+        frappe.throw(f"TIN is required for customer {doc.name}")
+
+    if not payload["phone"]:
+        frappe.throw(f"Phone number is required for customer {doc.name}")
+
+    return payload
+
+def get_customer_address(doc) -> str | None:
+    """
+    Fetch primary address for customer
+    """
+
+    address = frappe.db.get_value(
+        "Address",
+        {
+            "link_doctype": "Customer",
+            "link_name": doc.name,
+            "is_primary_address": 1
+        },
+        ["address_line1", "address_line2", "city"],
+        as_dict=True
+    )
+
+    if not address:
+        return None
+
+    return " ".join(filter(None, [
+        address.address_line1,
+        address.address_line2,
+        address.city
+    ]))
