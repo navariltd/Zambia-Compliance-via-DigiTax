@@ -72,6 +72,7 @@ function executeSmartCustomerAction(frm, actionType, settingsName) {
 		method,
 		args: {
 			doc: frm.doc,
+            
 			settings_name: settingsName
 		},
 		callback: () => {
