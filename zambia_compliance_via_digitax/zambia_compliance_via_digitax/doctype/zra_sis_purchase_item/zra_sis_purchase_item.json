@@ -1,0 +1,157 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-27 13:47:55.352199",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_id",
+  "item_name",
+  "item_code",
+  "purchase_item_id",
+  "quantity",
+  "total_amount",
+  "vat_taxable_amount",
+  "vat_tax_amount",
+  "column_break_bmfo",
+  "tl_tax_amount",
+  "tl_taxable_amount",
+  "excise_tax_amount",
+  "excise_taxable_amount",
+  "ipl_tax_amount",
+  "ipl_taxable_amount",
+  "column_break_yieo",
+  "unit_price",
+  "supply_price",
+  "discount_rate",
+  "packaging_unit_code",
+  "item_class_code",
+  "approved_quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_id",
+   "fieldtype": "Data",
+   "label": "Item Id"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Data",
+   "label": "Item Code"
+  },
+  {
+   "fieldname": "purchase_item_id",
+   "fieldtype": "Data",
+   "label": "Purchase Item Id"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Data",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "vat_taxable_amount",
+   "fieldtype": "Currency",
+   "label": "VAT Taxable Amount"
+  },
+  {
+   "fieldname": "vat_tax_amount",
+   "fieldtype": "Currency",
+   "label": "VAT Tax Amount"
+  },
+  {
+   "fieldname": "column_break_bmfo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tl_tax_amount",
+   "fieldtype": "Currency",
+   "label": "TL Tax Amount"
+  },
+  {
+   "fieldname": "tl_taxable_amount",
+   "fieldtype": "Currency",
+   "label": "TL Taxable Amount"
+  },
+  {
+   "fieldname": "excise_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Excise Tax Amount"
+  },
+  {
+   "fieldname": "excise_taxable_amount",
+   "fieldtype": "Currency",
+   "label": "Excise Taxable Amount"
+  },
+  {
+   "fieldname": "ipl_tax_amount",
+   "fieldtype": "Currency",
+   "label": "IPL Tax Amount"
+  },
+  {
+   "fieldname": "ipl_taxable_amount",
+   "fieldtype": "Currency",
+   "label": "IPL Taxable Amount"
+  },
+  {
+   "fieldname": "column_break_yieo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "label": "Unit Price"
+  },
+  {
+   "fieldname": "supply_price",
+   "fieldtype": "Currency",
+   "label": "Supply Price"
+  },
+  {
+   "fieldname": "discount_rate",
+   "fieldtype": "Percent",
+   "label": "Discount Rate"
+  },
+  {
+   "fieldname": "packaging_unit_code",
+   "fieldtype": "Data",
+   "label": "Packaging Unit Code"
+  },
+  {
+   "fieldname": "item_class_code",
+   "fieldtype": "Data",
+   "label": "Item Class Code"
+  },
+  {
+   "fieldname": "approved_quantity",
+   "fieldtype": "Int",
+   "label": "Approved Quantity"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-27 13:59:12.118996",
+ "modified_by": "Administrator",
+ "module": "Zambia Compliance Via Digitax",
+ "name": "ZRA SIS Purchase Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
