@@ -1,0 +1,251 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-27 13:19:28.613274",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_id",
+  "pchstycd",
+  "pchssttscd",
+  "purchase_type",
+  "branch",
+  "column_break_qeew",
+  "supplier_invoice_no",
+  "sales_date",
+  "purchase_status",
+  "regtycd",
+  "registration_type",
+  "supplier_information_section",
+  "supplier_name",
+  "column_break_ukot",
+  "supplier_tpin",
+  "column_break_oeqb",
+  "supplier_branch_id",
+  "section_break_usyg",
+  "receipt_type",
+  "receipt_type_code",
+  "payment_type_code",
+  "payment_type",
+  "column_break_bhsk",
+  "confirmed_date",
+  "stock_release_date",
+  "section_break_ntid",
+  "remarks",
+  "totals_section",
+  "total_amount",
+  "total_item_count",
+  "column_break_zgbf",
+  "total_taxable_amount",
+  "total_tax_amount",
+  "section_break_txau",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "purchase_id",
+   "fieldtype": "Data",
+   "label": "Purchase ID"
+  },
+  {
+   "fieldname": "pchstycd",
+   "fieldtype": "Data",
+   "label": "Purchase Type Code"
+  },
+  {
+   "fieldname": "pchssttscd",
+   "fieldtype": "Data",
+   "label": "Purchase Status Code"
+  },
+  {
+   "fieldname": "purchase_type",
+   "fieldtype": "Data",
+   "label": "Purchase Type"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "column_break_qeew",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_invoice_no",
+   "fieldtype": "Int",
+   "label": "Supplier Invoice No"
+  },
+  {
+   "fieldname": "sales_date",
+   "fieldtype": "Date",
+   "label": "Sales Date"
+  },
+  {
+   "default": "Approved",
+   "fieldname": "purchase_status",
+   "fieldtype": "Select",
+   "label": "Purchase Status",
+   "options": "Approved\nRefunded\nTransferred\nRejected"
+  },
+  {
+   "fieldname": "regtycd",
+   "fieldtype": "Data",
+   "label": "Registration Type Code"
+  },
+  {
+   "default": "Automatic",
+   "fieldname": "registration_type",
+   "fieldtype": "Select",
+   "label": "Registration Type",
+   "options": "Automatic\nManual"
+  },
+  {
+   "fieldname": "supplier_information_section",
+   "fieldtype": "Section Break",
+   "label": "Supplier Information"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Link",
+   "label": "Supplier Name",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "column_break_ukot",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_tpin",
+   "fieldtype": "Data",
+   "label": "Supplier TPIN"
+  },
+  {
+   "fieldname": "column_break_oeqb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_branch_id",
+   "fieldtype": "Data",
+   "label": "Supplier Branch ID"
+  },
+  {
+   "fieldname": "section_break_usyg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "Purchase",
+   "fieldname": "receipt_type",
+   "fieldtype": "Select",
+   "label": "Receipt Type",
+   "options": "Purchase\nRefund after Purchase"
+  },
+  {
+   "fieldname": "receipt_type_code",
+   "fieldtype": "Data",
+   "label": "Receipt Type Code"
+  },
+  {
+   "fieldname": "payment_type_code",
+   "fieldtype": "Data",
+   "label": "Payment Type Code"
+  },
+  {
+   "default": "Cash",
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "label": "Payment Type",
+   "options": "Cash\nCredit\nCash/Credit\nBank Check\nDebit&Credit Card\nMobile Money\nOther\nBank transfer"
+  },
+  {
+   "fieldname": "column_break_bhsk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "confirmed_date",
+   "fieldtype": "Date",
+   "label": "Confirmed Date"
+  },
+  {
+   "fieldname": "stock_release_date",
+   "fieldtype": "Date",
+   "label": "Stock Release Date"
+  },
+  {
+   "fieldname": "section_break_ntid",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "total_item_count",
+   "fieldtype": "Int",
+   "label": "Total Item Count"
+  },
+  {
+   "fieldname": "column_break_zgbf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_taxable_amount",
+   "fieldtype": "Currency",
+   "label": "Total Taxable Amount"
+  },
+  {
+   "fieldname": "total_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Total Tax Amount"
+  },
+  {
+   "fieldname": "section_break_txau",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "ZRA SIS Purchase Item"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-27 14:04:31.221714",
+ "modified_by": "Administrator",
+ "module": "Zambia Compliance Via Digitax",
+ "name": "ZRA SIS Purchases",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
