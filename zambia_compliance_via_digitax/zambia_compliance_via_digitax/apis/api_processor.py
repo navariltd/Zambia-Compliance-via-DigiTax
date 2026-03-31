@@ -71,7 +71,9 @@ def process_request(
 	settings = get_settings(settings_name)
 	if not settings:
 		return
-
+		# For GET requests with query params, we don't need a request body
+	if request_method.upper() == "GET" and "?" in url:
+		data = None
 	if headers and server_url and route_path:
 		return execute_request(
 			headers,
@@ -184,7 +186,8 @@ def execute_request(
 	  - Pagination via 'next' URLs
 	  - Success/error callbacks
 	"""
-	if request_method == "GET":
+	# Only clean data if it exists
+	if request_method.upper() == "GET" and data:
 		clean_data_for_get_request(data)
 
 	last_response_data = None
