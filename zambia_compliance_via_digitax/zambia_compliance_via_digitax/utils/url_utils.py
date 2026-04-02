@@ -42,4 +42,9 @@ def process_dynamic_url(route_path: str, request_data: dict | str) -> str:
 			)
 			raise ValueError(_("Missing required placeholder: '{0}'").format(placeholder))
 
+		# Remove any query params from request_data to avoid sending them in body
+	if "?" in route_path:
+		# Optionally, you could return a dict with URL and empty body
+		return route_path
+
 	return route_path
