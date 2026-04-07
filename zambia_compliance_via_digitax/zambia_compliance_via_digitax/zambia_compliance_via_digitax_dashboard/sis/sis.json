@@ -1,0 +1,55 @@
+{
+ "cards": [
+  {
+   "card": "Success Invoices"
+  },
+  {
+   "card": "Failed Invoices"
+  },
+  {
+   "card": "Queued Requests"
+  },
+  {
+   "card": "Total Failed Requests"
+  },
+  {
+   "card": "Total Successful Requests"
+  },
+  {
+   "card": "Pending Invoice Submissions"
+  },
+  {
+   "card": "Registered Items"
+  },
+  {
+   "card": "Successful Stock Ledger Entries"
+  },
+  {
+   "card": "Pending Stock Ledger Entry Submissions"
+  },
+  {
+   "card": "Successful Credit Notes"
+  },
+  {
+   "card": "Pending Item Submissions"
+  },
+  {}
+ ],
+ "charts": [
+  {
+   "width": "Half"
+  }
+ ],
+ "creation": "2026-04-07 09:00:08.467130",
+ "dashboard_name": "SIS",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2026-04-07 12:51:55.219304",
+ "modified_by": "Administrator",
+ "module": "Zambia Compliance Via Digitax",
+ "name": "SIS",
+ "owner": "Administrator"
+}
