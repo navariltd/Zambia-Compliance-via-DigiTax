@@ -1,0 +1,22 @@
+{
+ "app": "zambia_compliance_via_digitax",
+ "bg_color": "gray",
+ "creation": "2026-04-06 21:13:35.880698",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "SIS",
+ "link_to": "SIS",
+ "link_type": "Workspace Sidebar",
+ "logo_url": "/assets/zambia_compliance_via_digitax/Zambia.png",
+ "modified": "2026-04-06 21:37:18.010351",
+ "modified_by": "Administrator",
+ "name": "SIS",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "sidebar": "SIS",
+ "standard": 1
+}
