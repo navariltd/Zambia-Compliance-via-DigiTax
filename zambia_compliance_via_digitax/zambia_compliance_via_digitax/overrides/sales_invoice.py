@@ -1,4 +1,6 @@
 from typing import Literal
+import frappe
+from datetime import datetime, timedelta
 
 import frappe
 from frappe.model.document import Document
@@ -8,12 +10,21 @@ from ..apis.api_builder import EndpointsBuilder
 from ..apis.api_processor import process_request
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 from ..utils.payload_utils import (build_invoice_payload, build_note_payload)
+from ..utils.settings_utils import get_settings
 
+def get_timeframe(settings_name: str) -> timedelta:
+    settings = get_settings()
+    if not settings:
+        return timedelta(seconds=86400)
+    timeframe = settings.get("stock_information_submission_timeframe", 86400) or 86400
+    return timedelta(seconds=timeframe)
 
 
 def on_submit(doc, method=None):
     # Enqueue background job for each active Smart API setting
-  
+    settings = get_settings()
+    if not settings.get("sales_auto_submission_enabled") or  doc.custom_prevent_sis_submission == 1 or doc.custom_successfully_submitted == 1:
+        return
     frappe.enqueue(
         "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.send_invoice_details",
         name=doc.name,
