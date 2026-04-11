@@ -196,7 +196,7 @@ def build_note_payload(doc, settings_name, note_type="credit", callback_url=None
             "date_field": "debit_date",
             "reason_field": "debit_reason_code",
             "default_reason": "01",
-            "source_field": "return_against",  # adjust if needed
+            "source_field": "return_against",
         },
     }
 
@@ -205,7 +205,9 @@ def build_note_payload(doc, settings_name, note_type="credit", callback_url=None
         frappe.throw(f"Unsupported note type: {note_type}")
 
     # Get original invoice
-    original_invoice = frappe.get_doc("Sales Invoice", doc.get(config["source_field"]))
+    original_invoice = frappe.get_doc(
+        "Sales Invoice", doc.get(config["source_field"])
+    )
 
     payload = {
         config["date_field"]: getdate(doc.posting_date).strftime("%Y-%m-%d"),
@@ -216,22 +218,37 @@ def build_note_payload(doc, settings_name, note_type="credit", callback_url=None
         "items": [],
     }
 
-    # Build items (shared logic)
-    for item in doc.items:
-        unit_price = float(item.rate or 0)
-        quantity = int(round(abs(item.qty) or 0))
-        discount_amount = float(item.discount_amount or 0)
-        discount_rate = float(item.discount_percentage or 0)
+    calculate_tax(doc)
 
-        total_amount = round(abs((unit_price * quantity) - discount_amount), 2)
-        package_unit_quantity = float(item.get("package_qty") or 1)
+    # Items (MATCHED with invoice logic)
+    for item in doc.items:
+        tax_amount = float(item.get("custom_vat_tax_amount") or 0)
+
+        qty = int(item.qty or 0)
+
+        # Base (net) unit price
+        base_unit_price = float(item.get("base_net_rate") or item.rate or 0)
+
+        # Tax per unit
+        tax_per_unit = (tax_amount / qty) if qty else 0
+
+        # FINAL: Tax-inclusive unit price (same as invoice)
+        unit_price_incl_tax = round(base_unit_price + tax_per_unit, 4)
+
+        # Discounts (same handling)
+        discount_percentage = float(item.get("discount_percentage") or 0)
+        discount_rate = round(discount_percentage / 100, 4)
+        discount_amount = round(float(item.get("discount_amount") or 0), 4)
+
+        # Total (same logic)
+        total_amount = round((unit_price_incl_tax * abs(qty)) - discount_amount, 4)
 
         payload["items"].append({
-            "item_id": item.get("custom_sis_item_id") or item.item_code,
-            "quantity": quantity,
-            "unit_price": unit_price,
+            "item_id": item.get("custom_sis_item_id"),
+            "quantity": abs(qty),
+            "unit_price": unit_price_incl_tax,
             "total_amount": total_amount,
-            "package_unit_quantity": package_unit_quantity,
+            "package_unit_quantity": item.get("package_qty") or 1,
             "discount_rate": discount_rate,
             "discount_amount": discount_amount,
         })
