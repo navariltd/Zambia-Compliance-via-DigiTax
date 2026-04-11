@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:tax_category_code",
  "creation": "2026-02-19 14:33:37.289726",
@@ -42,7 +43,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-19 14:38:07.431843",
+ "modified": "2026-04-11 14:57:39.338249",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Taxation Type Codes",
