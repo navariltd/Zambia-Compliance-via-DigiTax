@@ -1,7 +1,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import getdate
-
+from ..utils.tax_utils import calculate_tax
 from datetime import datetime
 
 
@@ -13,16 +13,26 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 
 	# Sale date
 	sale_date = datetime.strptime(str(invoice.posting_date), "%Y-%m-%d").date()
-
+	kind_of_sale = "NORMAL"
+	if(invoice.tax_category).lower() in ["zero rated", "zero-rated", "zerorated"]:
+		kind_of_sale = "EXPORT"
 	# Determine sale kind
-	kind = "NORMAL"
-	if invoice.get("custom_is_export"):
-		kind = "EXPORT"
-	elif invoice.get("po_no"):
-		kind = "LPO"
+	elif customer.get("custom_is_lpo") and invoice.po_no:
+		kind_of_sale = "LPO"
+
+	if kind_of_sale and invoice.custom_kind_of_sale != kind_of_sale:
+		frappe.db.set_value(
+        invoice.doctype,
+        invoice.name,
+        "custom_kind_of_sale",
+        kind_of_sale
+    )
+	invoice.custom_kind_of_sale = kind_of_sale 
+	
+	
 
 	payload = {
-		"kind": kind,
+		"kind": invoice.custom_kind_of_sale,
 		"sale_date": sale_date.isoformat(),
 		"currency_code": invoice.currency,
 		"customer_tpin": "",
@@ -39,12 +49,12 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 		payload["exchange_rate"] = invoice.conversion_rate
 
 	# Export sale
-	if kind == "Export":
+	if invoice.custom_kind_of_sale == "EXPORT":
 		payload["destination_country_code"] = invoice.get("custom_destination_country")
 
 	# LPO sale
-	if kind == "LPO":
-		payload["lpo_number"] = invoice.get("custom_lpo_number")
+	if invoice.custom_kind_of_sale == "LPO":
+		payload["lpo_number"] = invoice.get("po_no")
 
 	# Discount
 	if invoice.get("discount_amount"):
@@ -55,34 +65,42 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 			invoice.additional_discount_percentage / 100, 4
 		)
 
-	
+	calculate_tax(invoice)
 
 	
-	# Items
+		# Items
 	for item in invoice.items:
-		  # Fetch remote ID from Item master
+		# Correct tax field
+		tax_amount = float(item.get("custom_vat_tax_amount") or 0)
+
+		# Fetch remote ID
 		item_doc = frappe.get_doc("Item", item.item_code)
-		remote_id = item_doc.get("custom_smart_remote_id") or item.item_code  # fallback to item_code
+		remote_id = item_doc.get("custom_smart_remote_id") or item.item_code
 
+		qty = float(item.qty or 0)
 
-		qty = float(item.qty)
-		unit_price = round(float(item.rate), 4)
+		#  Base (net) unit price
+		base_unit_price = float(item.get("base_net_rate") or item.rate or 0)
+
+		# Tax per unit
+		tax_per_unit = (tax_amount / qty) if qty else 0
+
+		#  FINAL: Tax-inclusive unit price
+		unit_price_incl_tax = round(base_unit_price + tax_per_unit, 4)
 
 		# Discount
 		discount_percentage = float(item.get("discount_percentage") or 0)
 		discount_rate = round(discount_percentage / 100, 4)
-
 		discount_amount = round(float(item.get("discount_amount") or 0), 4)
 
-		# Total amount after discount
-		gross_amount = qty * unit_price
-		total_amount = round(gross_amount - discount_amount, 4)
+		#  Total should match tax-inclusive logic
+		total_amount = round((unit_price_incl_tax * qty) - discount_amount, 4)
 
 		payload["items"].append(
 			{
 				"item_id": remote_id,
 				"quantity": qty,
-				"unit_price": unit_price,
+				"unit_price": unit_price_incl_tax,
 				"total_amount": total_amount,
 				"package_unit_quantity": item.get("package_qty") or 1,
 				"discount_rate": discount_rate,
@@ -141,10 +159,10 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 		"excise_category_code": get_code("custom_smart_excise_duty_category_code") or "",
 		# "btchNo": item.get("batch_number") or None,
 		"bar_code": item.get("barcode") or "",
-		"default_unit_price": float(item.valuation_rate),
+		"default_unit_price": float(item.valuation_rate) or 1,
 		"tot_category_code": item.get("custom_smart_turn_over_tax_category_code") or "",
 		# "manufacturerItemCd": item.get("custom_manufacturer_item_code") or None,
-		"recommended_retail_price": float(item.get("standard_rate") or 0),
+		"recommended_retail_price": float(item.get("standard_rate") or 1),
 		# "svcChargeYn": "Y" if item.get("is_service_charge_applicable") else "N",
 		# "rentalYn": "Y" if item.get("custom_smart_rental_income_applicable") else "N",
 		# "addInfo": item.get("additional_info") or None,

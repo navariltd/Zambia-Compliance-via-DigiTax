@@ -57,7 +57,7 @@ Item registration, sales, and stock submissions are asynchronous
 Jobs are tracked under Background Jobs Desk
 Requests and responses logged for auditing in Integration Requests
 
-![alt text](image.png)
+![alt text](./zambia_compliance_via_digitax/public/images/integrations.png)
 
 ### Best Practices
 Ensure items are registered before invoicing
