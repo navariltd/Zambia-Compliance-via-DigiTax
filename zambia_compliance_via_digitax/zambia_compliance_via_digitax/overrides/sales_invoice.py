@@ -1,8 +1,7 @@
 from typing import Literal
 import frappe
 from datetime import datetime, timedelta
-
-import frappe
+import requests
 from frappe.model.document import Document
 from frappe.utils import get_datetime
 from ..utils.settings_utils import get_settings
@@ -11,7 +10,7 @@ from ..apis.api_processor import process_request
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 from ..utils.payload_utils import (build_invoice_payload, build_note_payload)
 from ..utils.settings_utils import get_settings
-
+from ..utils.tax_utils import calculate_tax
 def get_timeframe(settings_name: str) -> timedelta:
     settings = get_settings()
     if not settings:
@@ -51,6 +50,7 @@ def generic_invoices_on_submit_override(
     # Skip if prevented or already submitted
     if doc.custom_prevent_sis_submission or getattr(doc, "vsdc_invoice_number", None):
         return
+    calculate_tax(doc)
 
 # ================= CREDIT NOTE =================
     if doc.is_return and doc.return_against:
@@ -97,6 +97,7 @@ def sales_information_submission_on_success(
     result_data = response  # response itself contains the invoice object
     updates = {
         "custom_successfully_submitted": 1,
+        "custom_sent_to_digitax": 1,
         "custom_sales_id": result_data.get("id"),
         # "custom_trader_invoice_number": result_data.get("trader_invoice_number"),
         "custom_sale_no": result_data.get("sale_number"),
@@ -170,21 +171,69 @@ def sales_information_submission_on_success(
         settings_name=settings_name,
     )
 
-def sales_information_submission_on_error(
-	response: dict | str | None,
-	url: str | None,
-	doctype: str | None,
-	document_name: str | None,
-	payload: dict | None,
-	settings_name: str | None,
-):
-	frappe.log_error(
-		title="Sales Submission Failed",
-		message=f"Failed sending invoice {document_name} of {doctype}\n"
-		f"URL: {url}\n"
-		f"Settings: {settings_name}\n"
-		f"Payload: {payload}\n"
-		f"Response: {response}",
-	)
+import requests
+import frappe
 
+
+def sales_information_submission_on_error(
+    response: dict | str | None = None,
+    url: str | None = None,
+    doctype: str | None = None,
+    document_name: str | None = None,
+    payload: dict | None = None,
+    settings_name: str | None = None,
+    error=None,
+    **kwargs,
+):
+    # Fallbacks in case kwargs are used instead of explicit args
+    doctype = doctype or kwargs.get("doctype")
+    document_name = document_name or kwargs.get("document_name")
+
+    # Detect network-related errors
+    is_network_error = isinstance(
+        error,
+        (
+            requests.exceptions.ConnectionError,
+            requests.exceptions.Timeout,
+            requests.exceptions.ConnectTimeout,
+        ),
+    )
+
+    # Extra safety: string-based detection (some errors are wrapped)
+    error_str = str(error).lower() if error else ""
+    network_keywords = ["connection", "timeout", "temporarily unavailable"]
+
+    if is_network_error or any(k in error_str for k in network_keywords):
+        frappe.logger().error(
+            f"[DIGITAX] Network error for {document_name}: {error}"
+        )
+        return
+
+    # Only update if we have valid identifiers
+    if doctype and document_name:
+        frappe.db.set_value(
+            doctype,
+            document_name,
+            "custom_sent_to_digitax",
+            1,
+        )
+        frappe.db.commit()
+    else:
+        frappe.logger().warning(
+            f"[DIGITAX] Missing doctype or document_name. "
+            f"doctype={doctype}, document_name={document_name}"
+        )
+
+    # Log full error details
+    frappe.log_error(
+        title="Sales Submission Failed",
+        message=(
+            f"Failed sending invoice {document_name} of {doctype}\n"
+            f"URL: {url}\n"
+            f"Settings: {settings_name}\n"
+            f"Payload: {payload}\n"
+            f"Response: {response}\n"
+            f"Error: {error}"
+        ),
+    )
 
