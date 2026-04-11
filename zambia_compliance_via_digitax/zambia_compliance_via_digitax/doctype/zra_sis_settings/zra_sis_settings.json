@@ -15,8 +15,22 @@
   "column_break_hwfg",
   "is_active",
   "auto_create_branch_accounting_dimension",
+  "tab_3_tab",
+  "submission_frequency_settings_section",
+  "sales_auto_submission_enabled",
+  "sales_submission_frequency",
+  "column_break_wgnl",
+  "stock_auto_submission_enabled",
+  "sales_information_submission_timeframe_section",
+  "sales_information_submission_timeframe",
+  "max_sales_submission_attempts",
+  "column_break_grsh",
+  "stock_information_submission_timeframe",
+  "max_stock_submission_attempts",
   "auth_tab",
-  "api_key"
+  "api_key",
+  "field_defaults_tab",
+  "mode_of_payment"
  ],
  "fields": [
   {
@@ -82,12 +96,91 @@
    "fieldname": "api_key",
    "fieldtype": "Small Text",
    "label": "API Key"
+  },
+  {
+   "fieldname": "tab_3_tab",
+   "fieldtype": "Tab Break",
+   "label": "Submission Frequency Settings"
+  },
+  {
+   "fieldname": "submission_frequency_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Submission Frequency Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "sales_auto_submission_enabled",
+   "fieldtype": "Check",
+   "label": " Sales Auto Submission Enabled"
+  },
+  {
+   "fieldname": "sales_submission_frequency",
+   "fieldtype": "Select",
+   "label": "Sales Submission Frequency",
+   "options": "\nAll\nHourly\nDaily\nWeekly\nMonthly\nYearly\nAnnual\nCron"
+  },
+  {
+   "fieldname": "column_break_wgnl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "stock_auto_submission_enabled",
+   "fieldtype": "Check",
+   "label": " Stock Auto Submission Enabled"
+  },
+  {
+   "description": "Defines the allowed period for entries to be sent to SIS, such as invoices and purchases, from the current time. For example, if set to 4 days, entries can only be sent within the last 4 days.",
+   "fieldname": "sales_information_submission_timeframe_section",
+   "fieldtype": "Section Break",
+   "label": "Sales Information Submission Timeframe"
+  },
+  {
+   "depends_on": "eval: doc.sales_auto_submission_enabled == 1",
+   "fieldname": "sales_information_submission_timeframe",
+   "fieldtype": "Duration",
+   "label": "Sales Information Submission Timeframe"
+  },
+  {
+   "depends_on": "eval: doc.sales_auto_submission_enabled == 1",
+   "description": "Maximum attempts allowed to resubmit failed sales invoices before restrictions apply.",
+   "fieldname": "max_sales_submission_attempts",
+   "fieldtype": "Int",
+   "label": "Max Sales Submission Attempts"
+  },
+  {
+   "fieldname": "column_break_grsh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.stock_auto_submission_enabled == 1",
+   "fieldname": "stock_information_submission_timeframe",
+   "fieldtype": "Duration",
+   "label": "Stock Information Submission Timeframe"
+  },
+  {
+   "depends_on": "eval: doc.stock_auto_submission_enabled == 1",
+   "description": "Maximum attempts allowed to resubmit failed stock operations before restrictions apply.",
+   "fieldname": "max_stock_submission_attempts",
+   "fieldtype": "Int",
+   "label": "Max Stock Submission Attempts"
+  },
+  {
+   "fieldname": "field_defaults_tab",
+   "fieldtype": "Tab Break",
+   "label": "Field Defaults"
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-03 10:18:52.497123",
+ "modified": "2026-04-09 11:24:56.843083",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Settings",

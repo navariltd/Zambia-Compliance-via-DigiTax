@@ -4,7 +4,7 @@ from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 
 def get_settings(settings_name: str | None = None, company: str | None = None) -> dict | None:
     """
-    Fetch Navari ZRA Smart  Settings.
+    Fetch  ZRA SIS  Settings.
 
     Priority:
         1. Fetch by settings_name (exact match)

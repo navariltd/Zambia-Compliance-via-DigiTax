@@ -15,6 +15,15 @@ frappe.realtime.on("refresh_form", function (name) {
 
 // === Parent Doctype: Sales Invoice ===
 frappe.ui.form.on(parentDoctype, {
+	tax_category: function (frm) {
+	set_kind_of_sale(frm);
+},
+customer: function (frm) {
+	set_kind_of_sale(frm);
+},
+po_no: function (frm) {
+	set_kind_of_sale(frm);
+},
 	refresh: async function (frm) {
 		
 
@@ -135,4 +144,27 @@ function executeVSDCAction(title, settings, getCallArgs) {
 }
 
 
+function set_kind_of_sale(frm) {
+	if (!frm.doc.customer) return;
 
+	frappe.db.get_value("Customer", frm.doc.customer, "custom_is_lpo")
+		.then(r => {
+			const is_lpo = r.message?.custom_is_lpo;
+
+			let kind = "NORMAL";
+
+			// Zero-rated → EXPORT
+			if ((frm.doc.tax_category || "").toLowerCase().includes("zero")) {
+				kind = "EXPORT";
+			}
+			// LPO → LPO
+			else if (is_lpo && frm.doc.po_no) {
+				kind = "LPO";
+			}
+
+			// Only update if changed (prevents unnecessary triggers)
+			if (frm.doc.custom_kind_of_sale !== kind) {
+				frm.set_value("custom_kind_of_sale", kind);
+			}
+		});
+}

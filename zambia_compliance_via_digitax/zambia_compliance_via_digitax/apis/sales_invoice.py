@@ -11,7 +11,8 @@ def send_invoice_details(name: str) -> None:
 	doc = frappe.get_doc("Sales Invoice", name)
 
 	# Skip opening entries
-	if doc.is_opening == "Yes":
+	
+	if doc.is_opening == "Yes"  or doc.custom_prevent_sis_submission==1 or doc.custom_successfully_submitted==1:
 		return
 
 	generic_invoices_on_submit_override(doc, "Sales Invoice")

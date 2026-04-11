@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from functools import partial
 
 import frappe
 from frappe import _
@@ -181,6 +182,7 @@ def fetch_item_details(item_id: str,settings_name: str = None) -> None:
 		request_data=payload,
 		route_key="selectItem",
 		handler_function=item_search_on_success,
+
 		request_method="GET",
 		doctype="Item",
 		settings_name=settings["name"],
@@ -219,16 +221,27 @@ def _process_item_registration(item_name, settings_name, branch=None, branch_cod
             return
 
         try:
+            item.custom_sent_to_digitax = 1
+
             response = process_request(
                 doctype="Item",
                 request_data=request_data,
                 route_key="saveItem",
                 handler_function=handle_registration_response,
+                error_callback=partial(
+                    on_error,
+                    doctype=item,
+                    document_name=item_name
+                ),
                 request_method="POST",
                 settings_name=settings_name,
                 document_name=item.name,
             )
-            frappe.logger().info(f"[SMART] Response for item {item.name}: {response}")
+
+            frappe.logger().info(
+                f"[SMART] Response for item {item.name}: {response}"
+            )
+
         except Exception:
             frappe.log_error(
                 title="[SMART] Request Processing Failed",
@@ -242,6 +255,37 @@ def _process_item_registration(item_name, settings_name, branch=None, branch_cod
             message=frappe.get_traceback()
         )
         return  # exit safely, prevents retry
+	
+def on_error(response: dict | str, url=None, doctype="Item", document_name=None, **kwargs):
+    """Increment submission attempts for Item and log any errors."""
+
+    if not document_name:
+        return
+
+    try:
+        # Get current retry count (default to 0 if not set)
+        current_tries = frappe.db.get_value(
+            doctype, document_name, "custom_submission_tries"
+        ) or 0
+
+        # Increment retry count
+        frappe.db.set_value(
+            doctype,
+            document_name,
+            "custom_submission_tries",
+            current_tries + 1
+        )
+
+        frappe.db.commit()
+
+    except Exception:
+        frappe.log_error(
+            title=f"Item Submission Retry Update Failed: {document_name}",
+            message=frappe.get_traceback()
+        )
+
+    # Optional: Centralized error handling (uncomment if needed)
+    # handle_errors(response, route=url, doctype=doctype, document_name=document_name)
 def validate_required_fields(item) -> list:
 	"""Validate required fields for item registration"""
 	required_fields = [
@@ -266,3 +310,34 @@ def generate_and_set_smart_code(item) -> None:
 def is_item_eligible_for_registration(item) -> bool:
 	"""Check if item can be registered in ZRA SIS."""
 	return not (item.get("custom_prevent_smart_registration") or item.disabled)
+
+def on_error(response: dict | str, url=None, doctype="Item", document_name=None, **kwargs):
+    """Increment submission attempts for Item and log any errors."""
+
+    if not document_name:
+        return
+
+    try:
+        # Get current retry count (default to 0 if not set)
+        current_tries = frappe.db.get_value(
+            doctype, document_name, "custom_submission_tries"
+        ) or 0
+
+        # Increment retry count
+        frappe.db.set_value(
+            doctype,
+            document_name,
+            "custom_submission_tries",
+            current_tries + 1
+        )
+
+        frappe.db.commit()
+
+    except Exception:
+        frappe.log_error(
+            title=f"Item Submission Retry Update Failed: {document_name}",
+            message=frappe.get_traceback()
+        )
+
+    # Optional: Centralized error handling (uncomment if needed)
+    # handle_errors(response, route=url, doctype=doctype, document_name=document_name)
