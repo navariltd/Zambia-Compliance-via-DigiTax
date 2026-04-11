@@ -162,7 +162,7 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 		"default_unit_price": float(item.valuation_rate) or 1,
 		"tot_category_code": item.get("custom_smart_turn_over_tax_category_code") or "",
 		# "manufacturerItemCd": item.get("custom_manufacturer_item_code") or None,
-		"recommended_retail_price": float(item.get("standard_rate") or 1),
+		"recommended_retail_price": float(item.get("standard_rate") or 0),
 		# "svcChargeYn": "Y" if item.get("is_service_charge_applicable") else "N",
 		# "rentalYn": "Y" if item.get("custom_smart_rental_income_applicable") else "N",
 		# "addInfo": item.get("additional_info") or None,
@@ -321,8 +321,6 @@ def generate_custom_item_code_smart(doc: Document) -> str:
 	frappe.logger().info(f"[SIS] Generated SIS Code: {new_code}")
 
 	return new_code
-
-import frappe
 
 
 def build_customer_payload(doc) -> dict:
