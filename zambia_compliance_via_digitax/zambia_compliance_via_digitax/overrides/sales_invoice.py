@@ -171,8 +171,6 @@ def sales_information_submission_on_success(
         settings_name=settings_name,
     )
 
-import requests
-import frappe
 
 
 def sales_information_submission_on_error(
