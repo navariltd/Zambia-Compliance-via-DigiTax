@@ -237,7 +237,7 @@ def handle_registration_response(
         item_doc.custom_smart_status = status
         item_doc.custom_item_registered = 1
         item_doc.custom_active = 1
-
+        item_doc.custom__sent_to_digitax = 1
         item_doc.save(ignore_permissions=True)
         frappe.db.commit()
 

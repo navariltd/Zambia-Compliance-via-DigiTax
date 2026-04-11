@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 from functools import partial
-
+import requests
 import frappe
 from frappe import _
 from frappe.utils.background_jobs import enqueue
@@ -256,36 +256,7 @@ def _process_item_registration(item_name, settings_name, branch=None, branch_cod
         )
         return  # exit safely, prevents retry
 	
-def on_error(response: dict | str, url=None, doctype="Item", document_name=None, **kwargs):
-    """Increment submission attempts for Item and log any errors."""
 
-    if not document_name:
-        return
-
-    try:
-        # Get current retry count (default to 0 if not set)
-        current_tries = frappe.db.get_value(
-            doctype, document_name, "custom_submission_tries"
-        ) or 0
-
-        # Increment retry count
-        frappe.db.set_value(
-            doctype,
-            document_name,
-            "custom_submission_tries",
-            current_tries + 1
-        )
-
-        frappe.db.commit()
-
-    except Exception:
-        frappe.log_error(
-            title=f"Item Submission Retry Update Failed: {document_name}",
-            message=frappe.get_traceback()
-        )
-
-    # Optional: Centralized error handling (uncomment if needed)
-    # handle_errors(response, route=url, doctype=doctype, document_name=document_name)
 def validate_required_fields(item) -> list:
 	"""Validate required fields for item registration"""
 	required_fields = [
@@ -311,7 +282,14 @@ def is_item_eligible_for_registration(item) -> bool:
 	"""Check if item can be registered in ZRA SIS."""
 	return not (item.get("custom_prevent_smart_registration") or item.disabled)
 
-def on_error(response: dict | str, url=None, doctype="Item", document_name=None, **kwargs):
+def on_error(
+    response: dict | str,
+    url=None,
+    doctype="Item",
+    document_name=None,
+    error=None,
+    **kwargs
+):
     """Increment submission attempts for Item and log any errors."""
 
     if not document_name:
@@ -320,7 +298,9 @@ def on_error(response: dict | str, url=None, doctype="Item", document_name=None,
     try:
         # Get current retry count (default to 0 if not set)
         current_tries = frappe.db.get_value(
-            doctype, document_name, "custom_submission_tries"
+            doctype,
+            document_name,
+            "custom_submission_tries"
         ) or 0
 
         # Increment retry count
@@ -328,16 +308,49 @@ def on_error(response: dict | str, url=None, doctype="Item", document_name=None,
             doctype,
             document_name,
             "custom_submission_tries",
-            current_tries + 1
+            current_tries + 1,
         )
 
         frappe.db.commit()
 
+        # Detect network-related errors
+        is_network_error = isinstance(
+            error,
+            (
+                requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout,
+                requests.exceptions.ConnectTimeout,
+            ),
+        )
+
+        # Extra safety: string-based detection (some errors are wrapped)
+        error_str = str(error).lower() if error else ""
+        network_keywords = ["connection", "timeout", "temporarily unavailable"]
+
+        if is_network_error or any(k in error_str for k in network_keywords):
+            frappe.logger().error(
+                f"[DIGITAX] Network error for {document_name}: {error}"
+            )
+            return
+
+        # Only update if we have valid identifiers
+        if doctype and document_name:
+            frappe.db.set_value(
+                doctype,
+                document_name,
+                "custom__sent_to_digitax",
+                1,
+            )
+            frappe.db.commit()
+
+        else:
+            frappe.logger().warning(
+                f"[DIGITAX] Missing doctype or document_name. "
+                f"doctype={doctype}, document_name={document_name}"
+            )
+
     except Exception:
         frappe.log_error(
             title=f"Item Submission Retry Update Failed: {document_name}",
-            message=frappe.get_traceback()
+            message=frappe.get_traceback(),
         )
-
-    # Optional: Centralized error handling (uncomment if needed)
-    # handle_errors(response, route=url, doctype=doctype, document_name=document_name)
