@@ -30,7 +30,9 @@
   "auth_tab",
   "api_key",
   "field_defaults_tab",
-  "mode_of_payment"
+  "mode_of_payment",
+  "default_taxation_type_code",
+  "default_tax_rate"
  ],
  "fields": [
   {
@@ -175,12 +177,23 @@
    "fieldtype": "Link",
    "label": "Mode of Payment",
    "options": "Mode of Payment"
+  },
+  {
+   "fieldname": "default_taxation_type_code",
+   "fieldtype": "Link",
+   "label": "Default Taxation Type Code",
+   "options": "ZRA SIS Taxation Type Codes"
+  },
+  {
+   "fieldname": "default_tax_rate",
+   "fieldtype": "Float",
+   "label": "Default Tax Rate"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-09 11:24:56.843083",
+ "modified": "2026-04-12 00:27:48.906726",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Settings",
