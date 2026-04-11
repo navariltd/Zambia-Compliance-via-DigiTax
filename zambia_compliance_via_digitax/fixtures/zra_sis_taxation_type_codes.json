@@ -1,0 +1,92 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-04-11 16:49:56.260993",
+  "name": "TOT",
+  "tax_category_code": "TOT",
+  "tax_category_name": "TOT",
+  "tax_rate": null,
+  "tax_type_code": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-04-11 16:49:56.289480",
+  "name": "E",
+  "tax_category_code": "E",
+  "tax_category_name": "Disbursement",
+  "tax_rate": null,
+  "tax_type_code": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-04-11 16:49:56.301645",
+  "name": "RVAT",
+  "tax_category_code": "RVAT",
+  "tax_category_name": "Reverse VAT",
+  "tax_rate": null,
+  "tax_type_code": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-04-11 16:49:56.313922",
+  "name": "D",
+  "tax_category_code": "D",
+  "tax_category_name": "Exempt",
+  "tax_rate": null,
+  "tax_type_code": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-04-11 16:49:56.324425",
+  "name": "C3",
+  "tax_category_code": "C3",
+  "tax_category_name": "Zero-rated by nature",
+  "tax_rate": null,
+  "tax_type_code": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-04-11 16:49:56.332840",
+  "name": "C2",
+  "tax_category_code": "C2",
+  "tax_category_name": "Zero-rating LPO",
+  "tax_rate": null,
+  "tax_type_code": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-04-11 16:49:56.348776",
+  "name": "C1",
+  "tax_category_code": "C1",
+  "tax_category_name": "Exports(0%)",
+  "tax_rate": null,
+  "tax_type_code": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-03-12 11:26:52.671773",
+  "name": "B",
+  "tax_category_code": "B",
+  "tax_category_name": null,
+  "tax_rate": null,
+  "tax_type_code": ""
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-03-03 12:02:59.370801",
+  "name": "A",
+  "tax_category_code": "A",
+  "tax_category_name": null,
+  "tax_rate": null,
+  "tax_type_code": "A"
+ }
+]

@@ -1,0 +1,938 @@
+[
+ {
+  "code": "QL",
+  "code_name": "QUINTAL",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.081837",
+  "name": "QL"
+ },
+ {
+  "code": "P10",
+  "code_name": "PER TEN",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.130328",
+  "name": "P10"
+ },
+ {
+  "code": "P100",
+  "code_name": "PER ONE HUNDRED",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.145292",
+  "name": "P100"
+ },
+ {
+  "code": "MAT",
+  "code_name": "MINUTES OF AIR TIME",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.157479",
+  "name": "MAT"
+ },
+ {
+  "code": "MG",
+  "code_name": "MILIGRAMMES",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.170330",
+  "name": "MG"
+ },
+ {
+  "code": "CU",
+  "code_name": "METAL PER CENT (GRADE) OF CU - COPPER",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.184596",
+  "name": "CU"
+ },
+ {
+  "code": "CO",
+  "code_name": "METAL PER CENT (GRADE) OF CO - COBALT",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.198884",
+  "name": "CO"
+ },
+ {
+  "code": "AU",
+  "code_name": "METAL PER CENT (GRADE) OF AU - GOLD",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.215663",
+  "name": "AU"
+ },
+ {
+  "code": "AG",
+  "code_name": "METAL PER CENT (GRADE) OF AG - SILVER",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.232155",
+  "name": "AG"
+ },
+ {
+  "code": "HKH",
+  "code_name": "HUNDRED KILOWATT HOURS",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.247293",
+  "name": "HKH"
+ },
+ {
+  "code": "EC",
+  "code_name": "ENGINE CAPACITY",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.264626",
+  "name": "EC"
+ },
+ {
+  "code": "DMT",
+  "code_name": "DRY METRIC TONNES",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.282183",
+  "name": "DMT"
+ },
+ {
+  "code": "DL",
+  "code_name": "DEKALITRES",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.296116",
+  "name": "DL"
+ },
+ {
+  "code": "CDM",
+  "code_name": "Cubic decimeter",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.312505",
+  "name": "CDM"
+ },
+ {
+  "code": "CD",
+  "code_name": "Candela",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.329187",
+  "name": "CD"
+ },
+ {
+  "code": "CCM",
+  "code_name": "Cubic centimeter",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.337418",
+  "name": "CCM"
+ },
+ {
+  "code": "C56",
+  "code_name": "Newton/Square millimeter",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.349296",
+  "name": "C56"
+ },
+ {
+  "code": "C41",
+  "code_name": "Nanofarad",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.357516",
+  "name": "C41"
+ },
+ {
+  "code": "C3S",
+  "code_name": "Cubic centimeter/second",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.366164",
+  "name": "C3S"
+ },
+ {
+  "code": "C39",
+  "code_name": "Nanoampere",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.377622",
+  "name": "C39"
+ },
+ {
+  "code": "C38",
+  "code_name": "Mol per liter",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.387192",
+  "name": "C38"
+ },
+ {
+  "code": "C36",
+  "code_name": "Mol per cubic meter",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.399688",
+  "name": "C36"
+ },
+ {
+  "code": "C10",
+  "code_name": "Millifarad",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.411154",
+  "name": "C10"
+ },
+ {
+  "code": "BQK",
+  "code_name": "Becquerel/kilogram",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.419918",
+  "name": "BQK"
+ },
+ {
+  "code": "BOT",
+  "code_name": "Bottle",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.428874",
+  "name": "BOT"
+ },
+ {
+  "code": "BAR",
+  "code_name": "bar",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.440049",
+  "name": "BAR"
+ },
+ {
+  "code": "BAG",
+  "code_name": "Bag",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.454369",
+  "name": "BAG"
+ },
+ {
+  "code": "B84",
+  "code_name": "Microampere",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.466819",
+  "name": "B84"
+ },
+ {
+  "code": "B78",
+  "code_name": "Megavolt",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.474195",
+  "name": "B78"
+ },
+ {
+  "code": "B75",
+  "code_name": "Megohm",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.488665",
+  "name": "B75"
+ },
+ {
+  "code": "B73",
+  "code_name": "Meganewton",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.499701",
+  "name": "B73"
+ },
+ {
+  "code": "B47",
+  "code_name": "Kilonewton",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.511687",
+  "name": "B47"
+ },
+ {
+  "code": "B45",
+  "code_name": "Kilomol",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.520645",
+  "name": "B45"
+ },
+ {
+  "code": "B34",
+  "code_name": "Kilogram/cubic decimeter",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.539769",
+  "name": "B34"
+ },
+ {
+  "code": "ACR",
+  "code_name": "Acre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.547963",
+  "name": "ACR"
+ },
+ {
+  "code": "A93",
+  "code_name": "Gram/Cubic meter",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.563863",
+  "name": "A93"
+ },
+ {
+  "code": "A87",
+  "code_name": "Gigaohm",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.570131",
+  "name": "A87"
+ },
+ {
+  "code": "A",
+  "code_name": "Ampere",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.581581",
+  "name": "A"
+ },
+ {
+  "code": "4T",
+  "code_name": "Pikofarad",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.589273",
+  "name": "4T"
+ },
+ {
+  "code": "4O",
+  "code_name": "Microfarad",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.597313",
+  "name": "4O"
+ },
+ {
+  "code": "4G",
+  "code_name": "Microliter",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.607142",
+  "name": "4G"
+ },
+ {
+  "code": "2X",
+  "code_name": "Meter/Minute",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.619571",
+  "name": "2X"
+ },
+ {
+  "code": "qt",
+  "code_name": "Quarts",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.630516",
+  "name": "qt"
+ },
+ {
+  "code": "pt",
+  "code_name": "Pints",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.640347",
+  "name": "pt"
+ },
+ {
+  "code": "cm2",
+  "code_name": "Square centimetre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.656074",
+  "name": "cm2"
+ },
+ {
+  "code": "ft2",
+  "code_name": "Square feet",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.669008",
+  "name": "ft2"
+ },
+ {
+  "code": "yd2",
+  "code_name": "Square yards",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.681208",
+  "name": "yd2"
+ },
+ {
+  "code": "ha",
+  "code_name": "Hectare",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.698267",
+  "name": "ha"
+ },
+ {
+  "code": "hr",
+  "code_name": "Hour",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.705602",
+  "name": "hr"
+ },
+ {
+  "code": "D",
+  "code_name": "Day",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.718895",
+  "name": "D"
+ },
+ {
+  "code": "Wk",
+  "code_name": "Week",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.739603",
+  "name": "Wk"
+ },
+ {
+  "code": "YR",
+  "code_name": "Year",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.752731",
+  "name": "YR"
+ },
+ {
+  "code": "Oz",
+  "code_name": "Ounce",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.765988",
+  "name": "Oz"
+ },
+ {
+  "code": "In",
+  "code_name": "Inches",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.776903",
+  "name": "In"
+ },
+ {
+  "code": "MM",
+  "code_name": "Millimetre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.789783",
+  "name": "MM"
+ },
+ {
+  "code": "Ft",
+  "code_name": "Feet",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.802715",
+  "name": "Ft"
+ },
+ {
+  "code": "EACH",
+  "code_name": "Each",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.820054",
+  "name": "EACH"
+ },
+ {
+  "code": "PL",
+  "code_name": "Pallet",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.827763",
+  "name": "PL"
+ },
+ {
+  "code": "EA",
+  "code_name": "Each",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.840622",
+  "name": "EA"
+ },
+ {
+  "code": "P1",
+  "code_name": "Pack",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.856589",
+  "name": "P1"
+ },
+ {
+  "code": "YRD",
+  "code_name": "yard",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.873910",
+  "name": "YRD"
+ },
+ {
+  "code": "U",
+  "code_name": "Pieces/item [Number]",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.890903",
+  "name": "U"
+ },
+ {
+  "code": "TU",
+  "code_name": "tube",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.902843",
+  "name": "TU"
+ },
+ {
+  "code": "TNE",
+  "code_name": "tonne (metric ton)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.916549",
+  "name": "TNE"
+ },
+ {
+  "code": "ST",
+  "code_name": "sheet",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.934725",
+  "name": "ST"
+ },
+ {
+  "code": "SET",
+  "code_name": "set",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.948884",
+  "name": "SET"
+ },
+ {
+  "code": "RO",
+  "code_name": "roll",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.960559",
+  "name": "RO"
+ },
+ {
+  "code": "RL",
+  "code_name": "reel",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.973691",
+  "name": "RL"
+ },
+ {
+  "code": "PR",
+  "code_name": "pair",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.981267",
+  "name": "PR"
+ },
+ {
+  "code": "PG",
+  "code_name": "plate",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:34.994069",
+  "name": "PG"
+ },
+ {
+  "code": "PA",
+  "code_name": "packet",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.006745",
+  "name": "PA"
+ },
+ {
+  "code": "NX",
+  "code_name": "part per thousand",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.019042",
+  "name": "NX"
+ },
+ {
+  "code": "NO",
+  "code_name": "Number",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.029528",
+  "name": "NO"
+ },
+ {
+  "code": "MWT",
+  "code_name": "megawatt hour (1000 kW.h)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.037289",
+  "name": "MWT"
+ },
+ {
+  "code": "MTR",
+  "code_name": "metre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.046807",
+  "name": "MTR"
+ },
+ {
+  "code": "MGM",
+  "code_name": "milligram",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.070884",
+  "name": "MGM"
+ },
+ {
+  "code": "M3",
+  "code_name": "Cubic Metre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.077368",
+  "name": "M3"
+ },
+ {
+  "code": "M2",
+  "code_name": "Square Metre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.100443",
+  "name": "M2"
+ },
+ {
+  "code": "M",
+  "code_name": "Metre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.109576",
+  "name": "M"
+ },
+ {
+  "code": "LTR",
+  "code_name": "Litre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.130959",
+  "name": "LTR"
+ },
+ {
+  "code": "LK",
+  "code_name": "link",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.142166",
+  "name": "LK"
+ },
+ {
+  "code": "LBR",
+  "code_name": "pound",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.150627",
+  "name": "LBR"
+ },
+ {
+  "code": "L",
+  "code_name": "Litre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.159096",
+  "name": "L"
+ },
+ {
+  "code": "KWT",
+  "code_name": "kilowatt",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.170869",
+  "name": "KWT"
+ },
+ {
+  "code": "KTM",
+  "code_name": "kilometre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.179590",
+  "name": "KTM"
+ },
+ {
+  "code": "KG",
+  "code_name": "Kilo-Gramme",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.186762",
+  "name": "KG"
+ },
+ {
+  "code": "GRO",
+  "code_name": "Gross",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.204737",
+  "name": "GRO"
+ },
+ {
+  "code": "GRM",
+  "code_name": "Gram",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.219889",
+  "name": "GRM"
+ },
+ {
+  "code": "GLL",
+  "code_name": "Gallon",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.231606",
+  "name": "GLL"
+ },
+ {
+  "code": "DZ",
+  "code_name": "Dozen",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.238425",
+  "name": "DZ"
+ },
+ {
+  "code": "DR",
+  "code_name": "Drum",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.247832",
+  "name": "DR"
+ },
+ {
+  "code": "CR",
+  "code_name": "CARAT",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.256812",
+  "name": "CR"
+ },
+ {
+  "code": "CMT",
+  "code_name": "centimetre",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.265890",
+  "name": "CMT"
+ },
+ {
+  "code": "CEL",
+  "code_name": "Cell",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.274167",
+  "name": "CEL"
+ },
+ {
+  "code": "CA",
+  "code_name": "Can",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.285959",
+  "name": "CA"
+ },
+ {
+  "code": "BLL",
+  "code_name": "BLL Barrel (petroleum) (158,987 dm3)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.308153",
+  "name": "BLL"
+ },
+ {
+  "code": "BL",
+  "code_name": "block",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.316929",
+  "name": "BL"
+ },
+ {
+  "code": "BG",
+  "code_name": "bag",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.329121",
+  "name": "BG"
+ },
+ {
+  "code": "BE",
+  "code_name": "bundle",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.337532",
+  "name": "BE"
+ },
+ {
+  "code": "BA",
+  "code_name": "Barrel",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.345004",
+  "name": "BA"
+ },
+ {
+  "code": "AV",
+  "code_name": "Cap",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.356027",
+  "name": "AV"
+ },
+ {
+  "code": "4B",
+  "code_name": "Pair",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.365384",
+  "name": "4B"
+ },
+ {
+  "code": "CT",
+  "code_name": null,
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-04-11 17:08:35.371993",
+  "name": "CT"
+ },
+ {
+  "code": "BX",
+  "code_name": "BOX",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Quantity Unit Codes",
+  "modified": "2026-03-09 07:45:00.875990",
+  "name": "BX"
+ }
+]
