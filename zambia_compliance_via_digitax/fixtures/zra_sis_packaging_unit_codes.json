@@ -1,0 +1,1289 @@
+[
+ {
+  "code": "FL",
+  "code_name": "FLASK",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.583896",
+  "name": "FL"
+ },
+ {
+  "code": "HG",
+  "code_name": "HOGSHEAD",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.602464",
+  "name": "HG"
+ },
+ {
+  "code": "SA",
+  "code_name": "SACK",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.607294",
+  "name": "SA"
+ },
+ {
+  "code": "PC",
+  "code_name": "PARCEL",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.611316",
+  "name": "PC"
+ },
+ {
+  "code": "MT",
+  "code_name": "MAT",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.615093",
+  "name": "MT"
+ },
+ {
+  "code": "TO",
+  "code_name": "TUN",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.619135",
+  "name": "TO"
+ },
+ {
+  "code": "LG",
+  "code_name": "LOG",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.622916",
+  "name": "LG"
+ },
+ {
+  "code": "PN",
+  "code_name": "PLANK",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.626872",
+  "name": "PN"
+ },
+ {
+  "code": "SH",
+  "code_name": "SACHET",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.630585",
+  "name": "SH"
+ },
+ {
+  "code": "BO",
+  "code_name": "BOTTLE, NON PROTECTED, CYLINDRICAL",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.634154",
+  "name": "BO"
+ },
+ {
+  "code": "CI",
+  "code_name": "CANISTER",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.637871",
+  "name": "CI"
+ },
+ {
+  "code": "TS",
+  "code_name": "TRUSS",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.642418",
+  "name": "TS"
+ },
+ {
+  "code": "SE",
+  "code_name": "SEA-CHEST",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.646625",
+  "name": "SE"
+ },
+ {
+  "code": "AE",
+  "code_name": "AEROSOL",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.650505",
+  "name": "AE"
+ },
+ {
+  "code": "MC",
+  "code_name": "MILK CRATE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.654000",
+  "name": "MC"
+ },
+ {
+  "code": "SM",
+  "code_name": "SHEETMETAL",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.658340",
+  "name": "SM"
+ },
+ {
+  "code": "ST",
+  "code_name": "SHEET",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.662061",
+  "name": "ST"
+ },
+ {
+  "code": "KWH",
+  "code_name": "KILOWATTS/HOUR",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.665453",
+  "name": "KWH"
+ },
+ {
+  "code": "NE",
+  "code_name": "UNPACKED OR UNPACKAGED",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.668997",
+  "name": "NE"
+ },
+ {
+  "code": "KG",
+  "code_name": "KEG",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.672741",
+  "name": "KG"
+ },
+ {
+  "code": "VI",
+  "code_name": "VIAL",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.677016",
+  "name": "VI"
+ },
+ {
+  "code": "SU",
+  "code_name": "SUITCASE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.681463",
+  "name": "SU"
+ },
+ {
+  "code": "VP",
+  "code_name": "VACUUMPACKED",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.685160",
+  "name": "VP"
+ },
+ {
+  "code": "NS",
+  "code_name": "NEST",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.688857",
+  "name": "NS"
+ },
+ {
+  "code": "EN",
+  "code_name": "ENVELOPE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.693962",
+  "name": "EN"
+ },
+ {
+  "code": "BY",
+  "code_name": "BOARD,IN BUNDLE/BUNCH/TRUSS",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.697921",
+  "name": "BY"
+ },
+ {
+  "code": "JC",
+  "code_name": "JERRICAN,RECTANGULAR",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.701369",
+  "name": "JC"
+ },
+ {
+  "code": "CF",
+  "code_name": "WICKERBOTTLE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.704583",
+  "name": "CF"
+ },
+ {
+  "code": "PH",
+  "code_name": "TUBE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.709122",
+  "name": "PH"
+ },
+ {
+  "code": "CE",
+  "code_name": "TRUNK",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.713566",
+  "name": "CE"
+ },
+ {
+  "code": "FR",
+  "code_name": "TIN",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.716852",
+  "name": "FR"
+ },
+ {
+  "code": "BI",
+  "code_name": "SHRINKWRAPPED",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.720807",
+  "name": "BI"
+ },
+ {
+  "code": "TB",
+  "code_name": "SHEETS,IN BUNDLE/BUNCH/TRUSS",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.724632",
+  "name": "TB"
+ },
+ {
+  "code": "TR",
+  "code_name": "REDNET",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.728580",
+  "name": "TR"
+ },
+ {
+  "code": "MS",
+  "code_name": "PITCHER",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.732264",
+  "name": "MS"
+ },
+ {
+  "code": "CU",
+  "code_name": "PALLET",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.736237",
+  "name": "CU"
+ },
+ {
+  "code": "AP",
+  "code_name": "PAIL",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.741278",
+  "name": "AP"
+ },
+ {
+  "code": "SC",
+  "code_name": "MULTIWALL SACK",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.745373",
+  "name": "SC"
+ },
+ {
+  "code": "BD",
+  "code_name": "LOOSE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.748891",
+  "name": "BD"
+ },
+ {
+  "code": "VA",
+  "code_name": "HAMPER",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.752343",
+  "name": "VA"
+ },
+ {
+  "code": "CP",
+  "code_name": "GIRDERS,IN BUNDLE/BUNCH/TRUSS",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.756098",
+  "name": "CP"
+ },
+ {
+  "code": "RT",
+  "code_name": "GAS BOTTLE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.760653",
+  "name": "RT"
+ },
+ {
+  "code": "BB",
+  "code_name": "FRUIT CRATE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.765574",
+  "name": "BB"
+ },
+ {
+  "code": "BU",
+  "code_name": "DEMIJOHN,NON-PROTECTED",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.769100",
+  "name": "BU"
+ },
+ {
+  "code": "GZ",
+  "code_name": "CREEL",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.773661",
+  "name": "GZ"
+ },
+ {
+  "code": "BX",
+  "code_name": "CARBOY,PROTECTED",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.777840",
+  "name": "BX"
+ },
+ {
+  "code": "JG",
+  "code_name": "CAGE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.782261",
+  "name": "JG"
+ },
+ {
+  "code": "RG",
+  "code_name": "BUTT",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.786144",
+  "name": "RG"
+ },
+ {
+  "code": "CG",
+  "code_name": "BOLT",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.791466",
+  "name": "CG"
+ },
+ {
+  "code": "SZ",
+  "code_name": "BOBBIN",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.796120",
+  "name": "SZ"
+ },
+ {
+  "code": "BN",
+  "code_name": "BEER CRATE",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.799943",
+  "name": "BN"
+ },
+ {
+  "code": "PA",
+  "code_name": "BALLOON,PROTECTED",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.803963",
+  "name": "PA"
+ },
+ {
+  "code": "PR",
+  "code_name": "Pairs",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.808861",
+  "name": "PR"
+ },
+ {
+  "code": "WRAP",
+  "code_name": "Wraped",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.813351",
+  "name": "WRAP"
+ },
+ {
+  "code": "UNWR",
+  "code_name": "Unwrap",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.816981",
+  "name": "UNWR"
+ },
+ {
+  "code": "TUB",
+  "code_name": "TUB",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.820648",
+  "name": "TUB"
+ },
+ {
+  "code": "TRSE",
+  "code_name": "Tray Sell",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.824987",
+  "name": "TRSE"
+ },
+ {
+  "code": "TRAY",
+  "code_name": "Tray",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.829334",
+  "name": "TRAY"
+ },
+ {
+  "code": "SOCK",
+  "code_name": "Sock",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.832898",
+  "name": "SOCK"
+ },
+ {
+  "code": "SLEE",
+  "code_name": "Sleeve",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.836231",
+  "name": "SLEE"
+ },
+ {
+  "code": "PUNN",
+  "code_name": "Punnet - Packaging",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.843492",
+  "name": "PUNN"
+ },
+ {
+  "code": "PUND",
+  "code_name": "Pun DTray",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.850352",
+  "name": "PUND"
+ },
+ {
+  "code": "PREP",
+  "code_name": "Prepack",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.857613",
+  "name": "PREP"
+ },
+ {
+  "code": "POT",
+  "code_name": "Pots",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.861763",
+  "name": "POT"
+ },
+ {
+  "code": "POLY",
+  "code_name": "Poly Bags",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.865400",
+  "name": "POLY"
+ },
+ {
+  "code": "POCS",
+  "code_name": "Poc Sell",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.868743",
+  "name": "POCS"
+ },
+ {
+  "code": "POC",
+  "code_name": "Pocket",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.872472",
+  "name": "POC"
+ },
+ {
+  "code": "PILP",
+  "code_name": "Pilpac",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.876852",
+  "name": "PILP"
+ },
+ {
+  "code": "PCRT",
+  "code_name": "PCRT",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.880600",
+  "name": "PCRT"
+ },
+ {
+  "code": "PACK",
+  "code_name": "PACK",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.884545",
+  "name": "PACK"
+ },
+ {
+  "code": "P/KG",
+  "code_name": "Per Kilogram",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.888368",
+  "name": "P/KG"
+ },
+ {
+  "code": "NETL",
+  "code_name": "Netlon",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.892396",
+  "name": "NETL"
+ },
+ {
+  "code": "MESH",
+  "code_name": "Mesh",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.896488",
+  "name": "MESH"
+ },
+ {
+  "code": "LABE",
+  "code_name": "Labels",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.900094",
+  "name": "LABE"
+ },
+ {
+  "code": "KARR",
+  "code_name": "Karripoc",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.903672",
+  "name": "KARR"
+ },
+ {
+  "code": "G/L",
+  "code_name": "Green Lugs",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.908433",
+  "name": "G/L"
+ },
+ {
+  "code": "ECPO",
+  "code_name": "Econo Poc Sell",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.912437",
+  "name": "ECPO"
+ },
+ {
+  "code": "ECON",
+  "code_name": "Economy Bag",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.915611",
+  "name": "ECON"
+ },
+ {
+  "code": "EACH",
+  "code_name": "Each",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.919544",
+  "name": "EACH"
+ },
+ {
+  "code": "EA",
+  "code_name": "Each",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.923101",
+  "name": "EA"
+ },
+ {
+  "code": "CLEA",
+  "code_name": "Clear Lid",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.927523",
+  "name": "CLEA"
+ },
+ {
+  "code": "BUND",
+  "code_name": "Bundle",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.931963",
+  "name": "BUND"
+ },
+ {
+  "code": "BUNC",
+  "code_name": "Bunch",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.936039",
+  "name": "BUNC"
+ },
+ {
+  "code": "BULK",
+  "code_name": "Bulk Pack",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.939788",
+  "name": "BULK"
+ },
+ {
+  "code": "BUBG",
+  "code_name": "Budget Bag",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.944047",
+  "name": "BUBG"
+ },
+ {
+  "code": "BOX",
+  "code_name": "Box",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.947845",
+  "name": "BOX"
+ },
+ {
+  "code": "BOWL",
+  "code_name": "Bowl",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.951618",
+  "name": "BOWL"
+ },
+ {
+  "code": "BOUQ",
+  "code_name": "Bouquet",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.957414",
+  "name": "BOUQ"
+ },
+ {
+  "code": "BOTT",
+  "code_name": "Bottle",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.961195",
+  "name": "BOTT"
+ },
+ {
+  "code": "BIN",
+  "code_name": "Bin",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.964620",
+  "name": "BIN"
+ },
+ {
+  "code": "B/L",
+  "code_name": "Black Lug",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.968202",
+  "name": "B/L"
+ },
+ {
+  "code": "TN",
+  "code_name": "TAN",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.971983",
+  "name": "TN"
+ },
+ {
+  "code": "ML",
+  "code_name": "Mills",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.977494",
+  "name": "ML"
+ },
+ {
+  "code": "VY",
+  "code_name": "Bulk, fine particles(powder)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.981158",
+  "name": "VY"
+ },
+ {
+  "code": "VT",
+  "code_name": "Extra Bulk Item",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.985988",
+  "name": "VT"
+ },
+ {
+  "code": "VR",
+  "code_name": "Bulk, solid, granular particles(grains)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.989917",
+  "name": "VR"
+ },
+ {
+  "code": "VQ",
+  "code_name": "Bulk, gas (liquefied at abnormal temperature/pressure)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.994228",
+  "name": "VQ"
+ },
+ {
+  "code": "VO",
+  "code_name": "Bulk, solid, large particles(nodules)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:08.997587",
+  "name": "VO"
+ },
+ {
+  "code": "VL",
+  "code_name": "Bulk,liquid(at normal temperature/pressure)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.001321",
+  "name": "VL"
+ },
+ {
+  "code": "VG",
+  "code_name": "Bulk,gas(at 1031 mbar 15 oC)",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.004880",
+  "name": "VG"
+ },
+ {
+  "code": "TY",
+  "code_name": "Tank, cylindrical",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.009976",
+  "name": "TY"
+ },
+ {
+  "code": "SK",
+  "code_name": "Skeletoncase",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.014113",
+  "name": "SK"
+ },
+ {
+  "code": "RZ",
+  "code_name": "Rods, in bundle/bunch/truss",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.019520",
+  "name": "RZ"
+ },
+ {
+  "code": "RO",
+  "code_name": "Roll",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.023750",
+  "name": "RO"
+ },
+ {
+  "code": "RL",
+  "code_name": "Reel",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.027875",
+  "name": "RL"
+ },
+ {
+  "code": "PU",
+  "code_name": "Traypack",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.031868",
+  "name": "PU"
+ },
+ {
+  "code": "PO",
+  "code_name": "Pilot",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.035718",
+  "name": "PO"
+ },
+ {
+  "code": "PI",
+  "code_name": "Pipe",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.039308",
+  "name": "PI"
+ },
+ {
+  "code": "PG",
+  "code_name": "Plate",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.043502",
+  "name": "PG"
+ },
+ {
+  "code": "PD",
+  "code_name": "Poddon",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.047260",
+  "name": "PD"
+ },
+ {
+  "code": "OU",
+  "code_name": "Non-Exterior Packaging Unit",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.050958",
+  "name": "OU"
+ },
+ {
+  "code": "NT",
+  "code_name": "Net",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.054534",
+  "name": "NT"
+ },
+ {
+  "code": "LZ",
+  "code_name": "Logs, in bundle/bunch/truss",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.059972",
+  "name": "LZ"
+ },
+ {
+  "code": "KZ",
+  "code_name": "Canester",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.064019",
+  "name": "KZ"
+ },
+ {
+  "code": "JY",
+  "code_name": "Jerry CAN Cylindrical",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.067561",
+  "name": "JY"
+ },
+ {
+  "code": "JU",
+  "code_name": "Jug",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.071073",
+  "name": "JU"
+ },
+ {
+  "code": "JR",
+  "code_name": "Jar",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.075778",
+  "name": "JR"
+ },
+ {
+  "code": "IZ",
+  "code_name": "Ingots",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.079814",
+  "name": "IZ"
+ },
+ {
+  "code": "HH",
+  "code_name": "Hand Baggage",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.083413",
+  "name": "HH"
+ },
+ {
+  "code": "GT",
+  "code_name": "Extra Countable Item",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.087331",
+  "name": "GT"
+ },
+ {
+  "code": "DR",
+  "code_name": "Drum",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.091218",
+  "name": "DR"
+ },
+ {
+  "code": "CY",
+  "code_name": "Cylinder",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.095653",
+  "name": "CY"
+ },
+ {
+  "code": "CTN",
+  "code_name": "Container",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.099322",
+  "name": "CTN"
+ },
+ {
+  "code": "CS",
+  "code_name": "Cassette",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.103370",
+  "name": "CS"
+ },
+ {
+  "code": "CR",
+  "code_name": "Wooden Box, Wooden Case",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.107315",
+  "name": "CR"
+ },
+ {
+  "code": "CL",
+  "code_name": "Coil",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.111461",
+  "name": "CL"
+ },
+ {
+  "code": "CJ",
+  "code_name": "Coffin",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.115102",
+  "name": "CJ"
+ },
+ {
+  "code": "CH",
+  "code_name": "Chest",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.118977",
+  "name": "CH"
+ },
+ {
+  "code": "CA",
+  "code_name": "Can",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.122812",
+  "name": "CA"
+ },
+ {
+  "code": "BZ",
+  "code_name": "Bag",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.126860",
+  "name": "BZ"
+ },
+ {
+  "code": "BV",
+  "code_name": "Bottle, bulbous",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.130855",
+  "name": "BV"
+ },
+ {
+  "code": "BR",
+  "code_name": "Bar",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.134113",
+  "name": "BR"
+ },
+ {
+  "code": "BQ",
+  "code_name": "Bottle, protected cylindrical",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.139627",
+  "name": "BQ"
+ },
+ {
+  "code": "BL",
+  "code_name": "Bale",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.143707",
+  "name": "BL"
+ },
+ {
+  "code": "BK",
+  "code_name": "Basket",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.147783",
+  "name": "BK"
+ },
+ {
+  "code": "BJ",
+  "code_name": "Bucket",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.151804",
+  "name": "BJ"
+ },
+ {
+  "code": "BG",
+  "code_name": "Bag",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.156168",
+  "name": "BG"
+ },
+ {
+  "code": "BF",
+  "code_name": "Balloon, non-protected",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.160838",
+  "name": "BF"
+ },
+ {
+  "code": "BE",
+  "code_name": "Bundle",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.164478",
+  "name": "BE"
+ },
+ {
+  "code": "BC",
+  "code_name": "Bottlecrate",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.167912",
+  "name": "BC"
+ },
+ {
+  "code": "BA",
+  "code_name": "Barrel",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.171390",
+  "name": "BA"
+ },
+ {
+  "code": "AM",
+  "code_name": "Ampoule",
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-04-11 14:55:09.177230",
+  "name": "AM"
+ },
+ {
+  "code": "CT",
+  "code_name": null,
+  "description": null,
+  "docstatus": 0,
+  "doctype": "ZRA SIS Packaging Unit Codes",
+  "modified": "2026-03-03 12:01:51.137957",
+  "name": "CT"
+ }
+]

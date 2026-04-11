@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:code",
  "creation": "2026-02-18 11:08:56.967302",
@@ -36,7 +37,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-18 11:10:47.590143",
+ "modified": "2026-04-11 17:10:13.286328",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Item Type Codes",

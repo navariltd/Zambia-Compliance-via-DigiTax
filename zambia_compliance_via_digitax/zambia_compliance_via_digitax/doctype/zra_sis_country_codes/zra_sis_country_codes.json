@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:code",
  "creation": "2026-03-03 11:56:43.394161",
@@ -36,7 +37,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-03 11:58:34.770609",
+ "modified": "2026-04-11 14:44:23.440205",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Country Codes",

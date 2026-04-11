@@ -1,0 +1,77 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Routes",
+  "modified": "2026-03-30 12:43:18.854459",
+  "name": "locmj5hkla",
+  "routes_table": [
+   {
+    "description": null,
+    "last_request_date": "2026-04-09 12:41:11.331658",
+    "url_path": "/v1/items",
+    "url_path_function": "saveItem"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-03-09 21:07:12.661455",
+    "url_path": "/v1/items/{item_id}",
+    "url_path_function": "selectItem"
+   },
+   {
+    "description": null,
+    "last_request_date": null,
+    "url_path": "/v1/items/{item_id}",
+    "url_path_function": "UpdateItem"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-04-11 15:17:52.308397",
+    "url_path": "/v1/sales",
+    "url_path_function": "saveSales"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-04-11 15:17:54.274568",
+    "url_path": "/v1/sales/{sale_id}",
+    "url_path_function": "selectInvoice"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-03-19 17:31:41.864994",
+    "url_path": "/v1/credit-notes",
+    "url_path_function": "saveCreditNote"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-03-19 17:34:42.037205",
+    "url_path": "/v1/debit-notes",
+    "url_path_function": "saveDebitNote"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-04-11 14:52:24.349299",
+    "url_path": "/v1/stock/adjust",
+    "url_path_function": "saveStockItems"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-03-26 11:51:52.049255",
+    "url_path": "/v1/customers",
+    "url_path_function": "saveCustomer"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-03-26 22:35:12.235860",
+    "url_path": "/v1/customers/{customer_id}",
+    "url_path_function": "fetchCustomer"
+   },
+   {
+    "description": null,
+    "last_request_date": "2026-04-01 09:54:12.616399",
+    "url_path": "/v1/purchases?after={after}&page_size={pagesize}",
+    "url_path_function": "fetchPurchaseSales"
+   }
+  ],
+  "vendor": "Digitax"
+ }
+]

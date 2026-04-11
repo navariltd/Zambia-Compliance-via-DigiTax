@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:code",
  "creation": "2026-02-18 13:24:27.647980",
@@ -36,7 +37,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-18 13:25:53.543243",
+ "modified": "2026-04-11 14:52:55.196166",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Packaging Unit Codes",

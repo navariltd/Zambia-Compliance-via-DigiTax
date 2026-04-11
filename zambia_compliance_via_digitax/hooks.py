@@ -4,6 +4,21 @@ app_publisher = "Navari Ltd"
 app_description = "Zambia Compliance via DigiTax is an integration app that enables seamless electronic tax compliance with the Zambia Revenue Authority (ZRA) through the DigiTax platform."
 app_email = "support@navari.co.ke"
 app_license = "mit"
+from .zambia_compliance_via_digitax.doctype.doctype_names_mapping import (ROUTES_TABLE_DOCTYPE_NAME,
+               ITEM_CLASSIFICATIONS_DOCTYPE_NAME,ITEM_TYPE_DOCTYPE_NAME,
+               COUNTRY_DOCTYPE_NAME, TAXATION_TYPE_DOCTYPE_NAME
+               ,PACKAGING_UNIT_DOCTYPE_NAME,UNIT_OF_QUANTITY_DOCTYPE_NAME                                                           
+)
+
+fixtures = [
+    {"dt": ROUTES_TABLE_DOCTYPE_NAME},
+    {"dt": ITEM_CLASSIFICATIONS_DOCTYPE_NAME},
+    {"dt": ITEM_TYPE_DOCTYPE_NAME},
+    {"dt": COUNTRY_DOCTYPE_NAME},
+    {"dt": PACKAGING_UNIT_DOCTYPE_NAME},
+    {"dt": UNIT_OF_QUANTITY_DOCTYPE_NAME},
+    {"dt": TAXATION_TYPE_DOCTYPE_NAME},
+]
 
 # Apps
 # ------------------
