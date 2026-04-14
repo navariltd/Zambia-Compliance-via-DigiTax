@@ -176,6 +176,8 @@ doc_events = {
 scheduler_events = {
  	"all": [
 		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.tasks.tasks.send_stock_information",
+        "zambia_compliance_via_digitax.zambia_compliance_via_digitax.tasks.tasks.send_sales_invoice_information",
+
 		
 	]
 # 	"daily": [

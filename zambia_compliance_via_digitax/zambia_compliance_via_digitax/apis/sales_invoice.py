@@ -7,7 +7,7 @@ from ..utils.qr_utils import generate_and_attach_qr_code
 
 @frappe.whitelist()
 def send_invoice_details(name: str) -> None:
-	"""Manual trigger to push a Sales Invoice to Crystal VSDC."""
+	"""Manual trigger to push a Sales Invoice to Digitax ."""
 	doc = frappe.get_doc("Sales Invoice", name)
 
 	# Skip opening entries
