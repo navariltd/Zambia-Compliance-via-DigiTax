@@ -6,9 +6,13 @@ authors = [
 description = "Zambia Compliance via DigiTax is an integration app that enables seamless electronic tax compliance with the Zambia Revenue Authority (ZRA) through the DigiTax platform."
 requires-python = ">=3.14"
 readme = "README.md"
-dynamic = ["version"]
+version = "0.0.1"
 dependencies = [
     # "frappe~=16.0.0" # Installed and managed by bench.
+     "aiohttp==3.9.1",
+    "deprecation==2.1.0",
+    "qrcode==7.4.2",
+    "bs4"
 ]
 
 [build-system]
@@ -22,6 +26,9 @@ build-backend = "flit_core.buildapi"
 [tool.ruff]
 line-length = 110
 target-version = "py314"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=16.0.0 <17.0.0"
 
 [tool.ruff.lint]
 select = [
