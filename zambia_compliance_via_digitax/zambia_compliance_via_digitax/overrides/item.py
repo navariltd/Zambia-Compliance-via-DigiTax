@@ -35,7 +35,7 @@ def validate(doc: Document, method: str = None) -> None:
     if not doc.custom_smart_tax_type_code:
         return
 
-    if not doc.has_value_changed("custom_smart_tax_type_code"):
+    if not doc.is_new() and not doc.has_value_changed("custom_smart_tax_type_code"):
         return
 
     frappe.enqueue(
