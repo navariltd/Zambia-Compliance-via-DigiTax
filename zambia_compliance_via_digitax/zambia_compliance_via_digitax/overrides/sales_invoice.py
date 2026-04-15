@@ -209,6 +209,22 @@ def sales_information_submission_on_error(
 
     # Only update if we have valid identifiers
     if doctype and document_name:
+             # Get current retry count (default to 0 if not set)
+        current_tries = frappe.db.get_value(
+            doctype,
+            document_name,
+            "custom_submission_tries"
+        ) or 0
+
+        # Increment retry count
+        frappe.db.set_value(
+            doctype,
+            document_name,
+            "custom_submission_tries",
+            current_tries + 1,
+        )
+
+        
         frappe.db.set_value(
             doctype,
             document_name,
