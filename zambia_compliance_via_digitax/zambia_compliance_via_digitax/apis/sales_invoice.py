@@ -139,16 +139,15 @@ def process_invoice_response(response: dict, document_name: str, doctype: str) -
 		updates = {
 			**map_vsdc_fields(data, document_name, doctype),
 		}
-		# Optional: capture error fields if failed
-		# if not response.get("IsSuccess"):
-		#     updates.update({
-		#         "custom_submission_status": "Failed",
-		#         "custom_zra_error": response.get("ErrorMessage"),
-		#     })
-
+	
 		frappe.db.set_value(doctype, document_name, updates)
 		frappe.db.commit()
-		frappe.publish_realtime("refresh_form", document_name)
+		frappe.publish_realtime(
+		"refresh_form",
+		{"name": document_name},
+		doctype=doctype,
+		docname=document_name
+		)
 	except Exception as e:
 		frappe.log_error(f"Invoice Update", str(e))
 		frappe.throw(f"Failed to auto-submit to Digitax VSDC: {e}")

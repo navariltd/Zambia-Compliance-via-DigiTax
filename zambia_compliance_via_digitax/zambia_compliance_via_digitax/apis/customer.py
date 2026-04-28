@@ -144,12 +144,14 @@ def customer_registration_success(response: dict, document_name: str, settings_n
 
         
         frappe.publish_realtime(
-            event="doc_update",
-            message={
-                "doctype": "Customer",
-                "name": document_name
-            }
-        )
+        event="doc_update",
+        message={
+            "doctype": "Customer",
+            "name": document_name
+        },
+        doctype="Customer",
+        docname=document_name
+)
 
     except Exception:
         frappe.log_error(

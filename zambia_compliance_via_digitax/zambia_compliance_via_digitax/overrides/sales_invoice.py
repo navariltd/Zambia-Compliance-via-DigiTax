@@ -134,8 +134,12 @@ def sales_information_submission_on_success(
         updates["custom_created_at"] = get_datetime(result_data.get("created_at"))
     # Update ERPNext document
     frappe.db.set_value(doctype, document_name, updates)
-    frappe.db.commit()
-    frappe.publish_realtime("refresh_form", document_name)
+    frappe.publish_realtime(
+    "refresh_form",
+    {"name": document_name},
+    doctype=doctype,
+    docname=document_name
+)
 
     item_list = result_data.get("item_list", [])
 
@@ -231,7 +235,7 @@ def sales_information_submission_on_error(
             "custom_sent_to_digitax",
             1,
         )
-        frappe.db.commit()
+        
     else:
         frappe.logger().warning(
             f"[DIGITAX] Missing doctype or document_name. "

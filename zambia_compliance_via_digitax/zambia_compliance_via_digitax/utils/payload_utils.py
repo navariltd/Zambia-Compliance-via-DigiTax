@@ -65,48 +65,78 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 			invoice.additional_discount_percentage / 100, 4
 		)
 
-	calculate_tax(invoice)
+	# calculate_tax(invoice)
 
 	
 		# Items
-	for item in invoice.items:
-		# Correct tax field
-		tax_amount = float(item.get("custom_vat_tax_amount") or 0)
+	# for item in invoice.items:
+	# 	# Correct tax field
+	# 	tax_amount = float(item.get("custom_vat_tax_amount") or 0)
 
-		# Fetch remote ID
-		item_doc = frappe.get_doc("Item", item.item_code)
-		remote_id = item_doc.get("custom_smart_remote_id") or item.item_code
+	# 	# Fetch remote ID
+	# 	item_doc = frappe.get_doc("Item", item.item_code)
+	# 	remote_id = item_doc.get("custom_smart_remote_id") or item.item_code
 
-		qty = float(item.qty or 0)
+	# 	qty = float(item.qty or 0)
 
-		#  Base (net) unit price
-		base_unit_price = float(item.get("base_net_rate") or item.rate or 0)
+	# 	#  Base (net) unit price
+	# 	base_unit_price = float(item.get("base_net_rate") or item.rate or 0)
 
-		# Tax per unit
-		tax_per_unit = (tax_amount / qty) if qty else 0
+	# 	# Tax per unit
+	# 	tax_per_unit = (tax_amount / qty) if qty else 0
 
-		#  FINAL: Tax-inclusive unit price
-		unit_price_incl_tax = round(base_unit_price + tax_per_unit, 4)
+	# 	#  FINAL: Tax-inclusive unit price
+	# 	unit_price_incl_tax = round(base_unit_price + tax_per_unit, 4)
 
-		# Discount
-		discount_percentage = float(item.get("discount_percentage") or 0)
-		discount_rate = round(discount_percentage / 100, 4)
-		discount_amount = round(float(item.get("discount_amount") or 0), 4)
+	# 	# Discount
+	# 	discount_percentage = float(item.get("discount_percentage") or 0)
+	# 	discount_rate = round(discount_percentage / 100, 4)
+	# 	discount_amount = round(float(item.get("discount_amount") or 0), 4)
 
-		#  Total should match tax-inclusive logic
-		total_amount = round((unit_price_incl_tax * qty) - discount_amount, 4)
+	# 	#  Total should match tax-inclusive logic
+	# 	total_amount = round((unit_price_incl_tax * qty) - discount_amount, 4)
 
-		payload["items"].append(
-			{
-				"item_id": remote_id,
-				"quantity": qty,
-				"unit_price": unit_price_incl_tax,
-				"total_amount": total_amount,
-				"package_unit_quantity": item.get("package_qty") or 1,
-				"discount_rate": discount_rate,
-				"discount_amount": discount_amount,
-			}
-		)
+	# 	payload["items"].append(
+	# 		{
+	# 			"item_id": remote_id,
+	# 			"quantity": qty,
+	# 			"unit_price": unit_price_incl_tax,
+	# 			"total_amount": total_amount,
+	# 			"package_unit_quantity": item.get("package_qty") or 1,
+	# 			"discount_rate": discount_rate,
+	# 			"discount_amount": discount_amount,
+	# 		}
+	# 	)
+	payload["items"] = [
+    {
+        "item_id": (
+            frappe.get_value("Item", item.item_code, "custom_smart_remote_id")
+            or item.item_code
+        ),
+        "quantity": float(item.qty or 0),
+        "unit_price": round(
+            float(item.get("base_net_rate") or item.rate or 0)
+            + (
+                float(item.get("custom_vat_tax_amount") or 0)
+                / float(item.qty or 1)
+            ),
+            4
+        ),
+        "total_amount": round(
+            (
+                float(item.get("base_net_rate") or item.rate or 0)
+                + (float(item.get("custom_vat_tax_amount") or 0) / float(item.qty or 1))
+            )
+            * float(item.qty or 0)
+            - float(item.get("discount_amount") or 0),
+            4
+        ),
+        "package_unit_quantity": item.get("package_qty") or 1,
+        "discount_rate": round(float(item.get("discount_percentage") or 0) / 100, 4),
+        "discount_amount": float(item.get("discount_amount") or 0),
+    }
+    for item in invoice.items
+]
 
 	return payload
 
@@ -138,18 +168,12 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 
 		return frappe.db.get_value(link_doctype, link_value, code_field)
 
-		# Fetch first settings record
+		
 
-	settings = frappe.get_doc("ZRA SIS Settings", settings_name)
-
-	
-	
-	payload = {
-		# "itemCd": item.custom_smart_item_code,  
+	payload = { 
 		"item_class_code": get_code("custom_smart_item_classification_code"),
 		"item_type_code": item.custom_smart_item_type_code,
 		"item_name": item.item_name,
-		# "itemStdNm": item.item_name,
 		"origin_nation_code": get_code("custom_smart_origin_country_code"),
 		"package_unit_code": get_code("custom_smart_packaging_unit_code"),
 		"quantity_unit_code": get_code("custom_smart_quantity_unit_code"),
@@ -157,22 +181,13 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 		"ipl_category_code": get_code("custom_smart_insurance_premium_levy") or "",
 		"tl_category_code": get_code("custom_smart_tourism_levy") or "",
 		"excise_category_code": get_code("custom_smart_excise_duty_category_code") or "",
-		# "btchNo": item.get("batch_number") or None,
 		"bar_code": item.get("barcode") or "",
 		"default_unit_price": float(item.valuation_rate) or 1,
 		"tot_category_code": item.get("custom_smart_turn_over_tax_category_code") or "",
-		# "manufacturerItemCd": item.get("custom_manufacturer_item_code") or None,
 		"recommended_retail_price": float(item.get("standard_rate") or 0),
-		# "svcChargeYn": "Y" if item.get("is_service_charge_applicable") else "N",
-		# "rentalYn": "Y" if item.get("custom_smart_rental_income_applicable") else "N",
-		# "addInfo": item.get("additional_info") or None,
 		"stock_quantity": float(item.get("opening_stock") or 0),
 		"insurable":item.get("custom_smart_insurance_applicable") == "1"
-		# "useYn": "Y" if item.disabled == 0 else "N",
-		# "regrNm": frappe.session.user,
-		# "regrId": frappe.session.user,
-		# "modrNm": frappe.session.user,
-		# "modrId": frappe.session.user,
+	
 	}
 
 	return payload
@@ -218,109 +233,37 @@ def build_note_payload(doc, settings_name, note_type="credit", callback_url=None
         "items": [],
     }
 
-    calculate_tax(doc)
+    # calculate_tax(doc)
 
     # Items (MATCHED with invoice logic)
-    for item in doc.items:
-        tax_amount = float(item.get("custom_vat_tax_amount") or 0)
-
-        qty = int(item.qty or 0)
-
-        # Base (net) unit price
-        base_unit_price = float(item.get("base_net_rate") or item.rate or 0)
-
-        # Tax per unit
-        tax_per_unit = (tax_amount / qty) if qty else 0
-
-        # FINAL: Tax-inclusive unit price (same as invoice)
-        unit_price_incl_tax = round(base_unit_price + tax_per_unit, 4)
-
-        # Discounts (same handling)
-        discount_percentage = float(item.get("discount_percentage") or 0)
-        discount_rate = round(discount_percentage / 100, 4)
-        discount_amount = round(float(item.get("discount_amount") or 0), 4)
-
-        # Total (same logic)
-        total_amount = round((unit_price_incl_tax * abs(qty)) - discount_amount, 4)
-
-        payload["items"].append({
-            "item_id": item.get("custom_sis_item_id"),
-            "quantity": abs(qty),
-            "unit_price": unit_price_incl_tax,
-            "total_amount": total_amount,
-            "package_unit_quantity": item.get("package_qty") or 1,
-            "discount_rate": discount_rate,
-            "discount_amount": discount_amount,
-        })
+    payload["items"] = [
+    {
+        "item_id": item.get("custom_sis_item_id"),
+        "quantity": abs(int(item.qty or 0)),
+        "unit_price": round(
+            float(item.get("base_net_rate") or item.rate or 0)
+            + (float(item.get("custom_vat_tax_amount") or 0) / float(item.qty or 1)),
+            4
+        ),
+        "total_amount": round(
+            (
+                float(item.get("base_net_rate") or item.rate or 0)
+                + (float(item.get("custom_vat_tax_amount") or 0) / float(item.qty or 1))
+            )
+            * abs(float(item.qty or 0))
+            - float(item.get("discount_amount") or 0),
+            4
+        ),
+        "package_unit_quantity": item.get("package_qty") or 1,
+        "discount_rate": round(float(item.get("discount_percentage") or 0) / 100, 4),
+        "discount_amount": float(item.get("discount_amount") or 0),
+    }
+    for item in doc.items
+]
 
     return payload
 
-def generate_custom_item_code_smart(doc: Document) -> str:
-	"""
-	Generate smart item code in fixed format:
-	    CC T PP QQ CCCC SSSSSSS
 
-	    CC  = Country (2 chars)
-	    T   = Item type (1 char)
-	    PP  = Packaging unit (2 chars)
-	    QQ  = Qty unit (2 chars)
-	    CCCC = Classification code (4 chars, padded)
-	    SSSSSSS = Running sequence (7 digits)
-	"""
-
-	# --- Extract fields ---
-	country = (doc.get("custom_smart_origin_country_code") or "").upper().strip()[:2]
-	item_type = (doc.get("custom_smart_item_type_code") or "").upper().strip()[:1]
-	pkg_unit = (doc.get("custom_smart_packaging_unit_code") or "").upper().strip()[:2]
-	qty_unit = (doc.get("custom_smart_quantity_unit_code") or "").upper().strip()[:2]
-	class_code = (doc.get("custom_smart_item_classification_code") or "").strip()
-
-	# --- Enforce padding ---
-	country = country.ljust(2)
-	item_type = item_type.ljust(1)
-	pkg_unit = pkg_unit.ljust(2)
-	qty_unit = qty_unit.ljust(
-		2,
-	)
-	class_code = class_code.zfill(4)  # always 4 digits
-
-	# --- Build prefix ---
-	prefix = f"{country}{item_type}{pkg_unit}{qty_unit}{class_code}"
-
-	# --- Determine suffix ---
-	if doc.get("custom_smart_item_code"):
-		suffix = doc.custom_smart_item_code[-7:]
-	else:
-		last = frappe.db.sql(
-			"""
-            SELECT custom_smart_item_code
-            FROM `tabItem`
-            WHERE custom_smart_item_classification_code = %s
-              AND custom_smart_item_code IS NOT NULL
-            ORDER BY CAST(RIGHT(custom_smart_item_code, 7) AS UNSIGNED) DESC
-            LIMIT 1
-            """,
-			(doc.custom_smart_item_classification_code,),
-		)
-
-		if last:
-			last_code = last[0][0]
-			try:
-				suffix = str(int(last_code[-7:]) + 1).zfill(7)
-			except:
-				suffix = "0000001"
-		else:
-			suffix = "0000001"
-
-	# --- Final smart code ---
-	new_code = f"{prefix}{suffix}"
-
-	# Save
-	doc.db_set("custom_smart_item_code", new_code, update_modified=False)
-
-	frappe.logger().info(f"[SIS] Generated SIS Code: {new_code}")
-
-	return new_code
 
 
 def build_customer_payload(doc) -> dict:
