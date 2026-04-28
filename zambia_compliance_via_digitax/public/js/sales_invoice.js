@@ -7,7 +7,7 @@ const settingsDoctypeName = " ZRA SIS Settings";
 
 // === Real-time form refresh handler ===
 frappe.realtime.on("refresh_form", function (name) {
-	const currentForm = cur_frm;
+	const currentForm = frappe.ui.form.get_open_form();
 	if (currentForm && currentForm.doc.name === name) {
 		currentForm.reload_doc();
 	}

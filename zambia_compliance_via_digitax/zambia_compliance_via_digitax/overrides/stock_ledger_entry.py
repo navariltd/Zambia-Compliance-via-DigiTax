@@ -105,7 +105,7 @@ def get_movement_type_from_voucher(doc):
 def stock_submission_success(response: dict, document_name: str, **kwargs):
     """Mark document as successfuly submitted."""
     frappe.db.set_value(kwargs.get("doctype", "Stock Ledger Entry"), document_name, "custom_inventory_submitted_successfuly", 1)
-    frappe.db.commit()
+    
 
 
 def on_error(response: dict | str, url=None, doctype=None, document_name=None, **kwargs):
