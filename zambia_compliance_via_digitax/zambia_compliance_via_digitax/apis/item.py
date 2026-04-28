@@ -7,9 +7,7 @@ from frappe import _
 from frappe.utils.background_jobs import enqueue
 from ..utils.payload_utils import generate_vsdc_item_payload
 from ..utils.settings_utils import get_settings
-from ..utils.payload_utils import (
-	generate_custom_item_code_smart,
-)
+
 from .response_handlers import (item_search_on_success,handle_update_response,handle_registration_response)
 from ..apis.api_processor import process_request
 from ..utils.routes_utils import get_route_path
@@ -136,9 +134,9 @@ def perform_item_registration(
 					{"item_tax_template": template.name},
 				)
 
-	# Generate Smart Item Code if missing
-	if not item.custom_smart_item_code:
-		generate_and_set_smart_code(item)
+	# # Generate Smart Item Code if missing
+	# if not item.custom_smart_item_code:
+	# 	generate_and_set_smart_code(item)
 
 	item.save(ignore_permissions=True)
 
@@ -271,11 +269,6 @@ def validate_required_fields(item) -> list:
 
 
 
-def generate_and_set_smart_code(item) -> None:
-	"""Generate and set Smart code for item"""
-	item.custom_smart_item_code = generate_custom_item_code_smart(item)
-	frappe.db.set_value("Item", item.name, "custom_smart_item_code", item.custom_smart_item_code)
-	frappe.db.commit()
 
 
 def is_item_eligible_for_registration(item) -> bool:
