@@ -1,117 +1,172 @@
 # Zambia Compliance via Digitax
-### Overview
 
-This Frappe/ERPNext integration allows businesses in Zambia to manage ZRA-compliant e-invoicing, stock, and tax reporting directly from ERPNext. The system communicates with the ZRA Digitax API to submit invoices, credit/debit notes, and stock updates securely and automatically.
+### [Documentation](https://docs.navari.co.ke/zambia-compliance-via-digitax/) - [DigiTax Docs](https://zm.docs.digitax.tech/)
 
-All interactions are authenticated using API keys.
+Zambia Compliance via DigiTax is an integration application that connects ERPNext with the Zambia Revenue Authority (ZRA) SIS platform through DigiTax, a certified middleware provider.
 
-Official documentation: [Zambia Compliance Via Digitax](https://docs.navari.co.ke/zambia-compliance-via-digitax/)
+The application enables businesses to automatically transmit transactional data such as sales invoices, purchase records, and item information from ERPNext to ZRA in compliance with Zambian tax regulations. It embeds compliance directly into everyday business workflows, removing the need for manual reporting.
 
-## Key Features
-- **API Key Authentication** – Secure access without device registration
-- **Item Registration** – Map ERPNext items to ZRA-compliant codes
-- **Sales Management** – Submit sales invoices, credit notes, and debit notes
-- **Customer Management** – Allows registration for customers with the Authority
-- **Stock Synchronization** – Automatic updates for all stock transactions
-- **Scheduled Submissions** – Stock entries and ledger updates are submitted automatically every 4 minutes
-- **Background Jobs & Logging** – Track all API requests and responses for auditing
+## Why This Integration Matters
 
-## Configuration
-Go to ZRA SIS Settings in ERPNext
-Enter:
-Company Details
-Server URL
-TPIN
-API Key
-Save and mark settings as Active
+The Smart Invoice Sytem (SIS) is a mandatory system introduced by ZRA requiring businesses to generate compliant invoices and submit transaction data to the tax authority.
 
-![alt text](./zambia_compliance_via_digitax/public/images/settings.png)
+Without automation, this process can be time-consuming, error-prone, and difficult to maintain consistently.
 
-## Workflow Overview
-### 1. Item Registration
-ERPNext items must be mapped to ZRA codes: classification, VAT, excise, packaging, and quantity units
-Registration can happen automatically on save or via Register Item button
+By integrating ERPNext with SIS via DigiTax, businesses benefit from:
 
-![alt text](./zambia_compliance_via_digitax//public/images/item.png)
+    Regulatory compliance with ZRA requirements
+    Automated transmission of transaction data
+    Improved accuracy in tax reporting
+    Reduced manual intervention
+    Better audit readiness and traceability
 
-### 2. Sales Management
-Submit Sales Invoices, Credit Notes, and Debit Notes
-Uses /SalesInformation/SaveSales, /SaveCreditNote, /SaveDebitNote endpoints
-Automatic submission occurs on invoice submission; manual resubmission available via Send Invoice action
+How It Works
 
-![alt text](./zambia_compliance_via_digitax/public/images/sales.png)
+The integration operates seamlessly within ERPNext workflows.
 
-### 3. Stock Synchronization
-All stock-affecting transactions are automatically submitted to Digitax:
-Stock Entries
-Sales
-Purchases & Imports
-Stock Reconciliations
-Scheduler runs every 4 minutes to submit all pending stock ledger entries
-Ensures real-time alignment with ZRA records
+When a transaction such as a Sales Invoice is created, the system prepares a compliant payload based on ZRA requirements. This data is securely sent to DigiTax via API, which processes and forwards it to the SIS platform.
 
-![alt text](./zambia_compliance_via_digitax/public/images/inventory.png)
+Once processed, a response is returned and stored in ERPNext. The transaction is updated with compliance status, QR codes, and reference details from ZRA.
 
-### 5. Background Jobs & Logging
-Item registration, sales, and stock submissions are asynchronous
-Jobs are tracked under Background Jobs Desk
-Requests and responses logged for auditing in Integration Requests
+This entire process runs in the background with minimal user intervention.
 
-![alt text](./zambia_compliance_via_digitax/public/images/integrations.png)
+## Key Capabilities
 
-### Best Practices
-Ensure items are registered before invoicing
-Always verify tax codes and categories
-Monitor Integration Requests for submission success
-Maintain consistent invoice numbering
-Use scheduled stock sync to avoid discrepancies
+The application provides a full compliance layer within ERPNext, covering:
 
-### Developer Notes
-Payloads built in utils/payload_utils.py
-API requests orchestrated via apis/api_processor.py
-Errors logged via ErrorObserver
-Jobs enqueued asynchronously with enqueue
+### Sales Invoice Submission
 
-##  Integrated Endpoints
-| #  | Endpoint Name | ERPNext DocType | Purpose |
-|----|---------------|----------------|---------|
-| 1  | `/v1/items` (Item Management) | Item | Registers ERPNext items in Smart Zambia system |
-| 2  | `/v1/items/{item_id}` | Item | Update specific product item details |
-| 3  | `/v1/items/{item_id}` | Item | Retrieves details of a product item based on the provided Item code |
-| 4  | `/v1/sales` (Sales Management) | Normal Sales, LPO, Export Invoice | Accepts invoice information, customized to a particular invoicing system, and submits it to ZRA |
-| 5  | `/v1/credit-notes` (Sales Management) | Credit Note | Accepts credit invoice information and submits it to ZRA |
-| 6  | `/v1/sales/{sale_id}` (Sales Management) | Sales Invoice | Takes a SelectInvoice query and returns the invoice that exists in the ZRA environment |
-| 7  | `/v1/debit-notes` | Sales | Accepts debit invoice information and submits it to ZRA |
-| 8  | `/v1/stock/adjust` (Stock Adjustment) | Stock Item Information | Adds stock items that have been recorded from approved sales to Smart Invoice |
-| 9  | `/v1/customers` (Customer) | Customer | Save Customer |
-| 10 | `/v1/customers/{customer_id}` | Customer | Retrieves Customer Details |
+Automatic transmission of Sales Invoices (including returns/credit notes) to SIS as part of normal ERPNext workflows.
 
-### Installation
+### Item and Customer Registration
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+Synchronization of product, customer, and inventory master data with SIS requirements.
+
+## Stock Synchronization
+ Automatic updates for all stock transactions
+
+### Compliance Tracking
+
+Visibility into submission status, responses, and error logs directly within ERPNext.
+
+## Scheduled Submissions
+Stock entries and ledger updates are submitted automatically 
+
+## Background Jobs & Logging
+Track all API requests and responses for auditing
+
+### Error Handling and Retry
+
+Built-in retry mechanisms for failed submissions without data loss.
+
+---
+
+## Role of DigiTax
+
+DigiTax acts as the middleware layer between ERPNext and ZRA SIS.
+
+It is responsible for:
+
+- Secure communication with ZRA systems
+- Data validation and transformation
+- API compliance handling
+- Routing transactions to SIS
+
+Access to SIS through DigiTax requires prior onboarding and approval.
+
+## Installation
+
+### Manual Installation / Self Hosting
+
+Before installing, ensure you have a working Frappe Bench environment with ERPNext installed.
+
+Refer to the official setup guide:
+
+- https://frappeframework.com/docs/user/en/installation
+
+Fetch the application:
 
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app zambia_compliance_via_digitax
+ bench get-app https://github.com/navariltd/zambia-Compliance-via-DigiTax.git 
+
+ ```
+Install on your site:
+
+```bash
+bench --site <your.site.name.here> install-app zambia_compliance_via_digitax
+```
+Run migrations:
+```bash
+bench --site <your.site.name.here> migrate
+
 ```
 
-### Contributing
+## Running Tests
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+Enable testing:
+```bash
+bench --site <your.site.name.here> set-config allow_tests true
+```
+Run tests:
+```bash
+bench --site <your.site.name.here> run-tests --app zambia_compliance_via_digitax
+```
+
+
+Replace `<your.site.name.here>` with your ERPNext site name.
+
+## Frappe Cloud Installation 
+
+The application can also be installed on Frappe Cloud after setting up a Bench and Site.
+
+Steps:
+
+1. Open your Bench
+2. Go to **Apps**
+3. Click **Add App**
+4. Choose **Install from GitHub**
+5. Provide the repository URL
+
+## Important Note ⚠️
+
+This integration relies on DigiTax as the middleware provider for communication with KRA eTIMS services.
+
+Before production use, organizations must complete onboarding and credential provisioning through DigiTax.
+
+### Support Contacts
+
+- DigiTax Support: [support@namiri.tech](mailto:support@namiri.tech)
+- Navari Support: [support@navari.co.ke](mailto:support@navari.co.ke)
+- Website: [https://navari.co.ke](https://navari.co.ke)
+
+
+
+## Contributing
+
+This app uses `pre-commit` for code quality and formatting.
+
+Install pre-commit:
+
+```bash
+pip install pre-commit
+```
+
+Enable it:
 
 ```bash
 cd apps/zambia_compliance_via_digitax
 pre-commit install
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+### Tools used:
 
 - ruff
 - eslint
 - prettier
 - pyupgrade
 
-### License
+## License
 
-mit
+This project is licensed under **AGPL-3.0**.
+
+
