@@ -129,7 +129,7 @@ Steps:
 
 ## Important Note ⚠️
 
-This integration relies on DigiTax as the middleware provider for communication with KRA eTIMS services.
+This integration relies on DigiTax as the middleware provider for communication with ZRA SIS services.
 
 Before production use, organizations must complete onboarding and credential provisioning through DigiTax.
 
