@@ -8,70 +8,26 @@ from frappe.utils import flt
 
 def calculate_tax(doc: Document) -> dict:
     """
-    Orchestrates the tax calculation process by deciding between ERPNext's
-    internal tax table or the custom hierarchical resolution engine.
+    Orchestrates tax calculation.
     """
-    tax_table = doc.get("item_wise_tax_details", [])
 
-    if tax_table:
+    taxes = doc.get("taxes") or []
+
+    if taxes and any(getattr(t, "item_wise_tax_detail", None) for t in taxes):
         return _calculate_from_item_wise_tax_table(doc)
 
     return _calculate_taxes_by_hierarchy(doc)
 
-
-def _calculate_taxes_by_hierarchy(doc: "Document") -> dict:
-    """
-    Resolves tax rates for each item using a hierarchical priority:
-    1. Item Tax Template
-    2. Document-level Sales Taxes and Charges Template
-    3. Proportional distribution of manual tax entries
-    """
-    results = {}
-    total_net = sum(float(i.base_net_amount or 0) for i in doc.items)
-    template_rate = _get_sales_taxes_template_rate(doc.taxes_and_charges)
-    has_item_templates = any(i.item_tax_template for i in doc.items)
-
-    for item in doc.items:
-        rate = 0.0
-        base_net = float(item.base_net_amount or 0.0)
-
-        if item.item_tax_template:
-            rate = _get_item_tax_template_rate(item.item_tax_template)
-        elif template_rate > 0:
-            rate = template_rate
-        elif not has_item_templates and doc.get("taxes") and total_net > 0:
-            total_doc_tax = sum(float(t.tax_amount or 0) for t in doc.taxes)
-            item_tax = total_doc_tax * (base_net / total_net)
-            rate = (item_tax / base_net) * 100 if base_net else 0.0
-
-        base_tax = (base_net * rate) / 100.0
-        results[item.name] = _prepare_tax_entry(doc, item, base_tax, rate)
-
-    return results
-
 def _calculate_from_item_wise_tax_table(doc: "Document") -> dict:
-    """
-    Extract and aggregate taxes from ERPNext's
-    item-wise tax calculation table.
-    """
 
     results = {}
+    grouped = defaultdict(lambda: {"tax": 0.0, "taxable": 0.0})
 
-    grouped = defaultdict(
-        lambda: {
-            "tax": 0.0,
-            "taxable": 0.0
-        }
-    )
-
-    taxes = doc.get("taxes", []) or []
+    taxes = doc.get("taxes") or []
 
     if not taxes:
         return results
 
-    # -----------------------------------------
-    # Aggregate ERP-calculated tax rows
-    # -----------------------------------------
     for tax in taxes:
 
         item_wise = tax.get("item_wise_tax_detail")
@@ -79,28 +35,19 @@ def _calculate_from_item_wise_tax_table(doc: "Document") -> dict:
         if not item_wise:
             continue
 
-        # item_wise_tax_detail may be stringified JSON
         if isinstance(item_wise, str):
             item_wise = frappe.parse_json(item_wise)
 
         for item_row, values in item_wise.items():
 
-            # ERPNext format:
-            # [tax_rate, tax_amount]
             tax_rate = flt(values[0]) if len(values) > 0 else 0
             tax_amount = flt(values[1]) if len(values) > 1 else 0
 
             grouped[item_row]["tax"] += tax_amount
 
-            # derive taxable amount safely
             if tax_rate:
-                grouped[item_row]["taxable"] += (
-                    tax_amount * 100 / tax_rate
-                )
+                grouped[item_row]["taxable"] += (tax_amount * 100 / tax_rate)
 
-    # -----------------------------------------
-    # Normalize per item
-    # -----------------------------------------
     for item in doc.items:
 
         data = grouped.get(item.name)
@@ -108,20 +55,48 @@ def _calculate_from_item_wise_tax_table(doc: "Document") -> dict:
         if not data:
             continue
 
-        taxable_amount = flt(data["taxable"])
+        taxable = flt(data["taxable"])
 
-        effective_rate = (
-            (data["tax"] / taxable_amount) * 100
-            if taxable_amount
-            else 0
-        )
+        rate = (data["tax"] / taxable) * 100 if taxable else 0
 
         results[item.name] = _prepare_tax_entry(
-            doc=doc,
-            item=item,
-            base_tax=data["tax"],
-            rate=effective_rate
+            doc,
+            item,
+            data["tax"],
+            rate
         )
+
+    return results
+def _calculate_taxes_by_hierarchy(doc: "Document") -> dict:
+
+    results = {}
+
+    total_net = sum(flt(i.base_net_amount) for i in doc.items)
+
+    template_rate = _get_sales_taxes_template_rate(doc.taxes_and_charges or "")
+
+    has_item_templates = any(i.item_tax_template for i in doc.items)
+
+    total_doc_tax = sum(flt(t.tax_amount) for t in (doc.taxes or []))
+
+    for item in doc.items:
+
+        base_net = flt(item.base_net_amount)
+
+        rate = 0.0
+
+        if item.item_tax_template:
+            rate = _get_item_tax_template_rate(item.item_tax_template)
+
+        elif template_rate:
+            rate = template_rate
+
+        elif total_net and total_doc_tax:
+            rate = (total_doc_tax * base_net / total_net) / base_net * 100 if base_net else 0
+
+        base_tax = (base_net * rate) / 100 if rate else 0
+
+        results[item.name] = _prepare_tax_entry(doc, item, base_tax, rate)
 
     return results
 
@@ -148,18 +123,7 @@ def _get_item_tax_template_rate(template_name: str) -> float:
         if tax_template.taxes
         else 0.0
     )
-def _prepare_tax_entry(
-    doc: "Document",
-    item: object,
-    base_tax: float,
-    rate: float
-) -> dict:
-    """
-    Normalize tax values and handle
-    currency conversion.
-    """
-
-    conversion_rate = flt(doc.get("conversion_rate", 1.0))
+def _prepare_tax_entry(doc, item, base_tax, rate):
 
     company_currency = frappe.get_cached_value(
         "Company",
@@ -167,17 +131,23 @@ def _prepare_tax_entry(
         "default_currency"
     )
 
-    is_foreign_currency = doc.currency != company_currency
+    conversion_rate = flt(doc.get("conversion_rate") or 1)
 
+    is_foreign = doc.currency != company_currency
+
+    # ✔ base_tax = company currency always
+    base_tax_amount = round(base_tax, 2)
+
+    # ✔ convert downward if foreign
     tax_amount = (
-        base_tax / conversion_rate
-        if is_foreign_currency
-        else base_tax
+        round(base_tax / conversion_rate, 2)
+        if is_foreign and conversion_rate
+        else base_tax_amount
     )
 
     return {
-        "tax_amount": round(tax_amount, 2),
-        "base_tax_amount": round(base_tax, 2),
+        "tax_amount": tax_amount,
+        "base_tax_amount": base_tax_amount,
         "tax_rate": round(rate, 2),
         "taxation_type_code": _determine_taxation_code(item, rate),
     }
@@ -288,10 +258,6 @@ def _determine_taxation_code(
 
 
 def apply_item_taxes_and_codes(doc: "Document") -> None:
-    """
-    Applies calculated tax data to document items and updates both
-    in-memory values and database records.
-    """
 
     tax_data_map = calculate_tax(doc)
 
@@ -302,25 +268,22 @@ def apply_item_taxes_and_codes(doc: "Document") -> None:
         if not data:
             continue
 
-        # Update in-memory document
-        item.tax_amount = data.get("tax_amount", 0)
-        item.base_tax_amount = data.get("base_tax_amount", 0)
-        item.tax_rate = data.get("tax_rate", 0)
-        item.taxation_type_code = data.get("taxation_type_code")
+        item.tax_amount = data["tax_amount"]
+        item.base_tax_amount = data["base_tax_amount"]
+        item.tax_rate = data["tax_rate"]
+        item.taxation_type_code = data["taxation_type_code"]
 
-        # Persist to DB
         frappe.db.set_value(
             item.doctype,
             item.name,
             {
-                "tax_amount": item.tax_amount,
-                "base_tax_amount": item.base_tax_amount,
-                "tax_rate": item.tax_rate,
-                "taxation_type_code": item.taxation_type_code,
+                "custom_vat_tax_amount": data["tax_amount"],
+                "custom_vat_taxable_amount": data["base_tax_amount"],
+                "custom_tax_rate": data["tax_rate"],
+                "custom_sis_vat_category_code": data["taxation_type_code"],
             },
             update_modified=False,
         )
-
 
 def after_save(doc: "Document", method: str | None = None) -> None:
     """
