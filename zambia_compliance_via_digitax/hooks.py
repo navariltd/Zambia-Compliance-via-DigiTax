@@ -163,8 +163,13 @@ doc_events = {
 		 "on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.on_update"],
 	},
 		"Sales Invoice": {
+             "on_update": [
+            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.utils.tax_utils.after_save"
+        ],
          "on_submit": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.sales_invoice.on_submit"],
-		
+	 "on_update_after_submit": [
+            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.utils.tax_utils.after_save"
+        ],	
 },
  
 

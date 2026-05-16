@@ -7,85 +7,161 @@ from urllib.parse import urlparse
 from frappe.utils import get_url
 from frappe.utils import  now_datetime, add_to_date
 
-def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
-	customer = frappe.get_doc("Customer", invoice.customer)
-	# Sale date
-	sale_date = datetime.strptime(str(invoice.posting_date), "%Y-%m-%d").date()
-	kind_of_sale = "NORMAL"
-	if(invoice.tax_category).lower() in ["zero rated", "zero-rated", "zerorated"]:
-		kind_of_sale = "EXPORT"
-	# Determine sale kind
-	elif customer.get("custom_is_lpo") and invoice.po_no:
-		kind_of_sale = "LPO"
+from datetime import datetime
 
-	if kind_of_sale and invoice.custom_kind_of_sale != kind_of_sale:
-		frappe.db.set_value(
-        invoice.doctype,
-        invoice.name,
-        "custom_kind_of_sale",
-        kind_of_sale
+
+def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
+    customer = frappe.get_doc("Customer", invoice.customer)
+
+    sale_date = datetime.strptime(
+        str(invoice.posting_date), "%Y-%m-%d"
+    ).date()
+
+    # ---------------------------
+    # Sale type
+    # ---------------------------
+    kind_of_sale = "NORMAL"
+    tax_category = (invoice.tax_category or "").lower()
+
+    if tax_category in ["zero rated", "zero-rated", "zerorated"]:
+        kind_of_sale = "EXPORT"
+    elif customer.get("custom_is_lpo") and invoice.po_no:
+        kind_of_sale = "LPO"
+
+    if invoice.custom_kind_of_sale != kind_of_sale:
+        frappe.db.set_value(
+            invoice.doctype,
+            invoice.name,
+            "custom_kind_of_sale",
+            kind_of_sale,
+            update_modified=False,
+        )
+
+    invoice.custom_kind_of_sale = kind_of_sale
+
+    # ---------------------------
+    # Currency handling
+    # ---------------------------
+    currency = invoice.currency
+
+    company_currency = frappe.get_value(
+        "Company",
+        invoice.company,
+        "default_currency",
     )
-	invoice.custom_kind_of_sale = kind_of_sale 
-	payload = {
-		"kind": invoice.custom_kind_of_sale,
-		"sale_date": sale_date.isoformat(),
-		"currency_code": invoice.currency,
-		"customer_tpin": "",
-		"customer_name": "",
-		"customer_phone":"",
-		"customer_id": "",
-		"trader_invoice_number": invoice.name,
-		"payment_type_code": "01",
-		"callback_url": build_callback_url(
+
+    conversion_rate = 1
+    rate_field = "net_rate"
+    tax_field = "custom_vat_tax_amount"
+
+    if currency != company_currency:
+        conversion_rate, used_rate = get_zmw_conversion_rate(
+            currency=currency,
+            company_currency=company_currency,
+            posting_date=invoice.posting_date,
+        )
+
+        if used_rate != "net":
+            rate_field = "base_net_rate"
+            tax_field = "base_tax_amount"
+
+    # ---------------------------
+    # Payload base
+    # ---------------------------
+    payload = {
+        "kind": invoice.custom_kind_of_sale,
+        "sale_date": sale_date.isoformat(),
+        "currency_code": currency,
+        "customer_tin": frappe.get_value("Customer", invoice.customer, "tax_id"),
+        "customer_name": customer.customer_name,
+        "customer_phone": customer.get("mobile_no") or "",
+        "customer_id": frappe.get_value("Customer", invoice.customer, "custom_sis_customer_id") or "",
+        "trader_invoice_number": invoice.name,
+        "payment_type_code": "01",
+        "callback_url": build_callback_url(
             "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.invoice_submission_callback"
         ),
-		"items": [],
-	}
-	# Exchange rate (required for foreign currency)
-	if invoice.currency != frappe.defaults.get_global_default("currency"):
-		payload["exchange_rate"] = invoice.conversion_rate
-	if invoice.custom_kind_of_sale == "EXPORT":
-		payload["destination_country_code"] = invoice.get("custom_destination_country")
-	if invoice.custom_kind_of_sale == "LPO":
-		payload["lpo_number"] = invoice.get("po_no")
-	if invoice.get("discount_amount"):
-		payload["cash_discount_amount"] = round(invoice.discount_amount, 4)
-	if invoice.get("additional_discount_percentage"):
-		payload["cash_discount_rate"] = round(
-			invoice.additional_discount_percentage / 100, 4
-		)
-	payload["items"] = [
-    {
-        "item_id": (
-            frappe.get_value("Item", item.item_code, "custom_smart_remote_id")
-            or item.item_code
-        ),
-        "quantity": float(item.qty or 0),
-        "unit_price": round(
-            float(item.get("base_net_rate") or item.rate or 0)
-            + (
-                float(item.get("custom_vat_tax_amount") or 0)
-                / float(item.qty or 1)
-            ),
-            4
-        ),
-        "total_amount": round(
-            (
-                float(item.get("base_net_rate") or item.rate or 0)
-                + (float(item.get("custom_vat_tax_amount") or 0) / float(item.qty or 1))
-            )
-            * float(item.qty or 0)
-            - float(item.get("discount_amount") or 0),
-            4
-        ),
-        "package_unit_quantity": item.get("package_qty") or 1,
-        "discount_rate": round(float(item.get("discount_percentage") or 0) / 100, 4),
-        "discount_amount": float(item.get("discount_amount") or 0),
+        "items": [],
     }
-    for item in invoice.items
-]
 
-	return payload
+    # ---------------------------
+    # Extra fields
+    # ---------------------------
+    if currency != company_currency:
+        payload["exchange_rate"] = invoice.conversion_rate
+
+    if kind_of_sale == "EXPORT":
+        payload["destination_country_code"] = invoice.get("custom_destination_country")
+
+    if kind_of_sale == "LPO":
+        payload["lpo_number"] = invoice.get("po_no")
+
+    if invoice.get("discount_amount"):
+        payload["cash_discount_amount"] = round(float(invoice.discount_amount or 0), 4)
+
+    if invoice.get("additional_discount_percentage"):
+        payload["cash_discount_rate"] = round(
+            float(invoice.additional_discount_percentage or 0) / 100,
+            4,
+        )
+
+    # ---------------------------
+    # ITEM BUILD (FIXED TAX INCLUSIVITY)
+    # ---------------------------
+    items = []
+
+    for item in invoice.items:
+        qty = float(item.qty or 0)
+
+        if not qty:
+            continue
+
+        base_unit_price = float(item.get(rate_field) or 0)
+
+        # total tax on item
+        total_tax = float(item.get(tax_field) or 0)
+
+        # per-unit tax
+        unit_tax = total_tax / qty if qty else 0
+
+       
+        unit_price_inclusive = round(
+            (base_unit_price + unit_tax) * conversion_rate,
+            4,
+        )
+
+        # total inclusive
+        total_amount = round(
+            (unit_price_inclusive * qty)
+            - float(item.get("discount_amount") or 0),
+            4,
+        )
+
+        items.append(
+            {
+                "item_id": (
+                    frappe.get_value(
+                        "Item",
+                        item.item_code,
+                        "custom_smart_remote_id",
+                    )
+                    or item.item_code
+                ),
+                "quantity": qty,
+                "unit_price": unit_price_inclusive,
+                "total_amount": total_amount,
+                "package_unit_quantity": item.get("package_qty") or 1,
+                "discount_rate": round(
+                    float(item.get("discount_percentage") or 0) / 100,
+                    4,
+                ),
+                "discount_amount": float(item.get("discount_amount") or 0),
+            }
+        )
+
+    payload["items"] = items
+
+    return payload
 
 def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 	item = frappe.get_doc("Item", item_name)
@@ -236,6 +312,7 @@ def build_customer_payload(doc) -> dict:
     return payload
 
 def get_customer_address(doc) -> str | None:
+
     address = frappe.db.get_value(
         "Address",
         {
@@ -257,4 +334,33 @@ def get_customer_address(doc) -> str | None:
             address.city,
         ]
         if part
+    )
+
+def get_zmw_conversion_rate(currency, company_currency, posting_date=None):
+ 
+    if not posting_date:
+        posting_date = frappe.utils.nowdate()
+
+    def get_rate(frm, to):
+        return frappe.db.get_value(
+            "Currency Exchange",
+            {
+                "from_currency": frm,
+                "to_currency": to,
+                "date": ["<=", posting_date],
+                "for_selling": 1,
+            },
+            "exchange_rate",
+            order_by="date desc",
+        )
+
+    rate = get_rate(currency, "ZMW")
+    if rate:
+        return rate, "net"
+
+    rate = get_rate(company_currency, "ZMW")
+    if rate:
+        return rate, "base"
+    frappe.throw(
+        f"No exchange rate found to ZMW for {currency} or {company_currency} on {posting_date}"
     )
