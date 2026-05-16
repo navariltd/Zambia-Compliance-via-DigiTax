@@ -153,6 +153,23 @@ def process_invoice_response(response: dict, document_name: str, doctype: str) -
 		frappe.throw(f"Failed to auto-submit to Digitax VSDC: {e}")
 
 
+@frappe.whitelist(allow_guest=True)
+def invoice_submission_callback(**kwargs) -> None:
+    try:
+        data = kwargs.get("data")
+        if not data:
+            return
+        process_invoice_response(
+            response=data,
+            doctype="Sales Invoice",
+            document_name=data.get("trader_invoice_number"),
+        )
+
+    except Exception:
+        frappe.log_error(
+            title="Invoice Submission Callback Error",
+            message=frappe.get_traceback(),
+        )
 
 
 def map_vsdc_fields(data: dict, docname: str, doctype: str) -> dict:

@@ -271,6 +271,77 @@ def validate_required_fields(item) -> list:
 
 
 
+@frappe.whitelist(allow_guest=True)
+def item_registration_callback(**kwargs) -> None:
+    """
+    Callback endpoint for DigiTax item registration responses.
+    Updates the ERPNext Item directly using the provided document name.
+    """
+
+    try:
+        data = kwargs.get("data", {}) or kwargs
+
+        frappe.logger().info(
+            f"[SMART] Item Registration Callback: {frappe.as_json(data)}"
+        )
+
+        # DigiTax response values
+        remote_id = data.get("id")
+        zra_item_code = data.get("item_code") or data.get("etims_item_code")
+        status = data.get("status")
+
+        # ERPNext Item reference
+        item_name = (
+            data.get("document_name")
+            or data.get("item")
+            or data.get("item_code_reference")
+        )
+
+        if not item_name:
+            frappe.log_error(
+                title="Item Registration Callback Error",
+                message="Missing Item reference in callback payload",
+            )
+            return
+
+        if not frappe.db.exists("Item", item_name):
+            frappe.log_error(
+                title="Item Registration Callback Error",
+                message=f"Item does not exist: {item_name}",
+            )
+            return
+
+        # Update Item directly
+        frappe.db.set_value(
+            "Item",
+            item_name,
+            {
+                "custom_smart_item_code": zra_item_code,
+                "custom_smart_remote_id": remote_id,
+                "custom_smart_status": status,
+                "custom_item_registered": 1,
+                "custom_active": 1,
+                "custom__sent_to_digitax": 1,
+            },
+            update_modified=False,
+        )
+
+     
+
+        frappe.logger().info(
+            f"[SMART] Item {item_name} registered successfully "
+            f"→ Code: {zra_item_code} | Status: {status}"
+        )
+
+    except Exception:
+        frappe.log_error(
+            title="Item Registration Callback Error",
+            message=frappe.get_traceback(),
+        )
+
+
+
+
 def is_item_eligible_for_registration(item) -> bool:
 	"""Check if item can be registered in ZRA SIS."""
 	return not (item.get("custom_prevent_smart_registration") or item.disabled)

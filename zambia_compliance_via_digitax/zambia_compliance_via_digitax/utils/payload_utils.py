@@ -2,7 +2,10 @@ import frappe
 from frappe.model.document import Document
 from frappe.utils import getdate
 from datetime import datetime
+from urllib.parse import urlparse
 
+from frappe.utils import get_url
+from frappe.utils import  now_datetime, add_to_date
 
 def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 	customer = frappe.get_doc("Customer", invoice.customer)
@@ -33,6 +36,9 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 		"customer_id": "",
 		"trader_invoice_number": invoice.name,
 		"payment_type_code": "01",
+		"callback_url": build_callback_url(
+            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.invoice_submission_callback"
+        ),
 		"items": [],
 	}
 	# Exchange rate (required for foreign currency)
@@ -120,10 +126,35 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 		"tot_category_code": item.get("custom_smart_turn_over_tax_category_code") or "",
 		"recommended_retail_price": float(item.get("standard_rate") or 0),
 		"stock_quantity": float(item.get("opening_stock") or 0),
-		"insurable":item.get("custom_smart_insurance_applicable") == "1"
+		"insurable":item.get("custom_smart_insurance_applicable") == "1",
+		"callback_url": build_callback_url(
+            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.item_registration_callback("
+        ),
 	
 	}
 	return payload
+
+
+
+
+def build_callback_url(endpoint: str) -> str:
+    """
+    Build a full callback URL that works both inside and outside request context.
+    """
+
+    base_url = get_url()
+
+    parsed_url = urlparse(base_url)
+
+    # Optional cleanup for localhost / IP cases
+    if parsed_url.hostname:
+        if (
+            parsed_url.hostname == "localhost"
+            or parsed_url.hostname.replace(".", "").isdigit()
+        ):
+            base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+
+    return f"{base_url}/api/method/{endpoint}"
 
 def build_note_payload(doc, settings_name, note_type="credit", callback_url=None):
     # Map dynamic fields
