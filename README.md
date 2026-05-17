@@ -1,6 +1,6 @@
 # Zambia Compliance via Digitax
 
-### [DigiTax Docs](https://zm.docs.digitax.tech/)
+### [DigiTax API Specification](https://zm.docs.digitax.tech/)
 ### [User Guide](https://docs.navari.co.ke/zambia-compliance-via-digitax/)
 
 Zambia Compliance via DigiTax is an integration application that connects ERPNext with the Zambia Revenue Authority (ZRA) SIS platform through DigiTax, a certified middleware provider.
