@@ -11,29 +11,29 @@ from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 from ..utils.payload_utils import (build_invoice_payload, build_note_payload)
 from ..utils.settings_utils import get_settings
 from ..utils.tax_utils import calculate_tax
+
+
 def get_timeframe(settings_name: str) -> timedelta:
     settings = get_settings()
     if not settings:
         return timedelta(seconds=86400)
-    timeframe = settings.get("stock_information_submission_timeframe", 86400) or 86400
+    timeframe = settings.get(
+        "stock_information_submission_timeframe", 86400) or 86400
     return timedelta(seconds=timeframe)
 
 
 def on_submit(doc, method=None):
     # Enqueue background job for each active Smart API setting
     settings = get_settings()
-    if not settings.get("sales_auto_submission_enabled") or  doc.custom_prevent_sis_submission == 1 or doc.custom_successfully_submitted == 1:
+    if not settings.get("sales_auto_submission_enabled") or doc.custom_prevent_sis_submission == 1 or doc.custom_successfully_submitted == 1:
         return
     frappe.enqueue(
         "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.send_invoice_details",
         name=doc.name,
-         
+
         queue="long",
-        
+
     )
-
-
-
 
 
 def generic_invoices_on_submit_override(
@@ -54,7 +54,8 @@ def generic_invoices_on_submit_override(
 
 # ================= CREDIT NOTE =================
     if doc.is_return and doc.return_against:
-        payload = build_note_payload(doc, settings_doc.name,note_type="credit")
+        payload = build_note_payload(
+            doc, settings_doc.name, note_type="credit")
         route_key = "saveCreditNote"
    # ================= CREDIT NOTE =================
     elif hasattr(doc, "is_debit_note") and doc.is_debit_note:
@@ -65,19 +66,19 @@ def generic_invoices_on_submit_override(
         payload = build_invoice_payload(doc, settings_doc.name)
         route_key = "saveSales"
 
-    frappe.enqueue(
-        process_request,
-        queue="default",
-        is_async=True,
+    
+    process_request(
+        # queue="default",
+        # is_async=True,
         request_data=payload,
         route_key=route_key,
         handler_function=sales_information_submission_on_success,
         request_method="POST",
         document_name=doc.name,
         doctype=invoice_type,
-       
         error_callback=sales_information_submission_on_error,
     )
+
 
 def sales_information_submission_on_success(
     response: dict, document_name: str, doctype: str, settings_name: str, **kwargs
@@ -110,7 +111,7 @@ def sales_information_submission_on_success(
         # "custom_exchange_rate": result_data.get("exchange_rate"),
         "custom_submission_status": result_data.get("status"),
         "custom_sale_date": result_data.get("sale_date"),
-        
+
         # "custom_cash_discount_rate": result_data.get("cash_discount_rate"),
         # "custom_cash_discount_amount": result_data.get("cash_discount_amount"),
     }
@@ -131,26 +132,30 @@ def sales_information_submission_on_success(
     })
 
     if result_data.get("created_at"):
-        updates["custom_created_at"] = get_datetime(result_data.get("created_at"))
+        updates["custom_created_at"] = get_datetime(
+            result_data.get("created_at"))
     # Update ERPNext document
     frappe.db.set_value(doctype, document_name, updates)
     frappe.publish_realtime(
-    "refresh_form",
-    {"name": document_name},
-    doctype=doctype,
-    docname=document_name
-)
+        "refresh_form",
+        {"name": document_name},
+        doctype=doctype,
+        docname=document_name
+    )
 
     item_list = result_data.get("item_list", [])
 
     invoice = frappe.get_doc("Sales Invoice", document_name)
 
     for item in item_list:
-        row = next((r for r in invoice.items if r.custom_sis_item_id == item.get("item_id")), None)
+        row = next(
+            (r for r in invoice.items if r.custom_sis_item_id == item.get("item_id")), None)
         if not row:
-            row = next((r for r in invoice.items if r.item_code == item.get("item_code")), None)
+            row = next((r for r in invoice.items if r.item_code ==
+                       item.get("item_code")), None)
         if not row:
-            frappe.logger().warning(f"Could not match item {item.get('item_code')} in invoice {document_name}")
+            frappe.logger().warning(
+                f"Could not match item {item.get('item_code')} in invoice {document_name}")
             continue
 
         frappe.db.set_value("Sales Invoice Item", row.name, {
@@ -174,7 +179,6 @@ def sales_information_submission_on_success(
         invoice_type=doctype,
         settings_name=settings_name,
     )
-
 
 
 def sales_information_submission_on_error(
@@ -213,7 +217,7 @@ def sales_information_submission_on_error(
 
     # Only update if we have valid identifiers
     if doctype and document_name:
-             # Get current retry count (default to 0 if not set)
+        # Get current retry count (default to 0 if not set)
         current_tries = frappe.db.get_value(
             doctype,
             document_name,
@@ -228,14 +232,13 @@ def sales_information_submission_on_error(
             current_tries + 1,
         )
 
-        
         frappe.db.set_value(
             doctype,
             document_name,
             "custom_sent_to_digitax",
             1,
         )
-        
+
     else:
         frappe.logger().warning(
             f"[DIGITAX] Missing doctype or document_name. "
@@ -254,4 +257,3 @@ def sales_information_submission_on_error(
             f"Error: {error}"
         ),
     )
-

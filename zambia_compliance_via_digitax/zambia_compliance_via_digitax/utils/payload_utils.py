@@ -3,7 +3,7 @@ from frappe.model.document import Document
 from frappe.utils import getdate
 from datetime import datetime
 from urllib.parse import urlparse
-
+import json
 from frappe.utils import get_url
 from frappe.utils import  now_datetime, add_to_date
 
@@ -12,6 +12,9 @@ from datetime import datetime
 
 def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
     customer = frappe.get_doc("Customer", invoice.customer)
+    # print(invoice)
+
+    # frappe.throw(invoice.as_dict)
 
     sale_date = datetime.strptime(
         str(invoice.posting_date), "%Y-%m-%d"
@@ -72,7 +75,7 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
         "kind": invoice.custom_kind_of_sale,
         "sale_date": sale_date.isoformat(),
         "currency_code": currency,
-        "customer_tin": frappe.get_value("Customer", invoice.customer, "tax_id"),
+        "customer_tin": frappe.get_value("Customer", invoice.customer, "tax_id") or None,
         "customer_name": customer.customer_name,
         "customer_phone": customer.get("mobile_no") or "",
         "customer_id": frappe.get_value("Customer", invoice.customer, "custom_sis_customer_id") or "",
@@ -160,6 +163,8 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
         )
 
     payload["items"] = items
+
+    # frappe.throw(json.dumps(payload, indent=2, default=str))
 
     return payload
 

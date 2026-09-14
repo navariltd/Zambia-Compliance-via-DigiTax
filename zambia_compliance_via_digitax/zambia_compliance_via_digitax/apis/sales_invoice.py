@@ -10,7 +10,6 @@ def send_invoice_details(name: str) -> None:
 	"""Manual trigger to push a Sales Invoice to Digitax ."""
 	doc = frappe.get_doc("Sales Invoice", name)
 
-	# Skip opening entries
 	
 	if doc.is_opening == "Yes"  or doc.custom_prevent_sis_submission==1 or doc.custom_successfully_submitted==1:
 		return
@@ -127,10 +126,6 @@ def process_invoice_response(response: dict, document_name: str, doctype: str) -
 	try:
 		if not response:
 			frappe.throw("Empty response received from ZRA Smart Invoice API.")
-
-	
-
-	
 		data = response
 
 		if not response:
