@@ -13,7 +13,11 @@
   "column_break_kfql",
   "tax_ty_cd",
   "is_used",
-  "is_major_target"
+  "is_major_target",
+  "availability_section",
+  "available_in_sandbox",
+  "column_break_avail",
+  "available_in_production"
  ],
  "fields": [
   {
@@ -24,7 +28,7 @@
   },
   {
    "fieldname": "item_classification_name",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "label": "Item Classification Name"
   },
   {
@@ -52,12 +56,38 @@
    "fieldname": "is_major_target",
    "fieldtype": "Check",
    "label": "Is Major Target"
+  },
+  {
+   "description": "Which DigiTax environments accept this code. Items can only use codes available in the environment of their ZRA SIS Settings.",
+   "fieldname": "availability_section",
+   "fieldtype": "Section Break",
+   "label": "Availability"
+  },
+  {
+   "default": "0",
+   "fieldname": "available_in_sandbox",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Available in Sandbox"
+  },
+  {
+   "fieldname": "column_break_avail",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "available_in_production",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Available in Production"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-11 23:47:11.752222",
+ "modified": "2026-10-01 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Item Classification Codes",
