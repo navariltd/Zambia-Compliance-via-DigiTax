@@ -17,7 +17,8 @@
   {
    "fieldname": "tax_type_code",
    "fieldtype": "Data",
-   "label": "Tax Type Code"
+   "label": "Tax Type Code",
+   "in_list_view": 1
   },
   {
    "fieldname": "tax_category_code",
@@ -37,13 +38,14 @@
   {
    "fieldname": "tax_rate",
    "fieldtype": "Data",
-   "label": "Tax Rate"
+   "label": "Tax Rate",
+   "in_list_view": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-11 23:45:12.462843",
+ "modified": "2026-10-01 23:45:12.462843",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Taxation Type Codes",
