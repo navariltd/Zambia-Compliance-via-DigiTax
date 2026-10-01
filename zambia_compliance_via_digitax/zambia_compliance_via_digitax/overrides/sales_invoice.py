@@ -22,7 +22,14 @@ def get_timeframe(settings_name: str) -> timedelta:
 def on_submit(doc, method=None):
     # Enqueue background job for each active Smart API setting
     settings = get_settings()
-    if not settings.get("sales_auto_submission_enabled") or  doc.custom_prevent_sis_submission == 1 or doc.custom_successfully_submitted == 1:
+    if not settings:
+        return
+
+    if (
+        not settings.get("sales_auto_submission_enabled")
+        or doc.custom_prevent_sis_submission == 1
+        or doc.custom_successfully_submitted == 1
+    ):
         return
     frappe.enqueue(
         "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.send_invoice_details",

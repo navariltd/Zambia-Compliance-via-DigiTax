@@ -18,7 +18,7 @@ def get_timeframe(setting_field: str, default_seconds: int = 86400) -> timedelta
 
 def send_stock_information(*args, **kwargs) -> None:
     settings = get_settings()
-    if not settings.get("stock_auto_submission_enabled"):
+    if not settings or not settings.get("stock_auto_submission_enabled"):
         return
 
     timeframe_ago = datetime.now() - get_timeframe("stock_information_submission_timeframe")
@@ -49,7 +49,7 @@ def send_stock_information(*args, **kwargs) -> None:
 def send_sales_invoice_information(*args, **kwargs) -> None:
     settings = get_settings()
 
-    if not settings.get("sales_invoice_auto_submission_enabled"):
+    if not settings or not settings.get("sales_auto_submission_enabled"):
         return
 
     frappe.logger().info("Sales Invoice Auto Submission Triggered")
@@ -71,7 +71,7 @@ def send_sales_invoice_information(*args, **kwargs) -> None:
     for invoice_name in all_sales_invoices:
         doc = frappe.get_doc("Sales Invoice", invoice_name, for_update=False)
 
-        max_tries = settings.max_sales_invoice_submission_attempts or 3
+        max_tries = settings.get("max_sales_submission_attempts") or 3
 
         if doc.custom_submission_tries and int(doc.custom_submission_tries) >= max_tries:
             continue
