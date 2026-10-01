@@ -212,7 +212,7 @@ class EndpointsBuilder(BaseEndpointsBuilder):
 					request_description=self._request_description,
 					is_remote_request=True,
 					service_name=self._request_description,
-					request_headers=self._headers,
+					request_headers=redact_headers(self._headers),
 					url=self._url,
 					reference_doctype=doctype,
 				)
@@ -320,6 +320,18 @@ class EndpointsBuilder(BaseEndpointsBuilder):
 
 
 # ---------- Helpers ---------- #
+SENSITIVE_HEADERS = {"x-api-key", "authorization"}
+
+
+def redact_headers(headers: dict | None) -> dict | None:
+	"""Return a copy of headers with secrets masked, safe to store in Integration Request logs."""
+	if not headers:
+		return headers
+	return {
+		key: "***REDACTED***" if key.lower() in SENSITIVE_HEADERS else value
+		for key, value in headers.items()
+	}
+
 def get_response_data(response: requests.Response) -> Optional[Union[dict, str, bytes]]:
 	content_type = response.headers.get("Content-Type", "").lower()
 	if "application/json" in content_type:
