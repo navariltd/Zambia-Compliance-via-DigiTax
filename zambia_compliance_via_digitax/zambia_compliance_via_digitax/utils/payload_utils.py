@@ -72,7 +72,7 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
         "kind": invoice.custom_kind_of_sale,
         "sale_date": sale_date.isoformat(),
         "currency_code": currency,
-        "customer_tin": frappe.get_value("Customer", invoice.customer, "tax_id"),
+        "customer_tpin": frappe.get_value("Customer", invoice.customer, "tax_id"),
         "customer_name": customer.customer_name,
         "customer_phone": customer.get("mobile_no") or "",
         "customer_id": frappe.get_value("Customer", invoice.customer, "custom_sis_customer_id") or "",
@@ -204,7 +204,7 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 		"stock_quantity": float(item.get("opening_stock") or 0),
 		"insurable":item.get("custom_smart_insurance_applicable") == "1",
 		"callback_url": build_callback_url(
-            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.item_registration_callback("
+            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.item_registration_callback"
         ),
 	
 	}
