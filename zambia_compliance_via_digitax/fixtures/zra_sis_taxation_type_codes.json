@@ -2,91 +2,181 @@
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-04-11 16:49:56.260993",
-  "name": "TOT",
-  "tax_category_code": "TOT",
-  "tax_category_name": "TOT",
-  "tax_rate": null,
-  "tax_type_code": null
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "A",
+  "tax_category_code": "A",
+  "tax_category_name": "Standard Rated",
+  "tax_rate": "16%",
+  "tax_type_code": "VAT"
  },
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-04-11 16:49:56.289480",
-  "name": "E",
-  "tax_category_code": "E",
-  "tax_category_name": "Disbursement",
-  "tax_rate": null,
-  "tax_type_code": null
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "B",
+  "tax_category_code": "B",
+  "tax_category_name": "Minimum Taxable Value (MTV)",
+  "tax_rate": "MTV",
+  "tax_type_code": "VAT"
  },
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-04-11 16:49:56.301645",
-  "name": "RVAT",
-  "tax_category_code": "RVAT",
-  "tax_category_name": "Reverse VAT",
-  "tax_rate": null,
-  "tax_type_code": null
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "C1",
+  "tax_category_code": "C1",
+  "tax_category_name": "Exports",
+  "tax_rate": "0%",
+  "tax_type_code": "VAT"
  },
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-04-11 16:49:56.313922",
-  "name": "D",
-  "tax_category_code": "D",
-  "tax_category_name": "Exempt",
-  "tax_rate": null,
-  "tax_type_code": null
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "C2",
+  "tax_category_code": "C2",
+  "tax_category_name": "Zero-rating Local Purchases Order transactions",
+  "tax_rate": "0%",
+  "tax_type_code": "VAT"
  },
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-04-11 16:49:56.324425",
+  "modified": "2026-10-01 15:00:00.000000",
   "name": "C3",
   "tax_category_code": "C3",
   "tax_category_name": "Zero-rated by nature",
-  "tax_rate": null,
-  "tax_type_code": null
+  "tax_rate": "0%",
+  "tax_type_code": "VAT"
  },
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-04-11 16:49:56.332840",
-  "name": "C2",
-  "tax_category_code": "C2",
-  "tax_category_name": "Zero-rating LPO",
-  "tax_rate": null,
-  "tax_type_code": null
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "D",
+  "tax_category_code": "D",
+  "tax_category_name": "Exempt",
+  "tax_rate": "No tax charge",
+  "tax_type_code": "VAT"
  },
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-04-11 16:49:56.348776",
-  "name": "C1",
-  "tax_category_code": "C1",
-  "tax_category_name": "Exports(0%)",
-  "tax_rate": null,
-  "tax_type_code": null
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "RVAT",
+  "tax_category_code": "RVAT",
+  "tax_category_name": "Reverse VAT",
+  "tax_rate": "16%",
+  "tax_type_code": "VAT"
  },
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-03-12 11:26:52.671773",
-  "name": "B",
-  "tax_category_code": "B",
-  "tax_category_name": null,
-  "tax_rate": null,
-  "tax_type_code": ""
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "E",
+  "tax_category_code": "E",
+  "tax_category_name": "Disbursement",
+  "tax_rate": "No tax charge",
+  "tax_type_code": "VAT"
  },
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Taxation Type Codes",
-  "modified": "2026-03-03 12:02:59.370801",
-  "name": "A",
-  "tax_category_code": "A",
-  "tax_category_name": null,
-  "tax_rate": null,
-  "tax_type_code": "A"
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IPL-1",
+  "tax_category_code": "IPL-1",
+  "tax_category_name": "Insurance Premium Levy",
+  "tax_rate": "5%",
+  "tax_type_code": "IPL"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IPL-2",
+  "tax_category_code": "IPL-2",
+  "tax_category_name": "Re-insurance",
+  "tax_rate": "Exempt",
+  "tax_type_code": "IPL"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TL",
+  "tax_category_code": "TL",
+  "tax_category_name": "Tourism Levy",
+  "tax_rate": "1.50%",
+  "tax_type_code": "TL"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "F",
+  "tax_category_code": "F",
+  "tax_category_name": "10% Statutory Service Charge",
+  "tax_rate": "No tax charge",
+  "tax_type_code": "TL"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ECM",
+  "tax_category_code": "ECM",
+  "tax_category_name": "Excise on Coal",
+  "tax_rate": "5%",
+  "tax_type_code": "LED"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "EXEEG",
+  "tax_category_code": "EXEEG",
+  "tax_category_name": "Excise Electricity",
+  "tax_rate": "3%",
+  "tax_type_code": "LED"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TOT",
+  "tax_category_code": "TOT",
+  "tax_category_name": "Turnover Tax",
+  "tax_rate": "N/A",
+  "tax_type_code": "TOT"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GTX",
+  "tax_category_code": "GTX",
+  "tax_category_name": "Gaming and Betting",
+  "tax_rate": "N/A",
+  "tax_type_code": "GTX"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ITX",
+  "tax_category_code": "ITX",
+  "tax_category_name": "Income Tax",
+  "tax_rate": "N/A",
+  "tax_type_code": "ITX"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "ZRA SIS Taxation Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "RTX",
+  "tax_category_code": "RTX",
+  "tax_category_name": "Rental Tax",
+  "tax_rate": "N/A",
+  "tax_type_code": "RTX"
  }
 ]

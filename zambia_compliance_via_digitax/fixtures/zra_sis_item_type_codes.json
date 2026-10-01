@@ -2,37 +2,28 @@
  {
   "code": "1",
   "code_name": "Raw Material",
-  "description": null,
+  "description": "Raw Material",
   "docstatus": 0,
   "doctype": "ZRA SIS Item Type Codes",
-  "modified": "2026-04-11 17:11:42.153166",
+  "modified": "2026-10-01 15:00:00.000000",
   "name": "1"
- },
- {
-  "code": "4",
-  "code_name": "Rebate",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Item Type Codes",
-  "modified": "2026-04-11 17:11:10.747138",
-  "name": "4"
- },
- {
-  "code": "3",
-  "code_name": "Service",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Item Type Codes",
-  "modified": "2026-04-11 17:11:10.771656",
-  "name": "3"
  },
  {
   "code": "2",
   "code_name": "Finished Product",
-  "description": null,
+  "description": "Finished Product",
   "docstatus": 0,
   "doctype": "ZRA SIS Item Type Codes",
-  "modified": "2026-04-11 17:12:02.841569",
+  "modified": "2026-10-01 15:00:00.000000",
   "name": "2"
+ },
+ {
+  "code": "3",
+  "code_name": "Service",
+  "description": "Service without stock",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Item Type Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "3"
  }
 ]

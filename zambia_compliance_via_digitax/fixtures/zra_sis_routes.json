@@ -2,74 +2,194 @@
  {
   "docstatus": 0,
   "doctype": "ZRA SIS Routes",
-  "modified": "2026-03-30 12:43:18.854459",
+  "modified": "2026-10-01 15:00:00.000000",
   "name": "locmj5hkla",
   "routes_table": [
    {
-    "description": null,
+    "description": "GET: ZRA information on the business linked to the API key (TPIN, branch, is_test, is_live).",
+    "last_request_date": null,
+    "url_path": "/v1/info",
+    "url_path_function": "fetchBusinessInfo"
+   },
+   {
+    "description": "POST: Create (register) an item with ZRA.",
     "last_request_date": "2026-04-09 12:41:11.331658",
     "url_path": "/v1/items",
     "url_path_function": "saveItem"
    },
    {
-    "description": null,
+    "description": "GET: List items owned by the business. Cursor pagination (before, after, page_size).",
+    "last_request_date": null,
+    "url_path": "/v1/items",
+    "url_path_function": "fetchItems"
+   },
+   {
+    "description": "GET: Get a specific item by its DigiTax item ID.",
     "last_request_date": "2026-03-09 21:07:12.661455",
     "url_path": "/v1/items/{item_id}",
     "url_path_function": "selectItem"
    },
    {
-    "description": null,
+    "description": "PUT: Update an item. Only item_name, default_unit_price and recommended_retail_price can change.",
     "last_request_date": null,
     "url_path": "/v1/items/{item_id}",
     "url_path_function": "UpdateItem"
    },
    {
-    "description": null,
-    "last_request_date": "2026-04-11 15:17:52.308397",
-    "url_path": "/v1/sales",
-    "url_path_function": "saveSales"
+    "description": "GET: Get the composition (component items) of an item.",
+    "last_request_date": null,
+    "url_path": "/v1/items/item_composition/{item_id}",
+    "url_path_function": "fetchItemComposition"
    },
    {
-    "description": null,
-    "last_request_date": "2026-04-11 15:17:54.274568",
-    "url_path": "/v1/sales/{sale_id}",
-    "url_path_function": "selectInvoice"
+    "description": "POST: Create an item composition from component items and quantities.",
+    "last_request_date": null,
+    "url_path": "/v1/items/item_composition",
+    "url_path_function": "saveItemComposition"
    },
    {
-    "description": null,
-    "last_request_date": "2026-03-19 17:31:41.864994",
-    "url_path": "/v1/credit-notes",
-    "url_path_function": "saveCreditNote"
+    "description": "GET: List business customers. Cursor pagination.",
+    "last_request_date": null,
+    "url_path": "/v1/customers",
+    "url_path_function": "fetchCustomers"
    },
    {
-    "description": null,
-    "last_request_date": "2026-03-19 17:34:42.037205",
-    "url_path": "/v1/debit-notes",
-    "url_path_function": "saveDebitNote"
-   },
-   {
-    "description": null,
-    "last_request_date": "2026-04-11 14:52:24.349299",
-    "url_path": "/v1/stock/adjust",
-    "url_path_function": "saveStockItems"
-   },
-   {
-    "description": null,
+    "description": "POST: Save a business customer (customer_tin, customer_name, phone required).",
     "last_request_date": "2026-03-26 11:51:52.049255",
     "url_path": "/v1/customers",
     "url_path_function": "saveCustomer"
    },
    {
-    "description": null,
+    "description": "GET: Get a business customer by its DigiTax customer ID.",
     "last_request_date": "2026-03-26 22:35:12.235860",
     "url_path": "/v1/customers/{customer_id}",
     "url_path_function": "fetchCustomer"
    },
    {
-    "description": null,
+    "description": "GET: List import items received from ZRA. Cursor pagination.",
+    "last_request_date": null,
+    "url_path": "/v1/imports",
+    "url_path_function": "fetchImports"
+   },
+   {
+    "description": "PUT: Approve or reject an import item (reject, remarks).",
+    "last_request_date": null,
+    "url_path": "/v1/imports/{import_id}/review",
+    "url_path_function": "reviewImport"
+   },
+   {
+    "description": "PUT: Link an import item to a DigiTax item (item_id, quantity).",
+    "last_request_date": null,
+    "url_path": "/v1/imports/{import_id}/link",
+    "url_path_function": "linkImport"
+   },
+   {
+    "description": "GET: List business suppliers. Cursor pagination.",
+    "last_request_date": null,
+    "url_path": "/v1/suppliers",
+    "url_path_function": "fetchSuppliers"
+   },
+   {
+    "description": "POST: Save a business supplier (supplier_name, supplier_tin required).",
+    "last_request_date": null,
+    "url_path": "/v1/suppliers",
+    "url_path_function": "saveSupplier"
+   },
+   {
+    "description": "GET: Get a business supplier by its DigiTax supplier ID.",
+    "last_request_date": null,
+    "url_path": "/v1/suppliers/{supplier_id}",
+    "url_path_function": "fetchSupplier"
+   },
+   {
+    "description": "GET: List purchases received from ZRA. Cursor pagination.",
     "last_request_date": "2026-04-01 09:54:12.616399",
     "url_path": "/v1/purchases?after={after}&page_size={pagesize}",
     "url_path_function": "fetchPurchaseSales"
+   },
+   {
+    "description": "POST: Add a manual purchase (purchase_date and items required).",
+    "last_request_date": null,
+    "url_path": "/v1/purchases",
+    "url_path_function": "savePurchase"
+   },
+   {
+    "description": "GET: Get a specific purchase by its DigiTax purchase ID.",
+    "last_request_date": null,
+    "url_path": "/v1/purchases/{purchase_id}",
+    "url_path_function": "fetchPurchase"
+   },
+   {
+    "description": "PUT: Link purchase items to DigiTax items (purchase_item_id, item_id, quantity).",
+    "last_request_date": null,
+    "url_path": "/v1/purchases/{purchase_id}/link-items",
+    "url_path_function": "linkPurchaseItems"
+   },
+   {
+    "description": "PUT: Approve or reject a purchase (reject, comment).",
+    "last_request_date": null,
+    "url_path": "/v1/purchases/{purchase_id}/review",
+    "url_path_function": "reviewPurchase"
+   },
+   {
+    "description": "POST: Add a sale (NORMAL, LPO or EXPORT).",
+    "last_request_date": "2026-04-11 15:17:52.308397",
+    "url_path": "/v1/sales",
+    "url_path_function": "saveSales"
+   },
+   {
+    "description": "GET: List normal sales. Cursor pagination.",
+    "last_request_date": null,
+    "url_path": "/v1/sales",
+    "url_path_function": "fetchSales"
+   },
+   {
+    "description": "GET: Get a sale, credit note, debit note, LPO or export sale by its DigiTax sale ID.",
+    "last_request_date": "2026-04-11 15:17:54.274568",
+    "url_path": "/v1/sales/{sale_id}",
+    "url_path_function": "selectInvoice"
+   },
+   {
+    "description": "GET: Offline sale details by business ID and trader invoice number, shareable with clients to track sale status.",
+    "last_request_date": null,
+    "url_path": "/v1/sales/{business_id}/{trader_invoice_number}",
+    "url_path_function": "fetchOfflineSaleUrl"
+   },
+   {
+    "description": "POST: Add a credit note against an existing sale (sale_id, return_date, refund_reason_code).",
+    "last_request_date": "2026-03-19 17:31:41.864994",
+    "url_path": "/v1/credit-notes",
+    "url_path_function": "saveCreditNote"
+   },
+   {
+    "description": "GET: List credit notes. Cursor pagination.",
+    "last_request_date": null,
+    "url_path": "/v1/credit-notes",
+    "url_path_function": "fetchCreditNotes"
+   },
+   {
+    "description": "POST: Add a debit note against an existing sale (sale_id, debit_date, debit_reason_code).",
+    "last_request_date": "2026-03-19 17:34:42.037205",
+    "url_path": "/v1/debit-notes",
+    "url_path_function": "saveDebitNote"
+   },
+   {
+    "description": "GET: List debit notes. Cursor pagination.",
+    "last_request_date": null,
+    "url_path": "/v1/debit-notes",
+    "url_path_function": "fetchDebitNotes"
+   },
+   {
+    "description": "PUT: Adjust item stock (item_id, quantity, action ADD or DEDUCT, movement_type).",
+    "last_request_date": "2026-04-11 14:52:24.349299",
+    "url_path": "/v1/stock/adjust",
+    "url_path_function": "saveStockItems"
+   },
+   {
+    "description": "GET: List ZRA notices for the business.",
+    "last_request_date": null,
+    "url_path": "/v1/notices",
+    "url_path_function": "fetchNotices"
    }
   ],
   "vendor": "Digitax"

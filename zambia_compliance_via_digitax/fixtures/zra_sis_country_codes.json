@@ -1,2297 +1,2270 @@
 [
  {
-  "code": "254",
-  "code_name": "Test Nation",
-  "description": null,
+  "code": "AC",
+  "code_name": "ASCENSION ISLAND",
+  "description": "ASCENSION ISLAND",
   "docstatus": 0,
   "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.313657",
-  "name": "254"
- },
- {
-  "code": "ZR",
-  "code_name": "DEMOCRATIC REPUBLIC OF THE CONGO (DRC)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.321913",
-  "name": "ZR"
- },
- {
-  "code": "DKT",
-  "code_name": "DAKATE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.325370",
-  "name": "DKT"
- },
- {
-  "code": "ZW",
-  "code_name": "ZIMBABWE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.329211",
-  "name": "ZW"
- },
- {
-  "code": "YT",
-  "code_name": "MAYOTTE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.339648",
-  "name": "YT"
- },
- {
-  "code": "YE",
-  "code_name": "YEMEN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.343524",
-  "name": "YE"
- },
- {
-  "code": "WS",
-  "code_name": "SAMOA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.347116",
-  "name": "WS"
- },
- {
-  "code": "VU",
-  "code_name": "VANUATU",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.350648",
-  "name": "VU"
- },
- {
-  "code": "VN",
-  "code_name": "VIET NAM",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.355023",
-  "name": "VN"
- },
- {
-  "code": "VI",
-  "code_name": "VIRGIN ISLANDS (U.S.)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.360146",
-  "name": "VI"
- },
- {
-  "code": "VG",
-  "code_name": "BRITISH VIRGIN ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.364148",
-  "name": "VG"
- },
- {
-  "code": "VE",
-  "code_name": "VENEZUELA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.368614",
-  "name": "VE"
- },
- {
-  "code": "VC",
-  "code_name": "SAINT VINCENT  GRENADINES",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.372985",
-  "name": "VC"
- },
- {
-  "code": "VA",
-  "code_name": "VATICAN CITY STATE (HOLY SEE)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.377070",
-  "name": "VA"
- },
- {
-  "code": "UZ",
-  "code_name": "UZBEKISTAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.380885",
-  "name": "UZ"
- },
- {
-  "code": "UY",
-  "code_name": "URUGUAY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.384995",
-  "name": "UY"
- },
- {
-  "code": "US",
-  "code_name": "UNITED STATES",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.388481",
-  "name": "US"
- },
- {
-  "code": "UM",
-  "code_name": "US MINOR OUTLYING ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.392809",
-  "name": "UM"
- },
- {
-  "code": "UK",
-  "code_name": "UNITED KINGDOM",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.396435",
-  "name": "UK"
- },
- {
-  "code": "ZA",
-  "code_name": "SOUTH AFRICA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.400096",
-  "name": "ZA"
- },
- {
-  "code": "YU",
-  "code_name": "SERBIA AND MONTENEGRO (FORMER)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.404981",
-  "name": "YU"
- },
- {
-  "code": "WF",
-  "code_name": "WALLIS AND FUTUNA ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.409077",
-  "name": "WF"
- },
- {
-  "code": "UG",
-  "code_name": "UGANDA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.412902",
-  "name": "UG"
- },
- {
-  "code": "UA",
-  "code_name": "UKRAINE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.416497",
-  "name": "UA"
- },
- {
-  "code": "TZ",
-  "code_name": "TANZANIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.422889",
-  "name": "TZ"
- },
- {
-  "code": "TW",
-  "code_name": "TAIWAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.426384",
-  "name": "TW"
- },
- {
-  "code": "TV",
-  "code_name": "TUVALU",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.429636",
-  "name": "TV"
- },
- {
-  "code": "TT",
-  "code_name": "TRINIDAD AND TOBAGO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.434243",
-  "name": "TT"
- },
- {
-  "code": "TR",
-  "code_name": "TURKEY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.438485",
-  "name": "TR"
- },
- {
-  "code": "TP",
-  "code_name": "EAST TIMOR",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.442697",
-  "name": "TP"
- },
- {
-  "code": "TO",
-  "code_name": "TONGA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.446732",
-  "name": "TO"
- },
- {
-  "code": "TN",
-  "code_name": "TUNISIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.452097",
-  "name": "TN"
- },
- {
-  "code": "TM",
-  "code_name": "TURKMENISTAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.456559",
-  "name": "TM"
- },
- {
-  "code": "TK",
-  "code_name": "TOKELAU",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.460091",
-  "name": "TK"
- },
- {
-  "code": "TJ",
-  "code_name": "TAJIKISTAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.463800",
-  "name": "TJ"
- },
- {
-  "code": "TH",
-  "code_name": "THAILAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.467786",
-  "name": "TH"
- },
- {
-  "code": "TG",
-  "code_name": "TOGO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.472514",
-  "name": "TG"
- },
- {
-  "code": "TF",
-  "code_name": "FRENCH SOUTHERN TERRITORIES",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.476813",
-  "name": "TF"
- },
- {
-  "code": "TD",
-  "code_name": "CHAD",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.480635",
-  "name": "TD"
- },
- {
-  "code": "TC",
-  "code_name": "TURKS AND CAICOS ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.484290",
-  "name": "TC"
- },
- {
-  "code": "SZ",
-  "code_name": "SWAZILAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.488461",
-  "name": "SZ"
- },
- {
-  "code": "SY",
-  "code_name": "SYRIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.492485",
-  "name": "SY"
- },
- {
-  "code": "SV",
-  "code_name": "EL SALVADOR",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.497153",
-  "name": "SV"
- },
- {
-  "code": "SU",
-  "code_name": "USSR (FORMER)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.500652",
-  "name": "SU"
- },
- {
-  "code": "ST",
-  "code_name": "SAO TOME AND PRINCIPE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.504908",
-  "name": "ST"
- },
- {
-  "code": "SR",
-  "code_name": "SURINAME",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.509390",
-  "name": "SR"
- },
- {
-  "code": "SO",
-  "code_name": "SOMALIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.512778",
-  "name": "SO"
- },
- {
-  "code": "SN",
-  "code_name": "SENEGAL",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.516097",
-  "name": "SN"
- },
- {
-  "code": "SM",
-  "code_name": "SAN MARINO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.520253",
-  "name": "SM"
- },
- {
-  "code": "SL",
-  "code_name": "SIERRA LEONE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.524428",
-  "name": "SL"
- },
- {
-  "code": "SK",
-  "code_name": "SLOVAK REPUBLIC",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.528016",
-  "name": "SK"
- },
- {
-  "code": "SJ",
-  "code_name": "SVALBARD  MAYEN ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.531420",
-  "name": "SJ"
- },
- {
-  "code": "SI",
-  "code_name": "SLOVENIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.534958",
-  "name": "SI"
- },
- {
-  "code": "SH",
-  "code_name": "ST. HELENA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.539207",
-  "name": "SH"
- },
- {
-  "code": "SG",
-  "code_name": "SINGAPORE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.543463",
-  "name": "SG"
- },
- {
-  "code": "SE",
-  "code_name": "SWEDEN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.546548",
-  "name": "SE"
- },
- {
-  "code": "SD",
-  "code_name": "SUDAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.550274",
-  "name": "SD"
- },
- {
-  "code": "SC",
-  "code_name": "SEYCHELLES",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.554629",
-  "name": "SC"
- },
- {
-  "code": "SB",
-  "code_name": "SOLOMON ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.558696",
-  "name": "SB"
- },
- {
-  "code": "SA",
-  "code_name": "SAUDI ARABIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.562617",
-  "name": "SA"
- },
- {
-  "code": "RW",
-  "code_name": "RWANDA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.566610",
-  "name": "RW"
- },
- {
-  "code": "RU",
-  "code_name": "RUSSIAN FEDERATION",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.573120",
-  "name": "RU"
- },
- {
-  "code": "RS",
-  "code_name": "SERBIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.577860",
-  "name": "RS"
- },
- {
-  "code": "RO",
-  "code_name": "ROMANIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.581120",
-  "name": "RO"
- },
- {
-  "code": "RE",
-  "code_name": "REUNION",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.587570",
-  "name": "RE"
- },
- {
-  "code": "QA",
-  "code_name": "QATAR",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.593721",
-  "name": "QA"
- },
- {
-  "code": "PY",
-  "code_name": "PARAGUAY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.598790",
-  "name": "PY"
- },
- {
-  "code": "PW",
-  "code_name": "PALAU",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.607442",
-  "name": "PW"
- },
- {
-  "code": "PT",
-  "code_name": "PORTUGAL",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.612025",
-  "name": "PT"
- },
- {
-  "code": "PS",
-  "code_name": "PALESTINIAN TERRITORY, OCCUPIED",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.621285",
-  "name": "PS"
- },
- {
-  "code": "PR",
-  "code_name": "PUERTO RICO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.626225",
-  "name": "PR"
- },
- {
-  "code": "PN",
-  "code_name": "PITCAIRN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.630847",
-  "name": "PN"
- },
- {
-  "code": "PM",
-  "code_name": "ST. PIERRE AND MIQUELON",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.637525",
-  "name": "PM"
- },
- {
-  "code": "PL",
-  "code_name": "POLAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.642918",
-  "name": "PL"
- },
- {
-  "code": "PK",
-  "code_name": "PAKISTAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.648363",
-  "name": "PK"
- },
- {
-  "code": "PH",
-  "code_name": "PHILIPPINES",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.655030",
-  "name": "PH"
- },
- {
-  "code": "PG",
-  "code_name": "PAPUA NEW GUINEA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.661731",
-  "name": "PG"
- },
- {
-  "code": "PF",
-  "code_name": "FRENCH POLYNESIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.667719",
-  "name": "PF"
- },
- {
-  "code": "PE",
-  "code_name": "PERU",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.679078",
-  "name": "PE"
- },
- {
-  "code": "PA",
-  "code_name": "PANAMA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.686162",
-  "name": "PA"
- },
- {
-  "code": "OM",
-  "code_name": "OMAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.691512",
-  "name": "OM"
- },
- {
-  "code": "NZ",
-  "code_name": "NEW ZEALAND (AOTEAROA)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.695928",
-  "name": "NZ"
- },
- {
-  "code": "NU",
-  "code_name": "NIUE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.702271",
-  "name": "NU"
- },
- {
-  "code": "NT",
-  "code_name": "NEUTRAL ZONE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.711270",
-  "name": "NT"
- },
- {
-  "code": "NR",
-  "code_name": "NAURU",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.717564",
-  "name": "NR"
- },
- {
-  "code": "NP",
-  "code_name": "NEPAL",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.728115",
-  "name": "NP"
- },
- {
-  "code": "NO",
-  "code_name": "NORWAY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.734374",
-  "name": "NO"
- },
- {
-  "code": "NL",
-  "code_name": "NETHERLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.741645",
-  "name": "NL"
- },
- {
-  "code": "NI",
-  "code_name": "NICARAGUA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.748644",
-  "name": "NI"
- },
- {
-  "code": "NG",
-  "code_name": "NIGERIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.756856",
-  "name": "NG"
- },
- {
-  "code": "NF",
-  "code_name": "NORFOLK ISLAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.761780",
-  "name": "NF"
- },
- {
-  "code": "NE",
-  "code_name": "NIGER",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.769384",
-  "name": "NE"
- },
- {
-  "code": "NC",
-  "code_name": "NEW CALEDONIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.776439",
-  "name": "NC"
- },
- {
-  "code": "NA",
-  "code_name": "NAMIBIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.781754",
-  "name": "NA"
- },
- {
-  "code": "MZ",
-  "code_name": "MOZAMBIQUE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.790531",
-  "name": "MZ"
- },
- {
-  "code": "MY",
-  "code_name": "MALAYSIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.795174",
-  "name": "MY"
- },
- {
-  "code": "MX",
-  "code_name": "MEXICO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.804605",
-  "name": "MX"
- },
- {
-  "code": "MW",
-  "code_name": "MALAWI",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.809339",
-  "name": "MW"
- },
- {
-  "code": "MV",
-  "code_name": "MALDIVES",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.813827",
-  "name": "MV"
- },
- {
-  "code": "MU",
-  "code_name": "MAURITIUS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.817996",
-  "name": "MU"
- },
- {
-  "code": "MT",
-  "code_name": "MALTA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.824027",
-  "name": "MT"
- },
- {
-  "code": "MS",
-  "code_name": "MONTSERRAT",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.828873",
-  "name": "MS"
- },
- {
-  "code": "MR",
-  "code_name": "MAURITANIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.837318",
-  "name": "MR"
- },
- {
-  "code": "MQ",
-  "code_name": "MARTINIQUE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.842713",
-  "name": "MQ"
- },
- {
-  "code": "MP",
-  "code_name": "NORTHERN MARIANA ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.846626",
-  "name": "MP"
- },
- {
-  "code": "MO",
-  "code_name": "MACAU",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.853254",
-  "name": "MO"
- },
- {
-  "code": "MN",
-  "code_name": "MONGOLIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.859663",
-  "name": "MN"
- },
- {
-  "code": "MM",
-  "code_name": "MYANMAR",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.864137",
-  "name": "MM"
- },
- {
-  "code": "ML",
-  "code_name": "MALI",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.870461",
-  "name": "ML"
- },
- {
-  "code": "MK",
-  "code_name": "F.Y.R.O.M. (MACEDONIA)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.875588",
-  "name": "MK"
- },
- {
-  "code": "MH",
-  "code_name": "MARSHALL ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.879011",
-  "name": "MH"
- },
- {
-  "code": "MG",
-  "code_name": "MADAGASCAR",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.883950",
-  "name": "MG"
- },
- {
-  "code": "ME",
-  "code_name": "MONTENEGRO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.888354",
-  "name": "ME"
- },
- {
-  "code": "MD",
-  "code_name": "MOLDOVA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.892453",
-  "name": "MD"
- },
- {
-  "code": "MC",
-  "code_name": "MONACO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.896952",
-  "name": "MC"
- },
- {
-  "code": "MA",
-  "code_name": "MOROCCO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.901176",
-  "name": "MA"
- },
- {
-  "code": "LY",
-  "code_name": "LIBYA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.907562",
-  "name": "LY"
- },
- {
-  "code": "LV",
-  "code_name": "LATVIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.917465",
-  "name": "LV"
- },
- {
-  "code": "LU",
-  "code_name": "LUXEMBOURG",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.930956",
-  "name": "LU"
- },
- {
-  "code": "LT",
-  "code_name": "LITHUANIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.940532",
-  "name": "LT"
- },
- {
-  "code": "LS",
-  "code_name": "LESOTHO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.946772",
-  "name": "LS"
- },
- {
-  "code": "LR",
-  "code_name": "LIBERIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.953799",
-  "name": "LR"
- },
- {
-  "code": "LK",
-  "code_name": "SRI LANKA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.958136",
-  "name": "LK"
- },
- {
-  "code": "LI",
-  "code_name": "LIECHTENSTEIN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.962401",
-  "name": "LI"
- },
- {
-  "code": "LC",
-  "code_name": "SAINT LUCIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.966638",
-  "name": "LC"
- },
- {
-  "code": "LB",
-  "code_name": "LEBANON",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.971985",
-  "name": "LB"
- },
- {
-  "code": "LA",
-  "code_name": "LAOS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.977503",
-  "name": "LA"
- },
- {
-  "code": "KZ",
-  "code_name": "KAZAKHSTAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.985622",
-  "name": "KZ"
- },
- {
-  "code": "KY",
-  "code_name": "CAYMAN ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.990890",
-  "name": "KY"
- },
- {
-  "code": "KW",
-  "code_name": "KUWAIT",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:52.995833",
-  "name": "KW"
- },
- {
-  "code": "KR",
-  "code_name": "SOUTH KOREA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.006367",
-  "name": "KR"
- },
- {
-  "code": "KP",
-  "code_name": "NORTH KOREA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.011243",
-  "name": "KP"
- },
- {
-  "code": "KN",
-  "code_name": "SAINT KITTS AND NEVIS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.015951",
-  "name": "KN"
- },
- {
-  "code": "KM",
-  "code_name": "COMOROS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.020785",
-  "name": "KM"
- },
- {
-  "code": "KI",
-  "code_name": "KIRIBATI",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.026930",
-  "name": "KI"
- },
- {
-  "code": "KH",
-  "code_name": "CAMBODIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.032772",
-  "name": "KH"
- },
- {
-  "code": "KG",
-  "code_name": "KYRGYZSTAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.040979",
-  "name": "KG"
- },
- {
-  "code": "JP",
-  "code_name": "JAPAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.052321",
-  "name": "JP"
- },
- {
-  "code": "JO",
-  "code_name": "JORDAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.058564",
-  "name": "JO"
- },
- {
-  "code": "JM",
-  "code_name": "JAMAICA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.065275",
-  "name": "JM"
- },
- {
-  "code": "JE",
-  "code_name": "JERSEY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.070792",
-  "name": "JE"
- },
- {
-  "code": "IT",
-  "code_name": "ITALY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.075411",
-  "name": "IT"
- },
- {
-  "code": "IS",
-  "code_name": "ICELAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.081625",
-  "name": "IS"
- },
- {
-  "code": "IR",
-  "code_name": "IRAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.086075",
-  "name": "IR"
- },
- {
-  "code": "IQ",
-  "code_name": "IRAQ",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.090530",
-  "name": "IQ"
- },
- {
-  "code": "IO",
-  "code_name": "BRITISH INDIAN OCEAN TERRITORY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.094811",
-  "name": "IO"
- },
- {
-  "code": "IN",
-  "code_name": "INDIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.099538",
-  "name": "IN"
- },
- {
-  "code": "IM",
-  "code_name": "ISLE OF MAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.103971",
-  "name": "IM"
- },
- {
-  "code": "IL",
-  "code_name": "ISRAEL",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.108122",
-  "name": "IL"
- },
- {
-  "code": "IE",
-  "code_name": "IRELAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.113412",
-  "name": "IE"
- },
- {
-  "code": "ID",
-  "code_name": "INDONESIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.118383",
-  "name": "ID"
- },
- {
-  "code": "HU",
-  "code_name": "HUNGARY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.122094",
-  "name": "HU"
- },
- {
-  "code": "HT",
-  "code_name": "HAITI",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.126066",
-  "name": "HT"
- },
- {
-  "code": "HR",
-  "code_name": "CROATIA (HRVATSKA)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.129964",
-  "name": "HR"
- },
- {
-  "code": "HN",
-  "code_name": "HONDURAS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.134983",
-  "name": "HN"
- },
- {
-  "code": "HM",
-  "code_name": "HEARD AND MCDONALD ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.139424",
-  "name": "HM"
- },
- {
-  "code": "HK",
-  "code_name": "HONG KONG",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.142841",
-  "name": "HK"
- },
- {
-  "code": "GY",
-  "code_name": "GUYANA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.146766",
-  "name": "GY"
- },
- {
-  "code": "GW",
-  "code_name": "GUINEA     BISSAU",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.150874",
-  "name": "GW"
- },
- {
-  "code": "GU",
-  "code_name": "GUAM",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.154544",
-  "name": "GU"
- },
- {
-  "code": "GT",
-  "code_name": "GUATEMALA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.157846",
-  "name": "GT"
- },
- {
-  "code": "GS",
-  "code_name": "S. GEORGIA AND S. SANDWICH ISLS.",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.161536",
-  "name": "GS"
- },
- {
-  "code": "GR",
-  "code_name": "GREECE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.166701",
-  "name": "GR"
- },
- {
-  "code": "GQ",
-  "code_name": "EQUATORIAL GUINEA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.170732",
-  "name": "GQ"
- },
- {
-  "code": "GP",
-  "code_name": "GUADELOUPE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.174423",
-  "name": "GP"
- },
- {
-  "code": "GN",
-  "code_name": "GUINEA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.178226",
-  "name": "GN"
- },
- {
-  "code": "GM",
-  "code_name": "GAMBIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.183109",
-  "name": "GM"
- },
- {
-  "code": "GL",
-  "code_name": "GREENLAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.187278",
-  "name": "GL"
- },
- {
-  "code": "GI",
-  "code_name": "GIBRALTAR",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.190778",
-  "name": "GI"
- },
- {
-  "code": "GH",
-  "code_name": "GHANA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.194139",
-  "name": "GH"
- },
- {
-  "code": "GG",
-  "code_name": "GUERNSEY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.199000",
-  "name": "GG"
- },
- {
-  "code": "GF",
-  "code_name": "FRENCH GUIANA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.202550",
-  "name": "GF"
- },
- {
-  "code": "GE",
-  "code_name": "GEORGIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.205943",
-  "name": "GE"
- },
- {
-  "code": "GD",
-  "code_name": "GRENADA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.209195",
-  "name": "GD"
- },
- {
-  "code": "GB",
-  "code_name": "GREAT BRITAIN (UK)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.216295",
-  "name": "GB"
- },
- {
-  "code": "GA",
-  "code_name": "GABON",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.219935",
-  "name": "GA"
- },
- {
-  "code": "FX",
-  "code_name": "FRANCE, METROPOLITAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.223589",
-  "name": "FX"
- },
- {
-  "code": "FR",
-  "code_name": "FRANCE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.227136",
-  "name": "FR"
- },
- {
-  "code": "FO",
-  "code_name": "FAROE ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.231176",
-  "name": "FO"
- },
- {
-  "code": "FM",
-  "code_name": "MICRONESIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.235181",
-  "name": "FM"
- },
- {
-  "code": "FK",
-  "code_name": "FALKLAND ISLANDS (MALVINAS)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.238725",
-  "name": "FK"
- },
- {
-  "code": "FJ",
-  "code_name": "FIJI",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.241993",
-  "name": "FJ"
- },
- {
-  "code": "FI",
-  "code_name": "FINLAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.245842",
-  "name": "FI"
- },
- {
-  "code": "EU",
-  "code_name": "EUROPEAN UNION",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.250096",
-  "name": "EU"
- },
- {
-  "code": "ET",
-  "code_name": "ETHIOPIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.254330",
-  "name": "ET"
- },
- {
-  "code": "ES",
-  "code_name": "SPAIN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.258332",
-  "name": "ES"
- },
- {
-  "code": "ER",
-  "code_name": "ERITREA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.261981",
-  "name": "ER"
- },
- {
-  "code": "EH",
-  "code_name": "WESTERN SAHARA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.267012",
-  "name": "EH"
- },
- {
-  "code": "EG",
-  "code_name": "EGYPT",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.270590",
-  "name": "EG"
- },
- {
-  "code": "EE",
-  "code_name": "ESTONIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.274263",
-  "name": "EE"
- },
- {
-  "code": "EC",
-  "code_name": "ECUADOR",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.278217",
-  "name": "EC"
- },
- {
-  "code": "DZ",
-  "code_name": "ALGERIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.282684",
-  "name": "DZ"
- },
- {
-  "code": "DO",
-  "code_name": "DOMINICAN REPUBLIC",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.286761",
-  "name": "DO"
- },
- {
-  "code": "DM",
-  "code_name": "DOMINICA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.290710",
-  "name": "DM"
- },
- {
-  "code": "DK",
-  "code_name": "DENMARK",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.294496",
-  "name": "DK"
- },
- {
-  "code": "DJ",
-  "code_name": "DJIBOUTI",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.298815",
-  "name": "DJ"
- },
- {
-  "code": "DE",
-  "code_name": "GERMANY",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.302668",
-  "name": "DE"
- },
- {
-  "code": "CZ",
-  "code_name": "CZECH REPUBLIC",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.306360",
-  "name": "CZ"
- },
- {
-  "code": "CY",
-  "code_name": "CYPRUS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.310184",
-  "name": "CY"
- },
- {
-  "code": "DT",
-  "code_name": "DAKATE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.314928",
-  "name": "DT"
- },
- {
-  "code": "CX",
-  "code_name": "CHRISTMAS ISLAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.319551",
-  "name": "CX"
- },
- {
-  "code": "CV",
-  "code_name": "CAPE VERDE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.323233",
-  "name": "CV"
- },
- {
-  "code": "CU",
-  "code_name": "CUBA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.326759",
-  "name": "CU"
- },
- {
-  "code": "CS",
-  "code_name": "CZECHOSLOVAKIA (FORMER)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.330642",
-  "name": "CS"
- },
- {
-  "code": "CR",
-  "code_name": "COSTA RICA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.334301",
-  "name": "CR"
- },
- {
-  "code": "CO",
-  "code_name": "COLOMBIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.337911",
-  "name": "CO"
- },
- {
-  "code": "CN",
-  "code_name": "CHINA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.341288",
-  "name": "CN"
- },
- {
-  "code": "CM",
-  "code_name": "CAMEROON",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.344928",
-  "name": "CM"
- },
- {
-  "code": "CL",
-  "code_name": "CHILE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.349139",
-  "name": "CL"
- },
- {
-  "code": "CK",
-  "code_name": "COOK ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.353914",
-  "name": "CK"
- },
- {
-  "code": "CI",
-  "code_name": "COTE D'IVOIRE (IVORY COAST)",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.357784",
-  "name": "CI"
- },
- {
-  "code": "CH",
-  "code_name": "SWITZERLAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.361270",
-  "name": "CH"
- },
- {
-  "code": "CG",
-  "code_name": "CONGO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.365284",
-  "name": "CG"
- },
- {
-  "code": "CF",
-  "code_name": "CENTRAL AFRICAN REPUBLIC",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.369768",
-  "name": "CF"
- },
- {
-  "code": "CD",
-  "code_name": "CONGO, DEMOCRATIC REPUBLIC",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.373382",
-  "name": "CD"
- },
- {
-  "code": "CC",
-  "code_name": "COCOS (KEELING) ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.377036",
-  "name": "CC"
- },
- {
-  "code": "CA",
-  "code_name": "CANADA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.381383",
-  "name": "CA"
- },
- {
-  "code": "BZ",
-  "code_name": "BELIZE",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.385454",
-  "name": "BZ"
- },
- {
-  "code": "BY",
-  "code_name": "BELARUS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.389455",
-  "name": "BY"
- },
- {
-  "code": "BW",
-  "code_name": "BOTSWANA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.392770",
-  "name": "BW"
- },
- {
-  "code": "BV",
-  "code_name": "BOUVET ISLAND",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.396640",
-  "name": "BV"
- },
- {
-  "code": "BT",
-  "code_name": "BHUTAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.400909",
-  "name": "BT"
- },
- {
-  "code": "BS",
-  "code_name": "BAHAMAS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.405110",
-  "name": "BS"
- },
- {
-  "code": "BR",
-  "code_name": "BRAZIL",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.409377",
-  "name": "BR"
- },
- {
-  "code": "BO",
-  "code_name": "BOLIVIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.413960",
-  "name": "BO"
- },
- {
-  "code": "BN",
-  "code_name": "BRUNEI DARUSSALAM",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.418016",
-  "name": "BN"
- },
- {
-  "code": "BM",
-  "code_name": "BERMUDA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.422162",
-  "name": "BM"
- },
- {
-  "code": "BJ",
-  "code_name": "BENIN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.425936",
-  "name": "BJ"
- },
- {
-  "code": "BI",
-  "code_name": "BURUNDI",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.430466",
-  "name": "BI"
- },
- {
-  "code": "BH",
-  "code_name": "BAHRAIN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.434239",
-  "name": "BH"
- },
- {
-  "code": "BG",
-  "code_name": "BULGARIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.437868",
-  "name": "BG"
- },
- {
-  "code": "BF",
-  "code_name": "BURKINA FASO",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.441530",
-  "name": "BF"
- },
- {
-  "code": "BE",
-  "code_name": "BELGIUM",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.444953",
-  "name": "BE"
- },
- {
-  "code": "BD",
-  "code_name": "BANGLADESH",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.448765",
-  "name": "BD"
- },
- {
-  "code": "BB",
-  "code_name": "BARBADOS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.452451",
-  "name": "BB"
- },
- {
-  "code": "BA",
-  "code_name": "BOSNIA AND HERZEGOVINA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.456070",
-  "name": "BA"
- },
- {
-  "code": "AZ",
-  "code_name": "AZERBAIJAN",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.459207",
-  "name": "AZ"
- },
- {
-  "code": "AX",
-  "code_name": "ALAND ISLANDS",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.462565",
-  "name": "AX"
- },
- {
-  "code": "AW",
-  "code_name": "ARUBA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.466643",
-  "name": "AW"
- },
- {
-  "code": "AU",
-  "code_name": "AUSTRALIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.470850",
-  "name": "AU"
- },
- {
-  "code": "AT",
-  "code_name": "AUSTRIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.474963",
-  "name": "AT"
- },
- {
-  "code": "AS",
-  "code_name": "AMERICAN SAMOA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.479367",
-  "name": "AS"
- },
- {
-  "code": "AR",
-  "code_name": "ARGENTINA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.483547",
-  "name": "AR"
- },
- {
-  "code": "AQ",
-  "code_name": "ANTARCTICA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.487740",
-  "name": "AQ"
- },
- {
-  "code": "AO",
-  "code_name": "ANGOLA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.490921",
-  "name": "AO"
- },
- {
-  "code": "AN",
-  "code_name": "NETHERLANDS ANTILLES",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.494870",
-  "name": "AN"
- },
- {
-  "code": "AM",
-  "code_name": "ARMENIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.498974",
-  "name": "AM"
- },
- {
-  "code": "AL",
-  "code_name": "ALBANIA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.503087",
-  "name": "AL"
- },
- {
-  "code": "AI",
-  "code_name": "ANGUILLA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.506556",
-  "name": "AI"
- },
- {
-  "code": "AG",
-  "code_name": "ANTIGUA AND BARBUDA",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.510393",
-  "name": "AG"
- },
- {
-  "code": "AE",
-  "code_name": "UNITED ARAB EMIRATES",
-  "description": null,
-  "docstatus": 0,
-  "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.515519",
-  "name": "AE"
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AC"
  },
  {
   "code": "AD",
   "code_name": "ANDORRA",
-  "description": null,
+  "description": "ANDORRA",
   "docstatus": 0,
   "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.519731",
+  "modified": "2026-10-01 15:00:00.000000",
   "name": "AD"
  },
  {
-  "code": "AC",
-  "code_name": "ASCENSION ISLAND",
-  "description": null,
+  "code": "AE",
+  "code_name": "UNITED ARAB EMIRATES",
+  "description": "UNITED ARAB EMIRATES",
   "docstatus": 0,
   "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:48:53.523140",
-  "name": "AC"
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AE"
+ },
+ {
+  "code": "AG",
+  "code_name": "ANTIGUA AND BARBUDA",
+  "description": "ANTIGUA AND BARBUDA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AG"
+ },
+ {
+  "code": "AI",
+  "code_name": "ANGUILLA",
+  "description": "ANGUILLA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AI"
+ },
+ {
+  "code": "AL",
+  "code_name": "ALBANIA",
+  "description": "ALBANIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AL"
+ },
+ {
+  "code": "AM",
+  "code_name": "ARMENIA",
+  "description": "ARMENIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AM"
+ },
+ {
+  "code": "AN",
+  "code_name": "NETHERLANDS ANTILLES",
+  "description": "NETHERLANDS ANTILLES",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AN"
+ },
+ {
+  "code": "AO",
+  "code_name": "ANGOLA",
+  "description": "ANGOLA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AO"
+ },
+ {
+  "code": "AQ",
+  "code_name": "ANTARCTICA",
+  "description": "ANTARCTICA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AQ"
+ },
+ {
+  "code": "AR",
+  "code_name": "ARGENTINA",
+  "description": "ARGENTINA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AR"
+ },
+ {
+  "code": "AS",
+  "code_name": "AMERICAN SAMOA",
+  "description": "AMERICAN SAMOA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AS"
+ },
+ {
+  "code": "AT",
+  "code_name": "AUSTRIA",
+  "description": "AUSTRIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AT"
+ },
+ {
+  "code": "AU",
+  "code_name": "AUSTRALIA",
+  "description": "AUSTRALIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AU"
+ },
+ {
+  "code": "AW",
+  "code_name": "ARUBA",
+  "description": "ARUBA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AW"
+ },
+ {
+  "code": "AX",
+  "code_name": "ALAND ISLANDS",
+  "description": "ALAND ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AX"
+ },
+ {
+  "code": "AZ",
+  "code_name": "AZERBAIJAN",
+  "description": "AZERBAIJAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "AZ"
+ },
+ {
+  "code": "BA",
+  "code_name": "BOSNIA AND HERZEGOVINA",
+  "description": "BOSNIA AND HERZEGOVINA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BA"
+ },
+ {
+  "code": "BB",
+  "code_name": "BARBADOS",
+  "description": "BARBADOS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BB"
+ },
+ {
+  "code": "BD",
+  "code_name": "BANGLADESH",
+  "description": "BANGLADESH",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BD"
+ },
+ {
+  "code": "BE",
+  "code_name": "BELGIUM",
+  "description": "BELGIUM",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BE"
+ },
+ {
+  "code": "BF",
+  "code_name": "BURKINA FASO",
+  "description": "BURKINA FASO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BF"
+ },
+ {
+  "code": "BG",
+  "code_name": "BULGARIA",
+  "description": "BULGARIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BG"
+ },
+ {
+  "code": "BH",
+  "code_name": "BAHRAIN",
+  "description": "BAHRAIN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BH"
+ },
+ {
+  "code": "BI",
+  "code_name": "BURUNDI",
+  "description": "BURUNDI",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BI"
+ },
+ {
+  "code": "BJ",
+  "code_name": "BENIN",
+  "description": "BENIN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BJ"
+ },
+ {
+  "code": "BM",
+  "code_name": "BERMUDA",
+  "description": "BERMUDA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BM"
+ },
+ {
+  "code": "BN",
+  "code_name": "BRUNEI DARUSSALAM",
+  "description": "BRUNEI DARUSSALAM",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BN"
+ },
+ {
+  "code": "BO",
+  "code_name": "BOLIVIA",
+  "description": "BOLIVIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BO"
+ },
+ {
+  "code": "BR",
+  "code_name": "BRAZIL",
+  "description": "BRAZIL",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BR"
+ },
+ {
+  "code": "BS",
+  "code_name": "BAHAMAS",
+  "description": "BAHAMAS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BS"
+ },
+ {
+  "code": "BT",
+  "code_name": "BHUTAN",
+  "description": "BHUTAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BT"
+ },
+ {
+  "code": "BV",
+  "code_name": "BOUVET ISLAND",
+  "description": "BOUVET ISLAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BV"
+ },
+ {
+  "code": "BW",
+  "code_name": "BOTSWANA",
+  "description": "BOTSWANA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BW"
+ },
+ {
+  "code": "BY",
+  "code_name": "BELARUS",
+  "description": "BELARUS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BY"
+ },
+ {
+  "code": "BZ",
+  "code_name": "BELIZE",
+  "description": "BELIZE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "BZ"
+ },
+ {
+  "code": "CA",
+  "code_name": "CANADA",
+  "description": "CANADA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CA"
+ },
+ {
+  "code": "CC",
+  "code_name": "COCOS (KEELING) ISLANDS",
+  "description": "COCOS (KEELING) ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CC"
+ },
+ {
+  "code": "CD",
+  "code_name": "CONGO, DEMOCRATIC REPUBLIC",
+  "description": "CONGO, DEMOCRATIC REPUBLIC",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CD"
+ },
+ {
+  "code": "CF",
+  "code_name": "CENTRAL AFRICAN REPUBLIC",
+  "description": "CENTRAL AFRICAN REPUBLIC",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CF"
+ },
+ {
+  "code": "CG",
+  "code_name": "CONGO",
+  "description": "CONGO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CG"
+ },
+ {
+  "code": "CH",
+  "code_name": "SWITZERLAND",
+  "description": "SWITZERLAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CH"
+ },
+ {
+  "code": "CI",
+  "code_name": "COTE D'IVOIRE (IVORY COAST)",
+  "description": "COTE D'IVOIRE (IVORY COAST)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CI"
+ },
+ {
+  "code": "CK",
+  "code_name": "COOK ISLANDS",
+  "description": "COOK ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CK"
+ },
+ {
+  "code": "CL",
+  "code_name": "CHILE",
+  "description": "CHILE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CL"
+ },
+ {
+  "code": "CM",
+  "code_name": "CAMEROON",
+  "description": "CAMEROON",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CM"
+ },
+ {
+  "code": "CN",
+  "code_name": "CHINA",
+  "description": "CHINA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CN"
+ },
+ {
+  "code": "CO",
+  "code_name": "COLOMBIA",
+  "description": "COLOMBIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CO"
+ },
+ {
+  "code": "CR",
+  "code_name": "COSTA RICA",
+  "description": "COSTA RICA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CR"
+ },
+ {
+  "code": "CS",
+  "code_name": "CZECHOSLOVAKIA (FORMER)",
+  "description": "CZECHOSLOVAKIA (FORMER)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CS"
+ },
+ {
+  "code": "CU",
+  "code_name": "CUBA",
+  "description": "CUBA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CU"
+ },
+ {
+  "code": "CV",
+  "code_name": "CAPE VERDE",
+  "description": "CAPE VERDE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CV"
+ },
+ {
+  "code": "CX",
+  "code_name": "CHRISTMAS ISLAND",
+  "description": "CHRISTMAS ISLAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CX"
+ },
+ {
+  "code": "CY",
+  "code_name": "CYPRUS",
+  "description": "CYPRUS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CY"
+ },
+ {
+  "code": "CZ",
+  "code_name": "CZECH REPUBLIC",
+  "description": "CZECH REPUBLIC",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "CZ"
+ },
+ {
+  "code": "DE",
+  "code_name": "GERMANY",
+  "description": "GERMANY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "DE"
+ },
+ {
+  "code": "DJ",
+  "code_name": "DJIBOUTI",
+  "description": "DJIBOUTI",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "DJ"
+ },
+ {
+  "code": "DK",
+  "code_name": "DENMARK",
+  "description": "DENMARK",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "DK"
+ },
+ {
+  "code": "DM",
+  "code_name": "DOMINICA",
+  "description": "DOMINICA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "DM"
+ },
+ {
+  "code": "DO",
+  "code_name": "DOMINICAN REPUBLIC",
+  "description": "DOMINICAN REPUBLIC",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "DO"
+ },
+ {
+  "code": "DZ",
+  "code_name": "ALGERIA",
+  "description": "ALGERIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "DZ"
+ },
+ {
+  "code": "EC",
+  "code_name": "ECUADOR",
+  "description": "ECUADOR",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "EC"
+ },
+ {
+  "code": "EE",
+  "code_name": "ESTONIA",
+  "description": "ESTONIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "EE"
+ },
+ {
+  "code": "EG",
+  "code_name": "EGYPT",
+  "description": "EGYPT",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "EG"
+ },
+ {
+  "code": "EH",
+  "code_name": "WESTERN SAHARA",
+  "description": "WESTERN SAHARA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "EH"
+ },
+ {
+  "code": "ER",
+  "code_name": "ERITREA",
+  "description": "ERITREA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ER"
+ },
+ {
+  "code": "ES",
+  "code_name": "SPAIN",
+  "description": "SPAIN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ES"
+ },
+ {
+  "code": "ET",
+  "code_name": "ETHIOPIA",
+  "description": "ETHIOPIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ET"
+ },
+ {
+  "code": "EU",
+  "code_name": "EUROPEAN UNION",
+  "description": "EUROPEAN UNION",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "EU"
+ },
+ {
+  "code": "FI",
+  "code_name": "FINLAND",
+  "description": "FINLAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "FI"
+ },
+ {
+  "code": "FJ",
+  "code_name": "FIJI",
+  "description": "FIJI",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "FJ"
+ },
+ {
+  "code": "FK",
+  "code_name": "FALKLAND ISLANDS (MALVINAS)",
+  "description": "FALKLAND ISLANDS (MALVINAS)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "FK"
+ },
+ {
+  "code": "FM",
+  "code_name": "MICRONESIA",
+  "description": "MICRONESIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "FM"
+ },
+ {
+  "code": "FO",
+  "code_name": "FAROE ISLANDS",
+  "description": "FAROE ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "FO"
+ },
+ {
+  "code": "FR",
+  "code_name": "FRANCE",
+  "description": "FRANCE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "FR"
+ },
+ {
+  "code": "FX",
+  "code_name": "FRANCE, METROPOLITAN",
+  "description": "FRANCE, METROPOLITAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "FX"
+ },
+ {
+  "code": "GA",
+  "code_name": "GABON",
+  "description": "GABON",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GA"
+ },
+ {
+  "code": "GB",
+  "code_name": "GREAT BRITAIN (UK)",
+  "description": "GREAT BRITAIN (UK)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GB"
+ },
+ {
+  "code": "GD",
+  "code_name": "GRENADA",
+  "description": "GRENADA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GD"
+ },
+ {
+  "code": "GE",
+  "code_name": "GEORGIA",
+  "description": "GEORGIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GE"
+ },
+ {
+  "code": "GF",
+  "code_name": "FRENCH GUIANA",
+  "description": "FRENCH GUIANA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GF"
+ },
+ {
+  "code": "GG",
+  "code_name": "GUERNSEY",
+  "description": "GUERNSEY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GG"
+ },
+ {
+  "code": "GH",
+  "code_name": "GHANA",
+  "description": "GHANA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GH"
+ },
+ {
+  "code": "GI",
+  "code_name": "GIBRALTAR",
+  "description": "GIBRALTAR",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GI"
+ },
+ {
+  "code": "GL",
+  "code_name": "GREENLAND",
+  "description": "GREENLAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GL"
+ },
+ {
+  "code": "GM",
+  "code_name": "GAMBIA",
+  "description": "GAMBIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GM"
+ },
+ {
+  "code": "GN",
+  "code_name": "GUINEA",
+  "description": "GUINEA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GN"
+ },
+ {
+  "code": "GP",
+  "code_name": "GUADELOUPE",
+  "description": "GUADELOUPE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GP"
+ },
+ {
+  "code": "GQ",
+  "code_name": "EQUATORIAL GUINEA",
+  "description": "EQUATORIAL GUINEA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GQ"
+ },
+ {
+  "code": "GR",
+  "code_name": "GREECE",
+  "description": "GREECE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GR"
+ },
+ {
+  "code": "GS",
+  "code_name": "S. GEORGIA AND S. SANDWICH ISLS.",
+  "description": "S. GEORGIA AND S. SANDWICH ISLS.",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GS"
+ },
+ {
+  "code": "GT",
+  "code_name": "GUATEMALA",
+  "description": "GUATEMALA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GT"
+ },
+ {
+  "code": "GU",
+  "code_name": "GUAM",
+  "description": "GUAM",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GU"
+ },
+ {
+  "code": "GW",
+  "code_name": "GUINEA BISSAU",
+  "description": "GUINEA BISSAU",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GW"
+ },
+ {
+  "code": "GY",
+  "code_name": "GUYANA",
+  "description": "GUYANA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "GY"
+ },
+ {
+  "code": "HK",
+  "code_name": "HONG KONG",
+  "description": "HONG KONG",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "HK"
+ },
+ {
+  "code": "HM",
+  "code_name": "HEARD AND MCDONALD ISLANDS",
+  "description": "HEARD AND MCDONALD ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "HM"
+ },
+ {
+  "code": "HN",
+  "code_name": "HONDURAS",
+  "description": "HONDURAS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "HN"
+ },
+ {
+  "code": "HR",
+  "code_name": "CROATIA (HRVATSKA)",
+  "description": "CROATIA (HRVATSKA)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "HR"
+ },
+ {
+  "code": "HT",
+  "code_name": "HAITI",
+  "description": "HAITI",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "HT"
+ },
+ {
+  "code": "HU",
+  "code_name": "HUNGARY",
+  "description": "HUNGARY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "HU"
+ },
+ {
+  "code": "ID",
+  "code_name": "INDONESIA",
+  "description": "INDONESIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ID"
+ },
+ {
+  "code": "IE",
+  "code_name": "IRELAND",
+  "description": "IRELAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IE"
+ },
+ {
+  "code": "IL",
+  "code_name": "ISRAEL",
+  "description": "ISRAEL",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IL"
+ },
+ {
+  "code": "IM",
+  "code_name": "ISLE OF MAN",
+  "description": "ISLE OF MAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IM"
+ },
+ {
+  "code": "IN",
+  "code_name": "INDIA",
+  "description": "INDIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IN"
+ },
+ {
+  "code": "IO",
+  "code_name": "BRITISH INDIAN OCEAN TERRITORY",
+  "description": "BRITISH INDIAN OCEAN TERRITORY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IO"
+ },
+ {
+  "code": "IQ",
+  "code_name": "IRAQ",
+  "description": "IRAQ",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IQ"
+ },
+ {
+  "code": "IR",
+  "code_name": "IRAN",
+  "description": "IRAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IR"
+ },
+ {
+  "code": "IS",
+  "code_name": "ICELAND",
+  "description": "ICELAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IS"
+ },
+ {
+  "code": "IT",
+  "code_name": "ITALY",
+  "description": "ITALY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "IT"
+ },
+ {
+  "code": "JE",
+  "code_name": "JERSEY",
+  "description": "JERSEY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "JE"
+ },
+ {
+  "code": "JM",
+  "code_name": "JAMAICA",
+  "description": "JAMAICA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "JM"
+ },
+ {
+  "code": "JO",
+  "code_name": "JORDAN",
+  "description": "JORDAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "JO"
+ },
+ {
+  "code": "JP",
+  "code_name": "JAPAN",
+  "description": "JAPAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "JP"
  },
  {
   "code": "KE",
   "code_name": "KENYA",
+  "description": "KENYA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KE"
+ },
+ {
+  "code": "KG",
+  "code_name": "KYRGYZSTAN",
+  "description": "KYRGYZSTAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KG"
+ },
+ {
+  "code": "KH",
+  "code_name": "CAMBODIA",
+  "description": "CAMBODIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KH"
+ },
+ {
+  "code": "KI",
+  "code_name": "KIRIBATI",
+  "description": "KIRIBATI",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KI"
+ },
+ {
+  "code": "KM",
+  "code_name": "COMOROS",
+  "description": "COMOROS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KM"
+ },
+ {
+  "code": "KN",
+  "code_name": "SAINT KITTS AND NEVIS",
+  "description": "SAINT KITTS AND NEVIS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KN"
+ },
+ {
+  "code": "KP",
+  "code_name": "NORTH KOREA",
+  "description": "NORTH KOREA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KP"
+ },
+ {
+  "code": "KR",
+  "code_name": "SOUTH KOREA",
+  "description": "SOUTH KOREA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KR"
+ },
+ {
+  "code": "KW",
+  "code_name": "KUWAIT",
+  "description": "KUWAIT",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KW"
+ },
+ {
+  "code": "KY",
+  "code_name": "CAYMAN ISLANDS",
+  "description": "CAYMAN ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KY"
+ },
+ {
+  "code": "KZ",
+  "code_name": "KAZAKHSTAN",
+  "description": "KAZAKHSTAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "KZ"
+ },
+ {
+  "code": "LA",
+  "code_name": "LAOS",
+  "description": "LAOS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LA"
+ },
+ {
+  "code": "LB",
+  "code_name": "LEBANON",
+  "description": "LEBANON",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LB"
+ },
+ {
+  "code": "LC",
+  "code_name": "SAINT LUCIA",
+  "description": "SAINT LUCIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LC"
+ },
+ {
+  "code": "LI",
+  "code_name": "LIECHTENSTEIN",
+  "description": "LIECHTENSTEIN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LI"
+ },
+ {
+  "code": "LK",
+  "code_name": "SRI LANKA",
+  "description": "SRI LANKA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LK"
+ },
+ {
+  "code": "LR",
+  "code_name": "LIBERIA",
+  "description": "LIBERIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LR"
+ },
+ {
+  "code": "LS",
+  "code_name": "LESOTHO",
+  "description": "LESOTHO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LS"
+ },
+ {
+  "code": "LT",
+  "code_name": "LITHUANIA",
+  "description": "LITHUANIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LT"
+ },
+ {
+  "code": "LU",
+  "code_name": "LUXEMBOURG",
+  "description": "LUXEMBOURG",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LU"
+ },
+ {
+  "code": "LV",
+  "code_name": "LATVIA",
+  "description": "LATVIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LV"
+ },
+ {
+  "code": "LY",
+  "code_name": "LIBYA",
+  "description": "LIBYA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "LY"
+ },
+ {
+  "code": "MA",
+  "code_name": "MOROCCO",
+  "description": "MOROCCO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MA"
+ },
+ {
+  "code": "MC",
+  "code_name": "MONACO",
+  "description": "MONACO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MC"
+ },
+ {
+  "code": "MD",
+  "code_name": "MOLDOVA",
+  "description": "MOLDOVA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MD"
+ },
+ {
+  "code": "ME",
+  "code_name": "MONTENEGRO",
+  "description": "MONTENEGRO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ME"
+ },
+ {
+  "code": "MG",
+  "code_name": "MADAGASCAR",
+  "description": "MADAGASCAR",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MG"
+ },
+ {
+  "code": "MH",
+  "code_name": "MARSHALL ISLANDS",
+  "description": "MARSHALL ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MH"
+ },
+ {
+  "code": "MK",
+  "code_name": "F.Y.R.O.M. (MACEDONIA)",
+  "description": "F.Y.R.O.M. (MACEDONIA)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MK"
+ },
+ {
+  "code": "ML",
+  "code_name": "MALI",
+  "description": "MALI",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ML"
+ },
+ {
+  "code": "MM",
+  "code_name": "MYANMAR",
+  "description": "MYANMAR",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MM"
+ },
+ {
+  "code": "MN",
+  "code_name": "MONGOLIA",
+  "description": "MONGOLIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MN"
+ },
+ {
+  "code": "MO",
+  "code_name": "MACAU",
+  "description": "MACAU",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MO"
+ },
+ {
+  "code": "MP",
+  "code_name": "NORTHERN MARIANA ISLANDS",
+  "description": "NORTHERN MARIANA ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MP"
+ },
+ {
+  "code": "MQ",
+  "code_name": "MARTINIQUE",
+  "description": "MARTINIQUE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MQ"
+ },
+ {
+  "code": "MR",
+  "code_name": "MAURITANIA",
+  "description": "MAURITANIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MR"
+ },
+ {
+  "code": "MS",
+  "code_name": "MONTSERRAT MONTSERRAT",
   "description": null,
   "docstatus": 0,
   "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-04-11 14:46:27.326236",
-  "name": "KE"
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MS"
+ },
+ {
+  "code": "MT",
+  "code_name": "MALTA",
+  "description": "MALTA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MT"
+ },
+ {
+  "code": "MU",
+  "code_name": "MAURITIUS",
+  "description": "MAURITIUS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MU"
+ },
+ {
+  "code": "MV",
+  "code_name": "MALDIVES",
+  "description": "MALDIVES",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MV"
+ },
+ {
+  "code": "MW",
+  "code_name": "MALAWI",
+  "description": "MALAWI",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MW"
+ },
+ {
+  "code": "MX",
+  "code_name": "MEXICO",
+  "description": "MEXICO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MX"
+ },
+ {
+  "code": "MY",
+  "code_name": "MALAYSIA",
+  "description": "MALAYSIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MY"
+ },
+ {
+  "code": "MZ",
+  "code_name": "MOZAMBIQUE",
+  "description": "MOZAMBIQUE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "MZ"
+ },
+ {
+  "code": "NA",
+  "code_name": "NAMIBIA",
+  "description": "NAMIBIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NA"
+ },
+ {
+  "code": "NC",
+  "code_name": "NEW CALEDONIA",
+  "description": "NEW CALEDONIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NC"
+ },
+ {
+  "code": "NE",
+  "code_name": "NIGER",
+  "description": "NIGER",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NE"
+ },
+ {
+  "code": "NF",
+  "code_name": "NORFOLK ISLAND",
+  "description": "NORFOLK ISLAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NF"
+ },
+ {
+  "code": "NG",
+  "code_name": "NIGERIA",
+  "description": "NIGERIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NG"
+ },
+ {
+  "code": "NI",
+  "code_name": "NICARAGUA",
+  "description": "NICARAGUA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NI"
+ },
+ {
+  "code": "NL",
+  "code_name": "NETHERLANDS",
+  "description": "NETHERLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NL"
+ },
+ {
+  "code": "NO",
+  "code_name": "NORWAY",
+  "description": "NORWAY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NO"
+ },
+ {
+  "code": "NP",
+  "code_name": "NEPAL",
+  "description": "NEPAL",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NP"
+ },
+ {
+  "code": "NR",
+  "code_name": "NAURU",
+  "description": "NAURU",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NR"
+ },
+ {
+  "code": "NT",
+  "code_name": "NEUTRAL ZONE",
+  "description": "NEUTRAL ZONE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NT"
+ },
+ {
+  "code": "NU",
+  "code_name": "NIUE",
+  "description": "NIUE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NU"
+ },
+ {
+  "code": "NZ",
+  "code_name": "NEW ZEALAND (AOTEAROA)",
+  "description": "NEW ZEALAND (AOTEAROA)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "NZ"
+ },
+ {
+  "code": "OM",
+  "code_name": "OMAN",
+  "description": "OMAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "OM"
+ },
+ {
+  "code": "PA",
+  "code_name": "PANAMA",
+  "description": "PANAMA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PA"
+ },
+ {
+  "code": "PE",
+  "code_name": "PERU",
+  "description": "PERU",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PE"
+ },
+ {
+  "code": "PF",
+  "code_name": "FRENCH POLYNESIA",
+  "description": "FRENCH POLYNESIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PF"
+ },
+ {
+  "code": "PG",
+  "code_name": "PAPUA NEW GUINEA",
+  "description": "PAPUA NEW GUINEA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PG"
+ },
+ {
+  "code": "PH",
+  "code_name": "PHILIPPINES",
+  "description": "PHILIPPINES",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PH"
+ },
+ {
+  "code": "PK",
+  "code_name": "PAKISTAN",
+  "description": "PAKISTAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PK"
+ },
+ {
+  "code": "PL",
+  "code_name": "POLAND",
+  "description": "POLAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PL"
+ },
+ {
+  "code": "PM",
+  "code_name": "ST. PIERRE AND MIQUELON",
+  "description": "ST. PIERRE AND MIQUELON",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PM"
+ },
+ {
+  "code": "PN",
+  "code_name": "PITCAIRN",
+  "description": "PITCAIRN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PN"
+ },
+ {
+  "code": "PR",
+  "code_name": "PUERTO RICO",
+  "description": "PUERTO RICO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PR"
+ },
+ {
+  "code": "PS",
+  "code_name": "PALESTINIAN TERRITORY, OCCUPIED",
+  "description": "PALESTINIAN TERRITORY, OCCUPIED",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PS"
+ },
+ {
+  "code": "PT",
+  "code_name": "PORTUGAL",
+  "description": "PORTUGAL",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PT"
+ },
+ {
+  "code": "PW",
+  "code_name": "PALAU",
+  "description": "PALAU",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PW"
+ },
+ {
+  "code": "PY",
+  "code_name": "PARAGUAY",
+  "description": "PARAGUAY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "PY"
+ },
+ {
+  "code": "QA",
+  "code_name": "QATAR",
+  "description": "QATAR",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "QA"
+ },
+ {
+  "code": "RE",
+  "code_name": "REUNION",
+  "description": "REUNION",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "RE"
+ },
+ {
+  "code": "RO",
+  "code_name": "ROMANIA",
+  "description": "ROMANIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "RO"
+ },
+ {
+  "code": "RS",
+  "code_name": "SERBIA",
+  "description": "SERBIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "RS"
+ },
+ {
+  "code": "RU",
+  "code_name": "RUSSIAN FEDERATION",
+  "description": "RUSSIAN FEDERATION",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "RU"
+ },
+ {
+  "code": "RW",
+  "code_name": "RWANDA",
+  "description": "RWANDA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "RW"
+ },
+ {
+  "code": "SA",
+  "code_name": "SAUDI ARABIA",
+  "description": "SAUDI ARABIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SA"
+ },
+ {
+  "code": "SB",
+  "code_name": "SOLOMON ISLANDS",
+  "description": "SOLOMON ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SB"
+ },
+ {
+  "code": "SC",
+  "code_name": "SEYCHELLES",
+  "description": "SEYCHELLES",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SC"
+ },
+ {
+  "code": "SD",
+  "code_name": "SUDAN",
+  "description": "SUDAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SD"
+ },
+ {
+  "code": "SE",
+  "code_name": "SWEDEN",
+  "description": "SWEDEN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SE"
+ },
+ {
+  "code": "SG",
+  "code_name": "SINGAPORE",
+  "description": "SINGAPORE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SG"
+ },
+ {
+  "code": "SH",
+  "code_name": "ST. HELENA",
+  "description": "ST. HELENA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SH"
+ },
+ {
+  "code": "SI",
+  "code_name": "SLOVENIA",
+  "description": "SLOVENIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SI"
+ },
+ {
+  "code": "SJ",
+  "code_name": "SVALBARD & JAN MAYEN ISLANDS",
+  "description": "SVALBARD & JAN MAYEN ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SJ"
+ },
+ {
+  "code": "SK",
+  "code_name": "SLOVAK REPUBLIC",
+  "description": "SLOVAK REPUBLIC",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SK"
+ },
+ {
+  "code": "SL",
+  "code_name": "SIERRA LEONE",
+  "description": "SIERRA LEONE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SL"
+ },
+ {
+  "code": "SM",
+  "code_name": "SAN MARINO",
+  "description": "SAN MARINO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SM"
+ },
+ {
+  "code": "SN",
+  "code_name": "SENEGAL",
+  "description": "SENEGAL",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SN"
+ },
+ {
+  "code": "SO",
+  "code_name": "SOMALIA",
+  "description": "SOMALIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SO"
+ },
+ {
+  "code": "SR",
+  "code_name": "SURINAME",
+  "description": "SURINAME",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SR"
+ },
+ {
+  "code": "ST",
+  "code_name": "SAO TOME AND PRINCIPE",
+  "description": "SAO TOME AND PRINCIPE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ST"
+ },
+ {
+  "code": "SU",
+  "code_name": "USSR (FORMER)",
+  "description": "USSR (FORMER)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SU"
+ },
+ {
+  "code": "SV",
+  "code_name": "EL SALVADOR",
+  "description": "EL SALVADOR",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SV"
+ },
+ {
+  "code": "SY",
+  "code_name": "SYRIA",
+  "description": "SYRIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SY"
+ },
+ {
+  "code": "SZ",
+  "code_name": "SWAZILAND",
+  "description": "SWAZILAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "SZ"
+ },
+ {
+  "code": "TC",
+  "code_name": "TURKS AND CAICOS ISLANDS",
+  "description": "TURKS AND CAICOS ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TC"
+ },
+ {
+  "code": "TD",
+  "code_name": "CHAD",
+  "description": "CHAD",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TD"
+ },
+ {
+  "code": "TF",
+  "code_name": "FRENCH SOUTHERN TERRITORIES",
+  "description": "FRENCH SOUTHERN TERRITORIES",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TF"
+ },
+ {
+  "code": "TG",
+  "code_name": "TOGO",
+  "description": "TOGO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TG"
+ },
+ {
+  "code": "TH",
+  "code_name": "THAILAND",
+  "description": "THAILAND",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TH"
+ },
+ {
+  "code": "TJ",
+  "code_name": "TAJIKISTAN",
+  "description": "TAJIKISTAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TJ"
+ },
+ {
+  "code": "TK",
+  "code_name": "TOKELAU",
+  "description": "TOKELAU",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TK"
+ },
+ {
+  "code": "TM",
+  "code_name": "TURKMENISTAN",
+  "description": "TURKMENISTAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TM"
+ },
+ {
+  "code": "TN",
+  "code_name": "TUNISIA",
+  "description": "TUNISIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TN"
+ },
+ {
+  "code": "TO",
+  "code_name": "TONGA",
+  "description": "TONGA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TO"
+ },
+ {
+  "code": "TP",
+  "code_name": "EAST TIMOR",
+  "description": "EAST TIMOR",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TP"
+ },
+ {
+  "code": "TR",
+  "code_name": "TURKEY",
+  "description": "TURKEY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TR"
+ },
+ {
+  "code": "TT",
+  "code_name": "TRINIDAD AND TOBAGO",
+  "description": "TRINIDAD AND TOBAGO",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TT"
+ },
+ {
+  "code": "TV",
+  "code_name": "TUVALU",
+  "description": "TUVALU",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TV"
+ },
+ {
+  "code": "TW",
+  "code_name": "TAIWAN",
+  "description": "TAIWAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TW"
+ },
+ {
+  "code": "TZ",
+  "code_name": "TANZANIA",
+  "description": "TANZANIA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "TZ"
+ },
+ {
+  "code": "UA",
+  "code_name": "UKRAINE",
+  "description": "UKRAINE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "UA"
+ },
+ {
+  "code": "UG",
+  "code_name": "UGANDA",
+  "description": "UGANDA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "UG"
+ },
+ {
+  "code": "UK",
+  "code_name": "UNITED KINGDOM",
+  "description": "UNITED KINGDOM",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "UK"
+ },
+ {
+  "code": "UM",
+  "code_name": "US MINOR OUTLYING ISLANDS",
+  "description": "US MINOR OUTLYING ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "UM"
+ },
+ {
+  "code": "US",
+  "code_name": "UNITED STATES",
+  "description": "UNITED STATES",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "US"
+ },
+ {
+  "code": "UY",
+  "code_name": "URUGUAY",
+  "description": "URUGUAY",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "UY"
+ },
+ {
+  "code": "UZ",
+  "code_name": "UZBEKISTAN",
+  "description": "UZBEKISTAN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "UZ"
+ },
+ {
+  "code": "VA",
+  "code_name": "VATICAN CITY STATE (HOLY SEE)",
+  "description": "VATICAN CITY STATE (HOLY SEE)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "VA"
+ },
+ {
+  "code": "VC",
+  "code_name": "SAINT VINCENT & THE GRENADINES",
+  "description": "SAINT VINCENT & THE GRENADINES",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "VC"
+ },
+ {
+  "code": "VE",
+  "code_name": "VENEZUELA",
+  "description": "VENEZUELA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "VE"
+ },
+ {
+  "code": "VG",
+  "code_name": "BRITISH VIRGIN ISLANDS",
+  "description": "BRITISH VIRGIN ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "VG"
+ },
+ {
+  "code": "VI",
+  "code_name": "VIRGIN ISLANDS (U.S.)",
+  "description": "VIRGIN ISLANDS (U.S.)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "VI"
+ },
+ {
+  "code": "VN",
+  "code_name": "VIET NAM",
+  "description": "VIET NAM",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "VN"
+ },
+ {
+  "code": "VU",
+  "code_name": "VANUATU",
+  "description": "VANUATU",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "VU"
+ },
+ {
+  "code": "WF",
+  "code_name": "WALLIS AND FUTUNA ISLANDS",
+  "description": "WALLIS AND FUTUNA ISLANDS",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "WF"
+ },
+ {
+  "code": "WS",
+  "code_name": "SAMOA",
+  "description": "SAMOA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "WS"
+ },
+ {
+  "code": "YE",
+  "code_name": "YEMEN",
+  "description": "YEMEN",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "YE"
+ },
+ {
+  "code": "YT",
+  "code_name": "MAYOTTE",
+  "description": "MAYOTTE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "YT"
+ },
+ {
+  "code": "YU",
+  "code_name": "SERBIA AND MONTENEGRO (FORMER)",
+  "description": "SERBIA AND MONTENEGRO (FORMER)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "YU"
+ },
+ {
+  "code": "ZA",
+  "code_name": "SOUTH AFRICA",
+  "description": "SOUTH AFRICA",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ZA"
  },
  {
   "code": "ZM",
   "code_name": "ZAMBIA",
-  "description": null,
+  "description": "ZAMBIA",
   "docstatus": 0,
   "doctype": "ZRA SIS Country Codes",
-  "modified": "2026-03-03 11:58:57.407057",
+  "modified": "2026-10-01 15:00:00.000000",
   "name": "ZM"
+ },
+ {
+  "code": "ZR",
+  "code_name": "(ZAIRE) (See CD CONGO, DEMOCRATIC REPUBLIC)",
+  "description": "(ZAIRE) (See CD CONGO, DEMOCRATIC REPUBLIC)",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ZR"
+ },
+ {
+  "code": "ZW",
+  "code_name": "ZIMBABWE",
+  "description": "ZIMBABWE",
+  "docstatus": 0,
+  "doctype": "ZRA SIS Country Codes",
+  "modified": "2026-10-01 15:00:00.000000",
+  "name": "ZW"
  }
 ]
