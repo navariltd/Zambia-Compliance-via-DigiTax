@@ -98,7 +98,7 @@ def get_active_smart_settings() -> list[dict]:
 	settings = frappe.get_all(
 		"ZRA SIS Settings",
 		filters={"is_active": 1},
-		fields=["name", "company_name", "tpin", "api_server_url"],
+		fields=["name", "company_name", "tpin", "api_server_url", "environment"],
 	)
 
 	if not settings:
@@ -113,6 +113,7 @@ def get_active_smart_settings() -> list[dict]:
 				"tpin": s.get("tpin"),
 				"bhfId": "000",  # Default branch ID; can be replaced by real value
 				"api_url": s.get("api_server_url"),
+				"environment": s.get("environment"),
 				"is_valid": True,
 			}
 		)
