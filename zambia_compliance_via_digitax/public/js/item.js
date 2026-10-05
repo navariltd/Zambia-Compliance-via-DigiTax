@@ -1,6 +1,21 @@
 const itemDoctypeName = "Item";
 
 frappe.ui.form.on(itemDoctypeName, {
+	setup: function (frm) {
+		frm.set_query("custom_smart_item_classification_code", () => ({
+			filters: getClassificationFilters(frm),
+		}));
+	},
+
+	onload: function (frm) {
+		frappe.call({
+			method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.utils.smart_api_utils.get_active_smart_settings",
+			callback: (r) => {
+				frm.zra_environments = (r.message || []).map((s) => s.environment).filter(Boolean);
+			},
+		});
+	},
+
 	refresh: async function (frm) {
 		if (frm.is_new()) return;
 
@@ -68,6 +83,14 @@ frappe.ui.form.on(itemDoctypeName, {
 		frm.set_value("is_stock_item", frm.doc.custom_product_type_name !== "Service" ? 1 : 0);
 	},
 });
+
+function getClassificationFilters(frm) {
+	const environments = frm.zra_environments || [];
+	if (environments.includes("Production") || !environments.length) {
+		return { available_in_production: 1 };
+	}
+	return { available_in_sandbox: 1 };
+}
 
 // 🔹 Helper: Get company name from settings
 function getCompanyName(allSettings, settingName) {

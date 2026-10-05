@@ -113,6 +113,8 @@ def perform_item_registration(
 		)
 		return None
 
+	validate_classification_for_environment(item, settings)
+
 	# Update Item Tax Templates if VAT category changed
 	if hasattr(item, "has_value_changed"):
 		is_tax_type_changed = item.has_value_changed("custom_smart_tax_type_code")
@@ -254,6 +256,24 @@ def _process_item_registration(item_name, settings_name, branch=None, branch_cod
         )
         return  # exit safely, prevents retry
 	
+
+def validate_classification_for_environment(item, settings) -> None:
+	"""Block registration when the item's classification code isn't accepted in the settings' environment."""
+	environment = settings.get("environment")
+	code = item.get("custom_smart_item_classification_code")
+	if not environment or not code:
+		return
+
+	availability_field = "available_in_sandbox" if environment == "Sandbox" else "available_in_production"
+	if not frappe.db.get_value("ZRA SIS Item Classification Codes", code, availability_field):
+		frappe.throw(
+			_(
+				"Item Classification Code {0} is not available in the DigiTax {1} environment used by {2}. "
+				"Pick a code available in {1}."
+			).format(code, environment, settings.get("name")),
+			title=_("Invalid Item Classification Code"),
+		)
+
 
 def validate_required_fields(item) -> list:
 	"""Validate required fields for item registration"""
