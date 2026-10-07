@@ -47,9 +47,6 @@ def update_item(doc, method=None, settings_name=None, branch=None) -> dict | Non
 
 	# Item ID stored in custom field (adjust if different)
 	
-
-	
-
 	frappe.enqueue(
 		process_request,
 		queue="default",

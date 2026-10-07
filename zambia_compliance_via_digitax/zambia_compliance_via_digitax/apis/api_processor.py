@@ -75,6 +75,14 @@ def process_request(
 	if request_method.upper() == "GET" and "?" in url:
 		data = None
 	if headers and server_url and route_path:
+		# frappe.throw(frappe.as_json({
+		# 	    "method": request_method.upper(),
+        #         "url": url,
+        #         "route_key": route_key,
+        #         "headers": headers,
+        #         "body": data,
+
+		# }, indent=2))
 		return execute_request(
 			headers,
 			url,

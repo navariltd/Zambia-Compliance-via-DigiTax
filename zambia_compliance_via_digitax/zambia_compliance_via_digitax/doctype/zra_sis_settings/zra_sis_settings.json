@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "ZRA-SIS-.###",
  "creation": "2026-03-03 09:55:11.956912",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -9,6 +10,8 @@
   "tpin",
   "column_break_voyc",
   "api_server_url",
+  "callback_url",
+  "is_development_",
   "section_break_vmzu",
   "environment",
   "sandbox_environment",
@@ -188,15 +191,27 @@
    "fieldname": "default_tax_rate",
    "fieldtype": "Float",
    "label": "Default Tax Rate"
+  },
+  {
+   "fieldname": "callback_url",
+   "fieldtype": "Data",
+   "label": "Callback Url (For Development Only)"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_development_",
+   "fieldtype": "Check",
+   "label": "Is Development ?"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-12 00:27:48.906726",
+ "modified": "2026-09-16 16:46:00.710206",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Settings",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

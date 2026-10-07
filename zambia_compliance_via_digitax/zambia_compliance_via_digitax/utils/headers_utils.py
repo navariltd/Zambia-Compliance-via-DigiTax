@@ -17,9 +17,6 @@ def build_headers(settings_name: str | None = None) -> dict[str, str] | None:
 
 	api_key = settings.get("api_key")
 
-
-
-
 	# Build base headers
 	headers = {
 		"X-API-Key": api_key,

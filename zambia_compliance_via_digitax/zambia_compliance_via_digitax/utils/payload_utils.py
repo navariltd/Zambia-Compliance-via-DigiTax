@@ -3,7 +3,7 @@ from frappe.model.document import Document
 from frappe.utils import getdate
 from datetime import datetime
 from urllib.parse import urlparse
-
+import json
 from frappe.utils import get_url
 from frappe.utils import  now_datetime, add_to_date
 
@@ -12,6 +12,9 @@ from datetime import datetime
 
 def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
     customer = frappe.get_doc("Customer", invoice.customer)
+    # print(invoice)
+
+    # frappe.throw(invoice.as_dict)
 
     sale_date = datetime.strptime(
         str(invoice.posting_date), "%Y-%m-%d"
@@ -72,7 +75,7 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
         "kind": invoice.custom_kind_of_sale,
         "sale_date": sale_date.isoformat(),
         "currency_code": currency,
-        "customer_tin": frappe.get_value("Customer", invoice.customer, "tax_id"),
+        "customer_tin": frappe.get_value("Customer", invoice.customer, "tax_id") or None,
         "customer_name": customer.customer_name,
         "customer_phone": customer.get("mobile_no") or "",
         "customer_id": frappe.get_value("Customer", invoice.customer, "custom_sis_customer_id") or "",
@@ -161,6 +164,7 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 
     payload["items"] = items
 
+
     return payload
 
 def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
@@ -212,25 +216,46 @@ def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
 
 
 
-
 def build_callback_url(endpoint: str) -> str:
     """
-    Build a full callback URL that works both inside and outside request context.
+    Build the callback URL based on ZRA SIS Settings.
+
+    If is_development is enabled, use the callback_url configured
+    in ZRA SIS Settings (for example, an ngrok URL).
+
+    Otherwise, use the site's normal Frappe URL.
     """
 
-    base_url = get_url()
+    settings = frappe.db.get_value(
+        "ZRA SIS Settings",
+        {"is_active": 1},
+        ["is_development_", "callback_url"],
+        as_dict=True,
+    )
 
-    parsed_url = urlparse(base_url)
+    base_url = "https://e8a5-102-215-34-22.ngrok-free.app"
+    # # Development mode: use configured callback URL
+    # if settings and settings.is_development and settings.callback_url:
+    #     return base_url
 
-    # Optional cleanup for localhost / IP cases
-    if parsed_url.hostname:
-        if (
-            parsed_url.hostname == "localhost"
-            or parsed_url.hostname.replace(".", "").isdigit()
-        ):
-            base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+    # # Live/normal mode: use Frappe site URL
+    # else:
+    #     base_url = get_url().rstrip("/")
 
-    return f"{base_url}/api/method/{endpoint}"
+    #     parsed_url = urlparse(base_url)
+
+    #     # Optional cleanup for localhost / IP cases
+    #     if parsed_url.hostname:
+    #         if (
+    #             parsed_url.hostname == "localhost"
+    #             or parsed_url.hostname.replace(".", "").isdigit()
+    #         ):
+    #             base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+    last =f"{base_url}/api/method/{endpoint}"
+    return last 
+
+
+
 
 def build_note_payload(doc, settings_name, note_type="credit", callback_url=None):
     # Map dynamic fields

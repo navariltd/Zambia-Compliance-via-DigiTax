@@ -5,10 +5,9 @@ const childDoctype = `${parentDoctype} Item`;
 
 const settingsDoctypeName = " ZRA SIS Settings";
 
-// === Real-time form refresh handler ===
-frappe.realtime.on("refresh_form", function (name) {
+frappe.realtime.on("refresh_form", function (data) {
 	const currentForm = frappe.ui.form.get_open_form();
-	if (currentForm && currentForm.doc.name === name) {
+	if (currentForm && currentForm.doc.name === data.name) {
 		currentForm.reload_doc();
 	}
 });
@@ -46,7 +45,7 @@ po_no: function (frm) {
 					executeVSDCAction("Send Invoice", activeSetting, (settings_name) => ({
 						method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.send_invoice_details",
 						args: { name: frm.doc.name, settings_name: settings_name },
-						success_msg: "Invoice submission queued",
+						success_msg: "Invoice sent to ZRA Please Refresh the page",
 					}));
 				},
 				__("SIS Actions")
@@ -168,3 +167,4 @@ function set_kind_of_sale(frm) {
 			}
 		});
 }
+

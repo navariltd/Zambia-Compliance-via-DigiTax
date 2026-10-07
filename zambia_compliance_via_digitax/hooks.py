@@ -11,13 +11,20 @@ from .zambia_compliance_via_digitax.doctype.doctype_names_mapping import (ROUTES
 )
 
 fixtures = [
-    {"dt": ROUTES_TABLE_DOCTYPE_NAME},
-    {"dt": ITEM_CLASSIFICATIONS_DOCTYPE_NAME},
-    {"dt": ITEM_TYPE_DOCTYPE_NAME},
-    {"dt": COUNTRY_DOCTYPE_NAME},
-    {"dt": PACKAGING_UNIT_DOCTYPE_NAME},
-    {"dt": UNIT_OF_QUANTITY_DOCTYPE_NAME},
-    {"dt": TAXATION_TYPE_DOCTYPE_NAME},
+    # {"dt": ROUTES_TABLE_DOCTYPE_NAME},
+    # {"dt": ITEM_CLASSIFICATIONS_DOCTYPE_NAME},
+    # {"dt": ITEM_TYPE_DOCTYPE_NAME},
+    # {"dt": COUNTRY_DOCTYPE_NAME},
+    # {"dt": PACKAGING_UNIT_DOCTYPE_NAME},
+    # {"dt": UNIT_OF_QUANTITY_DOCTYPE_NAME},
+    # {"dt": TAXATION_TYPE_DOCTYPE_NAME},
+    {
+        "dt": "Custom Field",
+        "filters": [["dt", "in", ["Item","Sales Invoice","Sales Taxes and Charges Template","Sales Invoice Item","Stock Ledger Entry","Customer","Item Tax Template"]]],
+
+
+    },
+    
 ]
 
 # Apps
