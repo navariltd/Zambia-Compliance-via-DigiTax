@@ -163,6 +163,11 @@ doc_events = {
 		 "on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.on_update"],
 		 "on_trash": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.on_trash"],
 	},
+	"Customer": {
+		"validate": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.customer.validate"],
+		"on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.customer.on_update"],
+		"on_trash": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.customer.on_trash"],
+	},
 		"Sales Invoice": {
              "on_update": [
             "zambia_compliance_via_digitax.zambia_compliance_via_digitax.utils.tax_utils.after_save"

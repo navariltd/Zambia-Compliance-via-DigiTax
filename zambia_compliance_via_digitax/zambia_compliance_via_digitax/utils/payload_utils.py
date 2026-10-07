@@ -266,50 +266,6 @@ def build_note_payload(doc, settings_name, note_type="credit", callback_url=None
 ]
     return payload
 
-def build_customer_payload(doc) -> dict:
-    if not doc:
-        frappe.throw("Customer document is required")
-    payload = {
-        "customer_name": doc.customer_name,
-        "customer_tin": doc.tax_id,
-        "email": doc.email_id or None,
-        "is_lpo": bool(getattr(doc, "custom_is_lpo", 0)),
-        "phone": doc.mobile_no or "",
-        "address": get_customer_address(doc)
-    }
-    if not payload["customer_name"]:
-        frappe.throw("Customer Name is required")
-    if not payload["customer_tin"]:
-        frappe.throw(f"TIN is required for customer {doc.name}")
-    if not payload["phone"]:
-        frappe.throw(f"Phone number is required for customer {doc.name}")
-    return payload
-
-def get_customer_address(doc) -> str | None:
-
-    address = frappe.db.get_value(
-        "Address",
-        {
-            "link_doctype": "Customer",
-            "link_name": doc.name,
-            "is_primary_address": 1,
-        },
-        ["address_line1", "address_line2", "city"],
-        as_dict=True,
-    )
-
-    if not address:
-        return None
-
-    return " ".join(
-        part for part in [
-            address.address_line1,
-            address.address_line2,
-            address.city,
-        ]
-        if part
-    )
-
 def get_zmw_conversion_rate(currency, company_currency, posting_date=None):
  
     if not posting_date:
