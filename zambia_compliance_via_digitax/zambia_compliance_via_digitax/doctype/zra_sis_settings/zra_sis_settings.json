@@ -21,6 +21,7 @@
   "callback_base_url",
   "tab_3_tab",
   "submission_frequency_settings_section",
+  "auto_register_items",
   "sales_auto_submission_enabled",
   "sales_submission_frequency",
   "column_break_wgnl",
@@ -150,6 +151,13 @@
    "label": "Submission Frequency Settings"
   },
   {
+   "default": "1",
+   "description": "Register items with DigiTax automatically when they are saved with all SIS fields filled in.",
+   "fieldname": "auto_register_items",
+   "fieldtype": "Check",
+   "label": "Auto Register Items"
+  },
+  {
    "default": "0",
    "fieldname": "sales_auto_submission_enabled",
    "fieldtype": "Check",
@@ -233,7 +241,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-01 13:00:00.000000",
+ "modified": "2026-10-06 10:00:00.000000",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Settings",

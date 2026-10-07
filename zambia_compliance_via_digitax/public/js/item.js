@@ -1,89 +1,58 @@
-const itemDoctypeName = "Item";
+const SIS_GROUP = __("ZRA SIS");
 
-frappe.ui.form.on(itemDoctypeName, {
-	setup: function (frm) {
+frappe.ui.form.on("Item", {
+	setup(frm) {
 		frm.set_query("custom_smart_item_classification_code", () => ({
 			filters: getClassificationFilters(frm),
 		}));
 	},
 
-	onload: function (frm) {
+	onload(frm) {
 		frappe.call({
 			method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.utils.smart_api_utils.get_active_smart_settings",
 			callback: (r) => {
-				frm.zra_environments = (r.message || []).map((s) => s.environment).filter(Boolean);
+				frm.zra_settings = r.message || [];
+				frm.zra_environments = frm.zra_settings.map((s) => s.environment).filter(Boolean);
+				frm.trigger("refresh_sis_actions");
 			},
 		});
 	},
 
-	refresh: async function (frm) {
-		if (frm.is_new()) return;
+	refresh(frm) {
+		frm.trigger("refresh_sis_actions");
+	},
 
-		//  Fetch Smart compliance data for this item
-		const { message: data } = await frappe.call({
-			method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.utils.smart_api_utils.get_smart_action_data",
-			args: {
-				doctype: frm.doctype,
-				docname: frm.doc.name,
-			},
-		});
+	refresh_sis_actions(frm) {
+		if (frm.is_new() || !frm.zra_settings?.length) return;
 
-		const allSettings = data?.settings || [];
-		const registeredMappings = data?.registered_mappings || [];
-		const unregisteredSettings = data?.unregistered_settings || [];
+		const remoteId = frm.doc.custom_smart_remote_id;
+		const registered = remoteId && frm.doc.custom_smart_status !== "FAILED";
 
-		if (!allSettings.length) return;
-
-		const registered = data?.registered;
-
-		// 🔹 For registered and unregistered items, show multi-company aware actions
-		if (!frm.is_new()) {
-			if (!registered) {
-				// Show "Register Item" for unregistered companies
-				const canRegister = unregisteredSettings.length > 0;
-				if (canRegister) {
-					frm.add_custom_button(
-						__("Register Item (SIS)"),
-						function () {
-							showCompanySelectionModal(frm, "register_item", unregisteredSettings);
-						},
-						__("SIS Actions")
-					);
-				}
-			} else {
-				// Registered mappings found → enable fetch, update, inventory
-				const mappedCompanies = registeredMappings.map((r) => ({
-					name: r.smart_setup,
-					company: getCompanyName(allSettings, r.smart_setup),
-				}));
-
-		
-				frm.add_custom_button(
-					__("Fetch Item Details"),
-					function () {
-						showCompanySelectionModal(frm, "fetch_item_details", mappedCompanies);
-					},
-					__("SIS Actions")
-				);
-			
-				frm.add_custom_button(
-					__("Update Item (Smart)"),
-					function () {
-						showCompanySelectionModal(frm, "update_item", mappedCompanies);
-					},
-					__("SIS Actions")
-				);
-
-			}
+		if (!registered) {
+			frm.add_custom_button(__("Register with ZRA"), () => registerItem(frm), SIS_GROUP);
+			frm.add_custom_button(__("Link Existing DigiTax Item"), () => linkExistingItem(frm), SIS_GROUP);
 		}
-	},
 
-	// Optional: sync product type with stock flag
-	custom_product_type_name: function (frm) {
-		frm.set_value("is_stock_item", frm.doc.custom_product_type_name !== "Service" ? 1 : 0);
+		if (remoteId) {
+			frm.add_custom_button(
+				__("Refresh Status"),
+				() => runItemAction(frm, "refresh_item", {}, __("Refreshing from DigiTax...")),
+				SIS_GROUP
+			);
+		}
+
+		if (registered) {
+			frm.add_custom_button(
+				__("Update Name and Price"),
+				() => runItemAction(frm, "update_item", {}, __("Updating in DigiTax...")),
+				SIS_GROUP
+			);
+		}
 	},
 });
 
+// Only offer classification codes DigiTax accepts in the active environment(s).
+// Sandbox codes are a subset of production codes, so production wins when both are active.
 function getClassificationFilters(frm) {
 	const environments = frm.zra_environments || [];
 	if (environments.includes("Production") || !environments.length) {
@@ -92,113 +61,95 @@ function getClassificationFilters(frm) {
 	return { available_in_sandbox: 1 };
 }
 
-// 🔹 Helper: Get company name from settings
-function getCompanyName(allSettings, settingName) {
-    const match = allSettings.find((s) =>
-        s.name === settingName || 
-        s.settings_name === settingName ||
-        s.setup === settingName
-    );
-    return match ? match.company : "Unknown";
+// Use the settings the item is registered under, the only active one, or ask. (No Support for multiple active settings yet.)
+function pickSettings(frm, callback) {
+	const settings = frm.zra_settings || [];
+	if (frm.doc.custom_sis_settings) return callback(frm.doc.custom_sis_settings);
+	if (settings.length === 1) return callback(settings[0].name);
+
+	frappe.prompt(
+		{
+			label: __("ZRA SIS Settings"),
+			fieldname: "settings_name",
+			fieldtype: "Select",
+			reqd: 1,
+			options: settings.map((s) => ({
+				label: `${s.company || s.name} (${s.environment || __("unverified")})`,
+				value: s.name,
+			})),
+			default: settings[0]?.name,
+		},
+		(values) => callback(values.settings_name),
+		__("Choose DigiTax Business"),
+		__("Continue")
+	);
 }
 
-
-// 🔹 Company selection modal
-async function showCompanySelectionModal(frm, actionType, availableSettings) {
-	if (!availableSettings.length) {
-		frappe.msgprint(
-			__("No available SIS settings for this action. Please check configuration.")
-		);
+function registerItem(frm) {
+	if (frm.is_dirty()) {
+		frappe.msgprint(__("Save the item before registering it."));
 		return;
 	}
-
-	// If only one company available → skip dialog
-	// if (availableSettings.length === 1) {
-	// 	executeSmartItemAction(frm, actionType, availableSettings[0].name);
-	// 	return;
-	// }
-
-	const options = availableSettings.map((setting) => ({
-		label: `${setting.company} (${setting.name})`,
-		value: setting.name,
-	}));
-
-	const dialog = new frappe.ui.Dialog({
-		title: __("Select Company Setup"),
-		fields: [
-			{
-				label: __("Select Smart Setup"),
-				fieldname: "selected_settings_name",
-				fieldtype: "Select",
-				options: options.map(o => `${o.label}`),
-				reqd: 1,
-				default: options[0]?.value || null,
-			},
-			// 			{
-			// 	label: __("Branch"),
-			// 	fieldname: "selected_branch",
-			// 	fieldtype: "Link",
-			// 	options: "Branch",
-			// 	reqd: 1,
-			// }
-		],
-		primary_action_label: __("Proceed"),
-		primary_action: (data) => {
-			const selectedSettingName = data.selected_settings_name;
-			// const selectedBranch = data.selected_branch || null;
-    		// const selectedBranch = dialog.get_value("selected_branch") || null;
-
-			dialog.hide();
-			executeSmartItemAction(frm, actionType, selectedSettingName);
-		},
-	});
-
-	dialog.show();
+	pickSettings(frm, (settings_name) =>
+		runItemAction(frm, "register_item", { settings_name }, __("Registering with DigiTax..."))
+	);
 }
 
-// 🔹 Execute Smart API call per selected company
-function executeSmartItemAction(frm, actionType, settingsName) {
-	let method;
+function linkExistingItem(frm) {
+	pickSettings(frm, (settings_name) => {
+		frappe.prompt(
+			{
+				label: __("DigiTax Item ID"),
+				fieldname: "item_id",
+				fieldtype: "Data",
+				reqd: 1,
+				placeholder: "item_01M3V6XP4QDQ351BFVHTMMYRD7",
+				description: __(
+					"The item's ID on DigiTax, starting with item_. The item's SIS codes will be replaced with DigiTax's."
+				),
+			},
+			(values) => {
+				const item_id = (values.item_id || "").trim();
+				if (!item_id.startsWith("item_")) {
+					frappe.msgprint(__("Enter the DigiTax item ID. It starts with item_."));
+					return;
+				}
+				runItemAction(
+					frm,
+					"link_existing_item",
+					{ settings_name, item_id },
+					__("Looking up the item on DigiTax...")
+				);
+			},
+			__("Link Existing DigiTax Item"),
+			__("Link")
+		);
+	});
+}
 
-	switch (actionType) {
-		case "register_item":
-			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.perform_item_registration";
-			break;
-		case "fetch_item_details":
-			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.fetch_item_details";
-			break;
-
-		case "update_item":
-			method = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.update_item";
-			break;
-	
-
-		default:
-			frappe.msgprint(__("Unknown action type."));
-			return;
-	}
-
+function runItemAction(frm, action, args, freezeMessage) {
 	frappe.call({
-		method,
-		args: {
-			doc: frm.doc,
-			item_name: frm.doc.item_name,
-			item_code: frm.doc.item_code,
-			item_id: frm.doc.custom_smart_remote_id,
-			settings_name: settingsName,
-		
-		},
-
-		callback: () => {
-			const messages = {
-				register_item: "Smart Item Registration Queued. Please check later.",
-		
-			};
-			frappe.msgprint(messages[actionType] || "SIS Request queued.");
-		},
-		error: (error) => {
-			frappe.msgprint(__("An error occurred during the SIS request."));
-			console.error(error);
+		method: `zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.${action}`,
+		args: { item: frm.doc.name, ...args },
+		freeze: true,
+		freeze_message: freezeMessage,
+		callback: (r) => {
+			const result = r.message || {};
+			if (result.ok === false) {
+				frappe.msgprint({
+					title: __("DigiTax Rejected the Request"),
+					message: frappe.utils.escape_html(result.message || __("Unknown error")),
+					indicator: "red",
+				});
+			} else {
+				let message = __("ZRA status: {0}", [result.status || "-"]);
+				if (result.item_code) message += ` · ${__("ZRA item code")}: ${result.item_code}`;
+				if (result.stock_quantity !== undefined && result.stock_quantity !== null) {
+					message += ` · ${__("DigiTax stock")}: ${result.stock_quantity}`;
+				}
+				frappe.show_alert({ message, indicator: "green" }, 7);
+			}
+			frm.reload_doc();
 		},
 	});
 }

@@ -161,6 +161,7 @@ doc_events = {
 	"Item": {
          "validate": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.validate"],
 		 "on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.on_update"],
+		 "on_trash": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.item.on_trash"],
 	},
 		"Sales Invoice": {
              "on_update": [

@@ -7,6 +7,8 @@ from urllib.parse import urlparse
 from frappe.utils import get_url
 from frappe.utils import  now_datetime, add_to_date
 
+from .settings_utils import get_settings
+
 from datetime import datetime
 
 
@@ -72,17 +74,25 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
         "kind": invoice.custom_kind_of_sale,
         "sale_date": sale_date.isoformat(),
         "currency_code": currency,
-        "customer_tpin": frappe.get_value("Customer", invoice.customer, "tax_id"),
         "customer_name": customer.customer_name,
-        "customer_phone": customer.get("mobile_no") or "",
-        "customer_id": frappe.get_value("Customer", invoice.customer, "custom_sis_customer_id") or "",
         "trader_invoice_number": invoice.name,
         "payment_type_code": "01",
         "callback_url": build_callback_url(
-            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.invoice_submission_callback"
+            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.invoice_submission_callback",
+            settings_name,
         ),
         "items": [],
     }
+
+    # Optional customer fields: DigiTax rejects null values, so only send them when set
+    optional_customer_fields = {
+        "customer_tpin": customer.get("tax_id"),
+        "customer_phone": customer.get("mobile_no"),
+        "customer_id": customer.get("custom_sis_customer_id"),
+    }
+    for field, value in optional_customer_fields.items():
+        if value:
+            payload[field] = str(value).strip()
 
     # ---------------------------
     # Extra fields
@@ -163,60 +173,21 @@ def build_invoice_payload(invoice: "Document", settings_name: str) -> dict:
 
     return payload
 
-def generate_vsdc_item_payload(item_name: str, settings_name: str) -> dict:
-	item = frappe.get_doc("Item", item_name)
-	def get_code(fieldname: str) -> str | None:
-		if not item.get(fieldname):
-			return None
-		link_doctype = item.meta.get_field(fieldname).options
-		link_value = item.get(fieldname)
-		field_map = {
-			"custom_smart_item_classification_code": "item_cls_cd",
-			"custom_smart_item_type_code": "class_code",
-			"custom_smart_origin_country_code": "code",
-			"custom_smart_packaging_unit_code": "code",
-			"custom_smart_quantity_unit_code": "code",
-			"custom_smart_tax_type_code": "tax_category_code",
-			"custom_smart_insurance_premium_levy": "code",
-			# "trade_levy_category": "class_code",
-			"custom_smart_excise_duty_category_code": "code",
-			# "rental_income_status": "class_code",
-			"custom_smart_insurance_applicable": "class_code",
-		}
-
-		code_field = field_map.get(fieldname, "code")  # fallback to `code` if unsure
-		return frappe.db.get_value(link_doctype, link_value, code_field)
-	payload = { 
-		"item_class_code": get_code("custom_smart_item_classification_code"),
-		"item_type_code": item.custom_smart_item_type_code,
-		"item_name": item.item_name,
-		"origin_nation_code": get_code("custom_smart_origin_country_code"),
-		"package_unit_code": get_code("custom_smart_packaging_unit_code"),
-		"quantity_unit_code": get_code("custom_smart_quantity_unit_code"),
-		"vat_category_code": get_code("custom_smart_tax_type_code"),
-		"ipl_category_code": get_code("custom_smart_insurance_premium_levy") or "",
-		"tl_category_code": get_code("custom_smart_tourism_levy") or "",
-		"excise_category_code": get_code("custom_smart_excise_duty_category_code") or "",
-		"bar_code": item.get("barcode") or "",
-		"default_unit_price": float(item.valuation_rate) or 1,
-		"tot_category_code": item.get("custom_smart_turn_over_tax_category_code") or "",
-		"recommended_retail_price": float(item.get("standard_rate") or 0),
-		"stock_quantity": float(item.get("opening_stock") or 0),
-		"insurable":item.get("custom_smart_insurance_applicable") == "1",
-		"callback_url": build_callback_url(
-            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.item.item_registration_callback"
-        ),
-	
-	}
-	return payload
-
-
-
-
-def build_callback_url(endpoint: str) -> str:
+def build_callback_url(endpoint: str, settings_name: str | None = None) -> str:
     """
     Build a full callback URL that works both inside and outside request context.
+
+    For sandbox settings with a Callback Base URL (e.g. an ngrok tunnel to a
+    localhost site), that base is used. Otherwise the site's own URL is used.
     """
+
+    settings = get_settings(settings_name)
+    if (
+        settings
+        and settings.get("environment") == "Sandbox"
+        and settings.get("callback_base_url")
+    ):
+        return f"{settings.callback_base_url.rstrip('/')}/api/method/{endpoint}"
 
     base_url = get_url()
 
@@ -263,7 +234,10 @@ def build_note_payload(doc, settings_name, note_type="credit", callback_url=None
         "sale_id": original_invoice.custom_sales_id,
         config["reason_field"]: doc.get("return_reason") or config["default_reason"],
         "trader_invoice_number": doc.name,
-        "callback_url": callback_url or "",
+        "callback_url": callback_url or build_callback_url(
+            "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.sales_invoice.invoice_submission_callback",
+            settings_name,
+        ),
         "items": [],
     }
     payload["items"] = [
