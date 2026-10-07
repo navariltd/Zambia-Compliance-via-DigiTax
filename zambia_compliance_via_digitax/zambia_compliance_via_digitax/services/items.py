@@ -20,6 +20,7 @@ from frappe.utils import add_to_date, flt, get_datetime, now_datetime
 from ..digitax.client import DigitaxClient, DigitaxError
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 from ..utils.payload_utils import build_callback_url
+from .common import enqueue_job, get_active_settings, get_auto_register_settings, resolve_settings_name
 
 STATUS_PENDING = "PENDING"
 STATUS_FAILED = "FAILED"
@@ -63,31 +64,6 @@ SERVICE_ITEM_TYPE = "3"
 def is_registered(item) -> bool:
 	"""Registered = DigiTax holds a live record for this item (pending or completed)."""
 	return bool(item.get("custom_smart_remote_id")) and item.get("custom_smart_status") != STATUS_FAILED
-
-
-def get_active_settings() -> list[dict]:
-	return frappe.get_all(
-		SETTINGS_DOCTYPE_NAME,
-		filters={"is_active": 1},
-		fields=["name", "company_name", "environment", "auto_register_items"],
-		order_by="creation asc",
-	)
-
-
-def resolve_settings_name(item, settings_name: str | None = None) -> str:
-	"""Pick the settings for an item: explicit choice, then the one it is registered under,
-	then the only active settings. Throws when the choice is ambiguous."""
-	if settings_name:
-		return settings_name
-	if item.get("custom_sis_settings"):
-		return item.custom_sis_settings
-
-	active = get_active_settings()
-	if len(active) == 1:
-		return active[0].name
-	if not active:
-		frappe.throw(_("No active ZRA SIS Settings found."))
-	frappe.throw(_("Several ZRA SIS Settings are active. Choose which one to use."))
 
 
 # --------------------------------------------------------------------------- #
@@ -421,33 +397,13 @@ def on_item_update(item) -> None:
 			enqueue_item_job(UPDATE_JOB, item.name)
 		return
 
-	settings_name = get_auto_register_settings(item)
+	settings_name = get_auto_register_settings(item, "auto_register_items")
 	if settings_name and not get_registration_blockers(item, settings_name):
 		enqueue_item_job(REGISTER_JOB, item.name, settings_name=settings_name)
 
 
-def get_auto_register_settings(item) -> str | None:
-	"""Settings to auto-register under, or None when auto-registration is off or ambiguous."""
-	active = get_active_settings()
-	if item.get("custom_sis_settings"):
-		match = next((s for s in active if s.name == item.custom_sis_settings), None)
-		return match.name if match and match.auto_register_items else None
-	if len(active) == 1 and active[0].auto_register_items:
-		return active[0].name
-	return None
-
-
 def enqueue_item_job(method: str, item_name: str, queue: str = "short", timeout: int | None = None, **kwargs) -> None:
-	frappe.enqueue(
-		method,
-		queue=queue,
-		timeout=timeout,
-		job_id=f"zra_sis::{method.rsplit('.', 1)[-1]}::{item_name}",
-		deduplicate=True,
-		enqueue_after_commit=True,
-		item_name=item_name,
-		**kwargs,
-	)
+	enqueue_job(method, f"Item::{item_name}", queue=queue, timeout=timeout, item_name=item_name, **kwargs)
 
 
 def register_item_job(item_name: str, settings_name: str | None = None) -> None:
