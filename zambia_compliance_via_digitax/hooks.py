@@ -63,6 +63,7 @@ doctype_js = {
 	"Item": "public/js/item.js",
     "Sales Invoice": "public/js/sales_invoice.js",
     "Customer": "public/js/customer.js",
+	"Supplier": "public/js/supplier.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -167,6 +168,11 @@ doc_events = {
 		"validate": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.customer.validate"],
 		"on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.customer.on_update"],
 		"on_trash": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.customer.on_trash"],
+	},
+	"Supplier": {
+		"validate": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.supplier.validate"],
+		"on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.supplier.on_update"],
+		"on_trash": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.supplier.on_trash"],
 	},
 		"Sales Invoice": {
              "on_update": [

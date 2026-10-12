@@ -23,6 +23,7 @@
   "submission_frequency_settings_section",
   "auto_register_items",
   "auto_register_customers",
+  "auto_register_suppliers",
   "sales_auto_submission_enabled",
   "sales_submission_frequency",
   "column_break_wgnl",
@@ -167,6 +168,13 @@
   },
   {
    "default": "0",
+   "description": "Register suppliers with DigiTax automatically when they are saved with a TPIN.",
+   "fieldname": "auto_register_suppliers",
+   "fieldtype": "Check",
+   "label": "Auto Register Suppliers"
+  },
+  {
+   "default": "0",
    "fieldname": "sales_auto_submission_enabled",
    "fieldtype": "Check",
    "label": " Sales Auto Submission Enabled"
@@ -249,7 +257,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-07 12:00:00.000000",
+ "modified": "2026-10-07 16:00:00.000000",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Settings",
