@@ -19,12 +19,11 @@ from frappe.contacts.doctype.address.address import get_default_address
 from frappe.utils import now_datetime
 
 from ..digitax.client import DigitaxClient, DigitaxError
-from .common import enqueue_job, get_auto_register_settings, resolve_settings_name
+from .common import enqueue_job, get_auto_register_settings, is_valid_tpin, normalize_phone, normalize_tpin, resolve_settings_name
 
 REGISTER_JOB = "zambia_compliance_via_digitax.zambia_compliance_via_digitax.services.customers.register_customer_job"
 
 LOCKED_AFTER_REGISTRATION = ["tax_id", "custom_is_lpo"]
-TPIN_PATTERN = re.compile(r"\d{10}")
 
 
 # --------------------------------------------------------------------------- #
@@ -37,16 +36,7 @@ def is_registered(customer) -> bool:
 
 
 def get_tpin(customer) -> str:
-	return re.sub(r"\s+", "", customer.get("tax_id") or "")
-
-
-def normalize_phone(phone: str | None) -> str:
-	"""Digits only, in the 260XXXXXXXXX form from the DigiTax docs.
-	"0971234567", "+260 971 234 567" and "260971234567" all become "260971234567"."""
-	digits = re.sub(r"\D", "", phone or "")
-	if len(digits) == 10 and digits.startswith("0"):
-		digits = "260" + digits[1:]
-	return digits
+	return normalize_tpin(customer.get("tax_id"))
 
 
 def get_phone(customer) -> str:
@@ -108,7 +98,7 @@ def get_registration_blockers(customer) -> list[str]:
 	tpin = get_tpin(customer)
 	if not tpin:
 		blockers.append(_("Tax ID (TPIN) is missing."))
-	elif not TPIN_PATTERN.fullmatch(tpin):
+	elif not is_valid_tpin(tpin):
 		blockers.append(_("Tax ID {0} is not a 10-digit ZRA TPIN.").format(tpin))
 
 	if not get_phone(customer):
