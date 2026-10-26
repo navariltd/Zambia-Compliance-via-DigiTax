@@ -24,6 +24,37 @@ frappe.ui.form.on("ZRA SIS Settings", {
 			});
 		});
 
+		if (frm.doc.is_active) {
+			frm.add_custom_button(
+				__("Fetch ZRA Notices"),
+				() => {
+					frappe.call({
+						method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.notice.fetch_notices",
+						args: { settings_name: frm.doc.name },
+						freeze: true,
+						freeze_message: __("Fetching notices from DigiTax..."),
+						callback: (r) => {
+							const result = r.message || {};
+							if (result.ok === false) {
+								frappe.msgprint({
+									title: __("DigiTax Rejected the Request"),
+									message: frappe.utils.escape_html(result.message || __("Unknown error")),
+									indicator: "red",
+								});
+								return;
+							}
+							frappe.show_alert({
+								message: __("{0} notices, {1} new", [result.total, result.new]),
+								indicator: "green",
+							});
+							frappe.set_route("List", "ZRA SIS Notice");
+						},
+					});
+				},
+				__("ZRA SIS")
+			);
+		}
+
 		if (frm.doc.is_active && frm.doc.stock_auto_submission_enabled) {
 			frm.add_custom_button(
 				__("Sync Stock Balances"),

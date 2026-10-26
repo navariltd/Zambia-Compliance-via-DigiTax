@@ -200,6 +200,9 @@ scheduler_events = {
 	"hourly": [
 		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.services.stock.requeue_stuck_movements",
 	],
+	"daily": [
+		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.services.notices.fetch_notices_for_all_settings",
+	],
 }
 
 # Testing
