@@ -174,6 +174,9 @@ doc_events = {
 		"on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.supplier.on_update"],
 		"on_trash": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.supplier.on_trash"],
 	},
+	"Stock Ledger Entry": {
+		"on_submit": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.stock_ledger_entry.on_submit"],
+	},
 		"Sales Invoice": {
              "on_update": [
             "zambia_compliance_via_digitax.zambia_compliance_via_digitax.utils.tax_utils.after_save"
@@ -191,25 +194,13 @@ doc_events = {
 # ---------------
 
 scheduler_events = {
- 	"all": [
-		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.tasks.tasks.send_stock_information",
-        "zambia_compliance_via_digitax.zambia_compliance_via_digitax.tasks.tasks.send_sales_invoice_information",
-
-		
-	]
-# 	"daily": [
-# 		"zambia_compliance_via_digitax.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"zambia_compliance_via_digitax.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"zambia_compliance_via_digitax.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"zambia_compliance_via_digitax.tasks.monthly"
-# 	],
-	}
+	"all": [
+		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.tasks.tasks.send_sales_invoice_information",
+	],
+	"hourly": [
+		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.services.stock.requeue_stuck_movements",
+	],
+}
 
 # Testing
 # -------

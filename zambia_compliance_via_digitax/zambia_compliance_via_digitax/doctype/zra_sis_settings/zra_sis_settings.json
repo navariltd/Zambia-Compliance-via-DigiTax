@@ -26,14 +26,13 @@
   "auto_register_suppliers",
   "sales_auto_submission_enabled",
   "sales_submission_frequency",
-  "column_break_wgnl",
-  "stock_auto_submission_enabled",
   "sales_information_submission_timeframe_section",
   "sales_information_submission_timeframe",
   "max_sales_submission_attempts",
-  "column_break_grsh",
-  "stock_information_submission_timeframe",
-  "max_stock_submission_attempts",
+  "stock_section",
+  "stock_auto_submission_enabled",
+  "column_break_stock",
+  "go_live_date",
   "auth_tab",
   "api_key",
   "field_defaults_tab",
@@ -186,16 +185,6 @@
    "options": "\nAll\nHourly\nDaily\nWeekly\nMonthly\nYearly\nAnnual\nCron"
   },
   {
-   "fieldname": "column_break_wgnl",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "stock_auto_submission_enabled",
-   "fieldtype": "Check",
-   "label": " Stock Auto Submission Enabled"
-  },
-  {
    "description": "Defines the allowed period for entries to be sent to SIS, such as invoices and purchases, from the current time. For example, if set to 4 days, entries can only be sent within the last 4 days.",
    "fieldname": "sales_information_submission_timeframe_section",
    "fieldtype": "Section Break",
@@ -215,21 +204,27 @@
    "label": "Max Sales Submission Attempts"
   },
   {
-   "fieldname": "column_break_grsh",
+   "fieldname": "stock_section",
+   "fieldtype": "Section Break",
+   "label": "Stock"
+  },
+  {
+   "default": "0",
+   "fieldname": "stock_auto_submission_enabled",
+   "fieldtype": "Check",
+   "label": "Report Stock Movements",
+   "description": "Send stock movements of registered stock items to DigiTax."
+  },
+  {
+   "fieldname": "column_break_stock",
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval: doc.stock_auto_submission_enabled == 1",
-   "fieldname": "stock_information_submission_timeframe",
-   "fieldtype": "Duration",
-   "label": "Stock Information Submission Timeframe"
-  },
-  {
-   "depends_on": "eval: doc.stock_auto_submission_enabled == 1",
-   "description": "Maximum attempts allowed to resubmit failed stock operations before restrictions apply.",
-   "fieldname": "max_stock_submission_attempts",
-   "fieldtype": "Int",
-   "label": "Max Stock Submission Attempts"
+   "depends_on": "eval:doc.stock_auto_submission_enabled",
+   "fieldname": "go_live_date",
+   "fieldtype": "Date",
+   "label": "Go-Live Date",
+   "description": "Stock movements dated before this are not sent."
   },
   {
    "fieldname": "field_defaults_tab",
@@ -257,7 +252,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-07 16:00:00.000000",
+ "modified": "2026-10-26 09:00:00.000000",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Settings",

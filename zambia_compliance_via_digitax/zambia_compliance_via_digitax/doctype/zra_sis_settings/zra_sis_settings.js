@@ -24,6 +24,30 @@ frappe.ui.form.on("ZRA SIS Settings", {
 			});
 		});
 
+		if (frm.doc.is_active && frm.doc.stock_auto_submission_enabled) {
+			frm.add_custom_button(
+				__("Sync Stock Balances"),
+				() => {
+					frappe.confirm(
+						__(
+							"For every registered stock item, DigiTax's balance will be compared with ERPNext's and the difference sent as a stock adjustment. Use this once at go-live, or to fix failed movements. Continue?"
+						),
+						() =>
+							frappe.call({
+								method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.stock.sync_all_stock",
+								args: { settings_name: frm.doc.name },
+								callback: () =>
+									frappe.show_alert({
+										message: __("Stock sync queued. Failures appear in the Error Log and on each item."),
+										indicator: "blue",
+									}),
+							})
+					);
+				},
+				__("ZRA SIS")
+			);
+		}
+
 		if (frm.doc.environment) {
 			frm.dashboard.set_headline_alert(
 				frm.doc.environment === "Production"

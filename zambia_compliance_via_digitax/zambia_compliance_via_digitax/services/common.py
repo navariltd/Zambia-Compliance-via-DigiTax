@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import re
+from datetime import date, datetime
 
 import frappe
 from frappe import _
+from frappe.utils import convert_utc_to_system_timezone
 
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 
@@ -34,7 +36,14 @@ def get_active_settings() -> list[dict]:
 	return frappe.get_all(
 		SETTINGS_DOCTYPE_NAME,
 		filters={"is_active": 1},
-		fields=["name", "company_name", "environment", "auto_register_items", "auto_register_customers", "auto_register_suppliers"],
+		fields=[
+			"name",
+			"company_name",
+			"environment",
+			"auto_register_items",
+			"auto_register_customers",
+			"auto_register_suppliers",
+		],
 		order_by="creation asc",
 	)
 
@@ -77,3 +86,33 @@ def enqueue_job(method: str, key: str, queue: str = "short", timeout: int | None
 		enqueue_after_commit=True,
 		**kwargs,
 	)
+
+
+def parse_utc_datetime(value: str | None) -> datetime | None:
+	"""ISO 8601 in UTC (e.g. 2026-07-14T21:00:00.000Z) to a naive datetime in the system timezone."""
+	if not value:
+		return None
+	try:
+		parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+	except ValueError:
+		return None
+	return convert_utc_to_system_timezone(parsed).replace(tzinfo=None)
+
+
+def parse_compact_date(value: str | None) -> date | None:
+	"""DigiTax's YYYYMMDD dates (e.g. purchase_date "20260714")."""
+	try:
+		return datetime.strptime(str(value or ""), "%Y%m%d").date()
+	except ValueError:
+		return None
+
+
+def comparable(value) -> str:
+	"""A value as text for change detection, so 1160, 1160.0 and "1160" (or None, "" and 0) compare equal."""
+	if value in (None, ""):
+		return ""
+	try:
+		number = float(value)
+	except TypeError, ValueError:
+		return str(value)
+	return str(round(number, 4)) if number else ""

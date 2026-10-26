@@ -48,6 +48,10 @@ frappe.ui.form.on("Item", {
 				SIS_GROUP
 			);
 		}
+
+		if (registered && frm.doc.is_stock_item) {
+			frm.add_custom_button(__("Sync Stock with ZRA"), () => syncStock(frm), SIS_GROUP);
+		}
 	},
 });
 
@@ -148,6 +152,72 @@ function runItemAction(frm, action, args, freezeMessage) {
 					message += ` · ${__("DigiTax stock")}: ${result.stock_quantity}`;
 				}
 				frappe.show_alert({ message, indicator: "green" }, 7);
+			}
+			frm.reload_doc();
+		},
+	});
+}
+
+// Show ERPNext's and DigiTax's balances, then send the difference as one adjustment if the user agrees.
+function syncStock(frm) {
+	frappe.call({
+		method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.stock.compare_item_stock",
+		args: { item: frm.doc.name },
+		freeze: true,
+		freeze_message: __("Reading the stock balance from DigiTax..."),
+		callback: (r) => {
+			const c = r.message || {};
+			if (c.ok === false) {
+				frappe.msgprint({
+					title: __("DigiTax Rejected the Request"),
+					message: frappe.utils.escape_html(c.message || __("Unknown error")),
+					indicator: "red",
+				});
+				return;
+			}
+
+			const rows = [
+				[__("ERPNext balance"), c.erpnext_qty],
+				[__("DigiTax balance"), c.digitax_qty],
+				[__("Difference to send"), c.difference],
+			]
+				.map(([label, value]) => `<tr><td>${label}</td><td class="text-right">${format_number(value)}</td></tr>`)
+				.join("");
+			const table = `<table class="table table-bordered">${rows}</table>`;
+
+			if (!c.difference) {
+				frappe.msgprint({ title: __("Stock Matches"), message: table, indicator: "green" });
+				frm.reload_doc();
+				return;
+			}
+
+			frappe.confirm(
+				`${table}<p>${__("Send the difference to DigiTax as a stock adjustment?")}</p>`,
+				() => runStockSync(frm)
+			);
+		},
+	});
+}
+
+function runStockSync(frm) {
+	frappe.call({
+		method: "zambia_compliance_via_digitax.zambia_compliance_via_digitax.apis.stock.sync_item_stock",
+		args: { item: frm.doc.name },
+		freeze: true,
+		freeze_message: __("Adjusting stock in DigiTax..."),
+		callback: (r) => {
+			const result = r.message || {};
+			if (result.ok === false) {
+				frappe.msgprint({
+					title: __("DigiTax Rejected the Request"),
+					message: frappe.utils.escape_html(result.message || __("Unknown error")),
+					indicator: "red",
+				});
+			} else {
+				frappe.show_alert(
+					{ message: __("DigiTax stock: {0}", [format_number(result.digitax_qty)]), indicator: "green" },
+					7
+				);
 			}
 			frm.reload_doc();
 		},

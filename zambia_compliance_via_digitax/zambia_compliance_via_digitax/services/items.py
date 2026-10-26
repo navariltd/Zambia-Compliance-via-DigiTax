@@ -239,7 +239,13 @@ def apply_remote_item(item_name: str, data: dict, settings_name: str) -> None:
 	else:
 		values["custom_submission_tries"] = 0
 
+	previous_status = frappe.db.get_value("Item", item_name, "custom_smart_status")
 	frappe.db.set_value("Item", item_name, values)
+
+	if status == STATUS_COMPLETED and previous_status != STATUS_COMPLETED:
+		from .stock import schedule_opening_stock
+
+		schedule_opening_stock(item_name)
 
 
 def record_failure(item_name: str, message: str) -> None:
