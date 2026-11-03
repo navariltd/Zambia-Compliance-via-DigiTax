@@ -1,7 +1,7 @@
 {
  "app": "zambia_compliance_via_digitax",
  "charts": [],
- "content": "[{\"id\":\"juTmss5vfa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Welcome to the SIS workspace</span>\",\"col\":12}},{\"id\":\"d8PTek_YRD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"SIS Dashboard\",\"col\":3}},{\"id\":\"76I3mPW08c\",\"type\":\"card\",\"data\":{\"card_name\":\"Integration Requests\",\"col\":4}},{\"id\":\"JlV2Q2DJw0\",\"type\":\"card\",\"data\":{\"card_name\":\"Error Logs\",\"col\":4}},{\"id\":\"kvJj4rEnQL\",\"type\":\"card\",\"data\":{\"card_name\":\"SIS Settings\",\"col\":4}},{\"id\":\"EhrFQb2HMk\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"j0tNSk65pf\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"XBCVdNvAnO\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup and Configurations\",\"col\":4}},{\"id\":\"roVEA1PNCz\",\"type\":\"card\",\"data\":{\"card_name\":\"Codes\",\"col\":4}},{\"id\":\"rgdsSWW7Qk\",\"type\":\"card\",\"data\":{\"card_name\":\"Item Information\",\"col\":4}},{\"id\":\"eEps8nLefm\",\"type\":\"card\",\"data\":{\"card_name\":\"Logs and Troubleshooting\",\"col\":4}}]",
+ "content": "[{\"id\":\"juTmss5vfa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Welcome to the SIS workspace</span>\",\"col\":12}},{\"id\":\"d8PTek_YRD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"SIS Dashboard\",\"col\":3}},{\"id\":\"76I3mPW08c\",\"type\":\"card\",\"data\":{\"card_name\":\"Integration Requests\",\"col\":4}},{\"id\":\"JlV2Q2DJw0\",\"type\":\"card\",\"data\":{\"card_name\":\"Error Logs\",\"col\":4}},{\"id\":\"kvJj4rEnQL\",\"type\":\"card\",\"data\":{\"card_name\":\"SIS Settings\",\"col\":4}},{\"id\":\"EhrFQb2HMk\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"j0tNSk65pf\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"zraPurchImp\",\"type\":\"card\",\"data\":{\"card_name\":\"Purchases and Imports\",\"col\":4}},{\"id\":\"XBCVdNvAnO\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup and Configurations\",\"col\":4}},{\"id\":\"roVEA1PNCz\",\"type\":\"card\",\"data\":{\"card_name\":\"Codes\",\"col\":4}},{\"id\":\"rgdsSWW7Qk\",\"type\":\"card\",\"data\":{\"card_name\":\"Item Information\",\"col\":4}},{\"id\":\"eEps8nLefm\",\"type\":\"card\",\"data\":{\"card_name\":\"Logs and Troubleshooting\",\"col\":4}}]",
  "creation": "2026-04-06 21:58:58.081026",
  "custom_blocks": [],
  "docstatus": 0,
@@ -74,7 +74,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Masters",
-   "link_count": 5,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -125,6 +125,45 @@
    "label": "Stock Ledger Entry",
    "link_count": 0,
    "link_to": "Stock Ledger Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ZRA Notices",
+   "link_count": 0,
+   "link_to": "ZRA SIS Notice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchases and Imports",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ZRA Purchases",
+   "link_count": 0,
+   "link_to": "ZRA SIS Purchases",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ZRA Imports",
+   "link_count": 0,
+   "link_to": "ZRA SIS Import",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -306,7 +345,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-04-11 20:18:10.199555",
+ "modified": "2026-10-24 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "SIS",

@@ -1,0 +1,383 @@
+{
+ "actions": [],
+ "creation": "2026-10-24 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item_name",
+  "declaration_number",
+  "declaration_date",
+  "item_sequence",
+  "task_code",
+  "column_break_status",
+  "import_item_status",
+  "import_item_status_code",
+  "review_status",
+  "status",
+  "item",
+  "remarks",
+  "goods_section",
+  "hs_code",
+  "item_code",
+  "item_class_code",
+  "origin_nation_code",
+  "export_nation_code",
+  "column_break_goods",
+  "quantity",
+  "quantity_unit_code",
+  "approved_quantity",
+  "package",
+  "package_unit_code",
+  "gross_weight",
+  "net_weight",
+  "invoice_section",
+  "supplier_name",
+  "agent_name",
+  "column_break_invoice",
+  "invoice_foreign_currency_amount",
+  "invoice_foreign_currency_code",
+  "invoice_foreign_currency_rate",
+  "source_section",
+  "import_id",
+  "item_id",
+  "sis_settings",
+  "column_break_source",
+  "last_synced_on",
+  "last_error"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Description",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "declaration_number",
+   "fieldtype": "Data",
+   "label": "Declaration Number",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "declaration_date",
+   "fieldtype": "Datetime",
+   "label": "Declaration Date",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_sequence",
+   "fieldtype": "Int",
+   "label": "Item Sequence",
+   "read_only": 1
+  },
+  {
+   "fieldname": "task_code",
+   "fieldtype": "Data",
+   "label": "Task Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "import_item_status",
+   "fieldtype": "Data",
+   "label": "ZRA Import Status",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "import_item_status_code",
+   "fieldtype": "Data",
+   "label": "Import Status Code",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_status",
+   "fieldtype": "Select",
+   "label": "Our Review",
+   "options": "\nApproved\nRejected",
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "DigiTax Sync Status",
+   "description": "PENDING, FAILED or COMPLETED against ZRA.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item",
+   "description": "The ERPNext item this line is. Filled automatically when it can be matched."
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks",
+   "read_only": 1
+  },
+  {
+   "fieldname": "goods_section",
+   "fieldtype": "Section Break",
+   "label": "Goods"
+  },
+  {
+   "fieldname": "hs_code",
+   "fieldtype": "Data",
+   "label": "HS Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Data",
+   "label": "ZRA Item Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_class_code",
+   "fieldtype": "Data",
+   "label": "Item Classification Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "origin_nation_code",
+   "fieldtype": "Data",
+   "label": "Origin Country",
+   "read_only": 1
+  },
+  {
+   "fieldname": "export_nation_code",
+   "fieldtype": "Data",
+   "label": "Export Country",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_goods",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quantity_unit_code",
+   "fieldtype": "Data",
+   "label": "Quantity Unit Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_quantity",
+   "fieldtype": "Float",
+   "label": "Approved Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "package",
+   "fieldtype": "Float",
+   "label": "Packages",
+   "read_only": 1
+  },
+  {
+   "fieldname": "package_unit_code",
+   "fieldtype": "Data",
+   "label": "Package Unit Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gross_weight",
+   "fieldtype": "Float",
+   "label": "Gross Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_weight",
+   "fieldtype": "Float",
+   "label": "Net Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_section",
+   "fieldtype": "Section Break",
+   "label": "Supplier and Invoice"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "agent_name",
+   "fieldtype": "Data",
+   "label": "Agent Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_invoice",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "invoice_foreign_currency_amount",
+   "fieldtype": "Float",
+   "label": "Invoice Amount (Foreign)",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_foreign_currency_code",
+   "fieldtype": "Data",
+   "label": "Invoice Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_foreign_currency_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "import_id",
+   "fieldtype": "Data",
+   "label": "DigiTax Import ID",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_id",
+   "fieldtype": "Data",
+   "label": "DigiTax Item ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sis_settings",
+   "fieldtype": "Link",
+   "label": "SIS Settings",
+   "options": "ZRA SIS Settings",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_source",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_synced_on",
+   "fieldtype": "Datetime",
+   "label": "Last Synced On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last SIS Error",
+   "depends_on": "eval:doc.last_error",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-24 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Zambia Compliance Via Digitax",
+ "name": "ZRA SIS Import",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "states": [],
+ "sort_field": "declaration_date",
+ "sort_order": "DESC",
+ "autoname": "field:import_id",
+ "naming_rule": "By fieldname",
+ "allow_rename": 0,
+ "in_create": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "read": 1,
+   "write": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Purchase Manager",
+   "read": 1,
+   "write": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Purchase User",
+   "read": 1,
+   "write": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "write": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "write": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "title_field": "item_name",
+ "show_title_field_in_link": 1,
+ "search_fields": "declaration_number,item_name,hs_code",
+ "description": "Import items from customs declarations (GET /imports)."
+}

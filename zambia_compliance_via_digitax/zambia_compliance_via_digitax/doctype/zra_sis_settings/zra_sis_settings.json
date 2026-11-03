@@ -33,6 +33,9 @@
   "stock_auto_submission_enabled",
   "column_break_stock",
   "go_live_date",
+  "purchases_section",
+  "pull_purchases_and_imports",
+  "send_purchases_to_zra",
   "auth_tab",
   "api_key",
   "field_defaults_tab",
@@ -225,6 +228,25 @@
    "fieldtype": "Date",
    "label": "Go-Live Date",
    "description": "Stock movements dated before this are not sent."
+  },
+  {
+   "fieldname": "purchases_section",
+   "fieldtype": "Section Break",
+   "label": "Purchases and Imports"
+  },
+  {
+   "default": "1",
+   "fieldname": "pull_purchases_and_imports",
+   "fieldtype": "Check",
+   "label": "Pull Purchases and Imports",
+   "description": "Fetch purchases and import items from DigiTax every 4 hours. They can also be fetched from their list views."
+  },
+  {
+   "default": "0",
+   "fieldname": "send_purchases_to_zra",
+   "fieldtype": "Check",
+   "label": "Send Purchase Invoices to ZRA",
+   "description": "Send every submitted Purchase Invoice with registered items to ZRA as a purchase (POST /purchases), which adds its stock on DigiTax. Leave off to report purchase stock as stock movements instead. Invoices created from a ZRA purchase or ticked Is Import are never sent."
   },
   {
    "fieldname": "field_defaults_tab",

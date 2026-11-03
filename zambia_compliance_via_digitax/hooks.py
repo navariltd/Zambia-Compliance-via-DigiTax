@@ -212,6 +212,12 @@ scheduler_events = {
 	"daily": [
 		"zambia_compliance_via_digitax.zambia_compliance_via_digitax.services.notices.fetch_notices_for_all_settings",
 	],
+	"cron": {
+		"0 */4 * * *": [
+			"zambia_compliance_via_digitax.zambia_compliance_via_digitax.services.purchases.fetch_all_purchases",
+			"zambia_compliance_via_digitax.zambia_compliance_via_digitax.services.imports.fetch_all_imports",
+		],
+	},
 }
 
 # Testing
