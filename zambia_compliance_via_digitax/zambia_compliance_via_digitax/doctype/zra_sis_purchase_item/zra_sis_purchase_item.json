@@ -1,157 +1,223 @@
 {
  "actions": [],
- "allow_rename": 1,
- "creation": "2026-03-27 13:47:55.352199",
+ "creation": "2026-03-27 13:00:00.000000",
  "doctype": "DocType",
- "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "item_id",
+  "item",
   "item_name",
   "item_code",
-  "purchase_item_id",
+  "item_class_code",
+  "packing_unit_code",
+  "column_break_qty",
   "quantity",
-  "total_amount",
-  "vat_taxable_amount",
-  "vat_tax_amount",
-  "column_break_bmfo",
-  "tl_tax_amount",
-  "tl_taxable_amount",
-  "excise_tax_amount",
-  "excise_taxable_amount",
-  "ipl_tax_amount",
-  "ipl_taxable_amount",
-  "column_break_yieo",
+  "approved_quantity",
   "unit_price",
   "supply_price",
   "discount_rate",
-  "packaging_unit_code",
-  "item_class_code",
-  "approved_quantity"
+  "discount_amount",
+  "total_amount",
+  "taxes_section",
+  "vat_taxable_amount",
+  "vat_tax_amount",
+  "ipl_taxable_amount",
+  "ipl_tax_amount",
+  "column_break_taxes",
+  "tl_taxable_amount",
+  "tl_tax_amount",
+  "excise_taxable_amount",
+  "excise_tax_amount",
+  "ids_section",
+  "purchase_item_id",
+  "item_id"
  ],
  "fields": [
   {
-   "fieldname": "item_id",
-   "fieldtype": "Data",
-   "label": "Item Id"
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "in_list_view": 1,
+   "columns": 2,
+   "options": "Item",
+   "description": "The ERPNext item this line is. Filled automatically when it can be matched."
   },
   {
    "fieldname": "item_name",
    "fieldtype": "Data",
-   "label": "Item Name"
+   "label": "Supplier Item Name",
+   "in_list_view": 1,
+   "columns": 3,
+   "read_only": 1
   },
   {
    "fieldname": "item_code",
    "fieldtype": "Data",
-   "label": "Item Code"
-  },
-  {
-   "fieldname": "purchase_item_id",
-   "fieldtype": "Data",
-   "label": "Purchase Item Id"
-  },
-  {
-   "fieldname": "quantity",
-   "fieldtype": "Data",
-   "label": "Quantity"
-  },
-  {
-   "fieldname": "total_amount",
-   "fieldtype": "Currency",
-   "label": "Total Amount"
-  },
-  {
-   "fieldname": "vat_taxable_amount",
-   "fieldtype": "Currency",
-   "label": "VAT Taxable Amount"
-  },
-  {
-   "fieldname": "vat_tax_amount",
-   "fieldtype": "Currency",
-   "label": "VAT Tax Amount"
-  },
-  {
-   "fieldname": "column_break_bmfo",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "tl_tax_amount",
-   "fieldtype": "Currency",
-   "label": "TL Tax Amount"
-  },
-  {
-   "fieldname": "tl_taxable_amount",
-   "fieldtype": "Currency",
-   "label": "TL Taxable Amount"
-  },
-  {
-   "fieldname": "excise_tax_amount",
-   "fieldtype": "Currency",
-   "label": "Excise Tax Amount"
-  },
-  {
-   "fieldname": "excise_taxable_amount",
-   "fieldtype": "Currency",
-   "label": "Excise Taxable Amount"
-  },
-  {
-   "fieldname": "ipl_tax_amount",
-   "fieldtype": "Currency",
-   "label": "IPL Tax Amount"
-  },
-  {
-   "fieldname": "ipl_taxable_amount",
-   "fieldtype": "Currency",
-   "label": "IPL Taxable Amount"
-  },
-  {
-   "fieldname": "column_break_yieo",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "unit_price",
-   "fieldtype": "Currency",
-   "label": "Unit Price"
-  },
-  {
-   "fieldname": "supply_price",
-   "fieldtype": "Currency",
-   "label": "Supply Price"
-  },
-  {
-   "fieldname": "discount_rate",
-   "fieldtype": "Percent",
-   "label": "Discount Rate"
-  },
-  {
-   "fieldname": "packaging_unit_code",
-   "fieldtype": "Data",
-   "label": "Packaging Unit Code"
+   "label": "Supplier ZRA Item Code",
+   "read_only": 1
   },
   {
    "fieldname": "item_class_code",
    "fieldtype": "Data",
-   "label": "Item Class Code"
+   "label": "Item Classification Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "packing_unit_code",
+   "fieldtype": "Data",
+   "label": "Packaging Unit Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
   },
   {
    "fieldname": "approved_quantity",
-   "fieldtype": "Int",
-   "label": "Approved Quantity"
+   "fieldtype": "Float",
+   "label": "Approved Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Float",
+   "label": "Unit Price (incl. tax)",
+   "precision": "4",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "supply_price",
+   "fieldtype": "Float",
+   "label": "Supply Price",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount_rate",
+   "fieldtype": "Float",
+   "label": "Discount Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount_amount",
+   "fieldtype": "Float",
+   "label": "Discount Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Float",
+   "label": "Total Amount",
+   "precision": "4",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "taxes_section",
+   "fieldtype": "Section Break",
+   "label": "Taxes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "vat_taxable_amount",
+   "fieldtype": "Float",
+   "label": "VAT Taxable Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vat_tax_amount",
+   "fieldtype": "Float",
+   "label": "VAT Tax Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ipl_taxable_amount",
+   "fieldtype": "Float",
+   "label": "IPL Taxable Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ipl_tax_amount",
+   "fieldtype": "Float",
+   "label": "IPL Tax Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_taxes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tl_taxable_amount",
+   "fieldtype": "Float",
+   "label": "Tourism Levy Taxable Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tl_tax_amount",
+   "fieldtype": "Float",
+   "label": "Tourism Levy Tax Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "excise_taxable_amount",
+   "fieldtype": "Float",
+   "label": "Excise Taxable Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "excise_tax_amount",
+   "fieldtype": "Float",
+   "label": "Excise Tax Amount",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ids_section",
+   "fieldtype": "Section Break",
+   "label": "DigiTax IDs",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "purchase_item_id",
+   "fieldtype": "Data",
+   "label": "DigiTax Purchase Item ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_id",
+   "fieldtype": "Data",
+   "label": "DigiTax Item ID",
+   "read_only": 1
   }
  ],
- "grid_page_length": 50,
- "index_web_pages_for_search": 1,
- "istable": 1,
  "links": [],
- "modified": "2026-03-27 13:59:12.118996",
+ "modified": "2026-10-24 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Purchase Item",
  "owner": "Administrator",
- "permissions": [],
  "row_format": "Dynamic",
- "rows_threshold_for_grid_search": 20,
+ "states": [],
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "istable": 1,
+ "editable_grid": 1
 }

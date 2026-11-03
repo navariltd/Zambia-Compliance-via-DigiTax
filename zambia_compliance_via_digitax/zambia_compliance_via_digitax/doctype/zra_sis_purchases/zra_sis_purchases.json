@@ -1,185 +1,166 @@
 {
  "actions": [],
- "allow_rename": 1,
  "creation": "2026-03-27 13:19:28.613274",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "purchase_id",
-  "pchstycd",
-  "pchssttscd",
-  "purchase_type",
-  "branch",
-  "column_break_qeew",
-  "supplier_invoice_no",
-  "sales_date",
+  "purchase_number",
+  "purchase_date",
+  "supplier_invoice_number",
+  "invoice_number",
+  "column_break_status",
   "purchase_status",
-  "regtycd",
-  "registration_type",
-  "supplier_information_section",
+  "purchase_status_code",
+  "review_status",
+  "status",
+  "purchase_invoice",
+  "is_manual",
+  "supplier_section",
+  "supplier",
   "supplier_name",
-  "column_break_ukot",
+  "column_break_supplier",
   "supplier_tpin",
-  "column_break_oeqb",
-  "supplier_branch_id",
-  "section_break_usyg",
-  "receipt_type",
+  "supplier_id",
+  "items_section",
+  "items",
+  "totals_section",
+  "total_taxable_amount",
+  "column_break_totals",
+  "total_tax_amount",
+  "column_break_totals_2",
+  "total_amount",
+  "review_section",
+  "review_comment",
+  "last_error",
+  "source_section",
+  "purchase_id",
+  "sis_settings",
+  "column_break_source",
   "receipt_type_code",
   "payment_type_code",
-  "payment_type",
-  "column_break_bhsk",
-  "confirmed_date",
-  "stock_release_date",
-  "section_break_ntid",
-  "remarks",
-  "totals_section",
-  "total_amount",
-  "total_item_count",
-  "column_break_zgbf",
-  "total_taxable_amount",
-  "total_tax_amount",
-  "section_break_txau",
-  "items"
+  "last_synced_on"
  ],
  "fields": [
   {
-   "fieldname": "purchase_id",
+   "fieldname": "purchase_number",
    "fieldtype": "Data",
-   "label": "Purchase ID"
+   "label": "Purchase Number",
+   "in_list_view": 1,
+   "read_only": 1
   },
   {
-   "fieldname": "pchstycd",
+   "fieldname": "purchase_date",
+   "fieldtype": "Date",
+   "label": "Purchase Date",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier_invoice_number",
    "fieldtype": "Data",
-   "label": "Purchase Type Code"
+   "label": "Supplier Invoice Number",
+   "read_only": 1
   },
   {
-   "fieldname": "pchssttscd",
+   "fieldname": "invoice_number",
    "fieldtype": "Data",
-   "label": "Purchase Status Code"
+   "label": "ZRA Invoice Number",
+   "read_only": 1
   },
   {
-   "fieldname": "purchase_type",
-   "fieldtype": "Data",
-   "label": "Purchase Type"
-  },
-  {
-   "fieldname": "branch",
-   "fieldtype": "Link",
-   "label": "Branch",
-   "options": "Branch"
-  },
-  {
-   "fieldname": "column_break_qeew",
+   "fieldname": "column_break_status",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "supplier_invoice_no",
-   "fieldtype": "Int",
-   "label": "Supplier Invoice No"
-  },
-  {
-   "fieldname": "sales_date",
-   "fieldtype": "Date",
-   "label": "Sales Date"
-  },
-  {
-   "default": "Approved",
    "fieldname": "purchase_status",
-   "fieldtype": "Select",
-   "label": "Purchase Status",
-   "options": "Approved\nRefunded\nTransferred\nRejected"
-  },
-  {
-   "fieldname": "regtycd",
    "fieldtype": "Data",
-   "label": "Registration Type Code"
+   "label": "ZRA Purchase Status",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
   },
   {
-   "default": "Automatic",
-   "fieldname": "registration_type",
+   "fieldname": "purchase_status_code",
+   "fieldtype": "Data",
+   "label": "Purchase Status Code",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_status",
    "fieldtype": "Select",
-   "label": "Registration Type",
-   "options": "Automatic\nManual"
+   "label": "Our Review",
+   "options": "\nApproved\nRejected",
+   "in_standard_filter": 1,
+   "read_only": 1
   },
   {
-   "fieldname": "supplier_information_section",
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "DigiTax Sync Status",
+   "description": "PENDING, FAILED or COMPLETED against ZRA.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Link",
+   "label": "Purchase Invoice",
+   "options": "Purchase Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_manual",
+   "fieldtype": "Check",
+   "label": "Manual Purchase",
+   "description": "Reported by us with POST /purchases.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier_section",
    "fieldtype": "Section Break",
-   "label": "Supplier Information"
+   "label": "Supplier"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "in_standard_filter": 1,
+   "description": "Matched by DigiTax supplier ID or TPIN. Set it by hand or use Create Supplier when there is no match."
   },
   {
    "fieldname": "supplier_name",
-   "fieldtype": "Link",
-   "label": "Supplier Name",
-   "options": "Supplier"
+   "fieldtype": "Data",
+   "label": "Supplier Name (ZRA)",
+   "in_list_view": 1,
+   "read_only": 1
   },
   {
-   "fieldname": "column_break_ukot",
+   "fieldname": "column_break_supplier",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "supplier_tpin",
    "fieldtype": "Data",
-   "label": "Supplier TPIN"
+   "label": "Supplier TPIN",
+   "read_only": 1
   },
   {
-   "fieldname": "column_break_oeqb",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "supplier_branch_id",
+   "fieldname": "supplier_id",
    "fieldtype": "Data",
-   "label": "Supplier Branch ID"
+   "label": "DigiTax Supplier ID",
+   "read_only": 1
   },
   {
-   "fieldname": "section_break_usyg",
-   "fieldtype": "Section Break"
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
   },
   {
-   "default": "Purchase",
-   "fieldname": "receipt_type",
-   "fieldtype": "Select",
-   "label": "Receipt Type",
-   "options": "Purchase\nRefund after Purchase"
-  },
-  {
-   "fieldname": "receipt_type_code",
-   "fieldtype": "Data",
-   "label": "Receipt Type Code"
-  },
-  {
-   "fieldname": "payment_type_code",
-   "fieldtype": "Data",
-   "label": "Payment Type Code"
-  },
-  {
-   "default": "Cash",
-   "fieldname": "payment_type",
-   "fieldtype": "Select",
-   "label": "Payment Type",
-   "options": "Cash\nCredit\nCash/Credit\nBank Check\nDebit&Credit Card\nMobile Money\nOther\nBank transfer"
-  },
-  {
-   "fieldname": "column_break_bhsk",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "confirmed_date",
-   "fieldtype": "Date",
-   "label": "Confirmed Date"
-  },
-  {
-   "fieldname": "stock_release_date",
-   "fieldtype": "Date",
-   "label": "Stock Release Date"
-  },
-  {
-   "fieldname": "section_break_ntid",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "remarks",
-   "fieldtype": "Small Text",
-   "label": "Remarks"
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "ZRA SIS Purchase Item"
   },
   {
    "fieldname": "totals_section",
@@ -187,65 +168,181 @@
    "label": "Totals"
   },
   {
-   "fieldname": "total_amount",
-   "fieldtype": "Currency",
-   "label": "Total Amount"
+   "fieldname": "total_taxable_amount",
+   "fieldtype": "Float",
+   "label": "Total Taxable Amount",
+   "precision": "4",
+   "read_only": 1
   },
   {
-   "fieldname": "total_item_count",
-   "fieldtype": "Int",
-   "label": "Total Item Count"
-  },
-  {
-   "fieldname": "column_break_zgbf",
+   "fieldname": "column_break_totals",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "total_taxable_amount",
-   "fieldtype": "Currency",
-   "label": "Total Taxable Amount"
-  },
-  {
    "fieldname": "total_tax_amount",
-   "fieldtype": "Currency",
-   "label": "Total Tax Amount"
+   "fieldtype": "Float",
+   "label": "Total Tax",
+   "precision": "4",
+   "read_only": 1
   },
   {
-   "fieldname": "section_break_txau",
-   "fieldtype": "Section Break"
+   "fieldname": "column_break_totals_2",
+   "fieldtype": "Column Break"
   },
   {
-   "fieldname": "items",
-   "fieldtype": "Table",
-   "label": "Items",
-   "options": "ZRA SIS Purchase Item"
+   "fieldname": "total_amount",
+   "fieldtype": "Float",
+   "label": "Total Amount",
+   "precision": "4",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "review_section",
+   "fieldtype": "Section Break",
+   "label": "Review"
+  },
+  {
+   "fieldname": "review_comment",
+   "fieldtype": "Small Text",
+   "label": "Rejection Comment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last SIS Error",
+   "depends_on": "eval:doc.last_error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "purchase_id",
+   "fieldtype": "Data",
+   "label": "DigiTax Purchase ID",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "sis_settings",
+   "fieldtype": "Link",
+   "label": "SIS Settings",
+   "options": "ZRA SIS Settings",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_source",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "receipt_type_code",
+   "fieldtype": "Data",
+   "label": "Receipt Type Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_type_code",
+   "fieldtype": "Data",
+   "label": "Payment Type Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_synced_on",
+   "fieldtype": "Datetime",
+   "label": "Last Synced On",
+   "read_only": 1
   }
  ],
- "grid_page_length": 50,
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-27 14:04:31.221714",
+ "modified": "2026-10-24 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "ZRA SIS Purchases",
  "owner": "Administrator",
+ "row_format": "Dynamic",
+ "states": [],
+ "sort_field": "purchase_date",
+ "sort_order": "DESC",
+ "autoname": "field:purchase_id",
+ "naming_rule": "By fieldname",
+ "allow_rename": 0,
+ "in_create": 1,
  "permissions": [
   {
-   "create": 1,
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
    "delete": 1,
-   "email": 1,
+   "report": 1,
    "export": 1,
    "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Accounts Manager",
    "read": 1,
+   "write": 1,
+   "delete": 0,
    "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Purchase Manager",
+   "read": 1,
+   "write": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Purchase User",
+   "read": 1,
+   "write": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "write": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "write": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
   }
  ],
- "row_format": "Dynamic",
- "rows_threshold_for_grid_search": 20,
- "sort_field": "creation",
- "sort_order": "DESC",
- "states": []
+ "title_field": "supplier_name",
+ "show_title_field_in_link": 1,
+ "search_fields": "purchase_number,supplier_name,supplier_tpin",
+ "description": "Purchases ZRA received for the business (GET /purchases), plus manual purchases we reported."
 }

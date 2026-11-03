@@ -64,6 +64,7 @@ doctype_js = {
     "Sales Invoice": "public/js/sales_invoice.js",
     "Customer": "public/js/customer.js",
 	"Supplier": "public/js/supplier.js",
+	"Purchase Invoice": "public/js/purchase_invoice.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -174,6 +175,14 @@ doc_events = {
 		"on_update": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.supplier.on_update"],
 		"on_trash": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.supplier.on_trash"],
 	},
+	"Purchase Invoice": {
+		"validate": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.purchase_invoice.validate"],
+		"before_submit": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.purchase_invoice.before_submit"],
+		"on_submit": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.purchase_invoice.on_submit"],
+		"before_cancel": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.purchase_invoice.before_cancel"],
+		"on_cancel": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.purchase_invoice.on_cancel"],
+		"on_trash": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.purchase_invoice.on_trash"],
+	},
 	"Stock Ledger Entry": {
 		"on_submit": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.stock_ledger_entry.on_submit"],
 	},
@@ -184,7 +193,7 @@ doc_events = {
          "on_submit": ["zambia_compliance_via_digitax.zambia_compliance_via_digitax.overrides.sales_invoice.on_submit"],
 	 "on_update_after_submit": [
             "zambia_compliance_via_digitax.zambia_compliance_via_digitax.utils.tax_utils.after_save"
-        ],	
+        ],
 },
  
 
