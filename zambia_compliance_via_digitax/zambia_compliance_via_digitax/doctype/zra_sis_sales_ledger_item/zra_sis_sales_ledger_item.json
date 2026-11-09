@@ -1,0 +1,202 @@
+{
+ "actions": [],
+ "creation": "2026-11-09 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "invoice_row",
+  "item_code",
+  "item_id",
+  "quantity",
+  "unit_price",
+  "discount_rate",
+  "discount_amount",
+  "total_amount",
+  "package_unit_quantity",
+  "taxes_section",
+  "vat_taxable_amount",
+  "vat_tax_amount",
+  "ipl_taxable_amount",
+  "ipl_tax_amount",
+  "column_break_tl",
+  "tl_taxable_amount",
+  "tl_tax_amount",
+  "excise_taxable_amount",
+  "excise_tax_amount",
+  "column_break_tot",
+  "tot_taxable_amount",
+  "tot_tax_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "invoice_row",
+   "fieldtype": "Data",
+   "label": "Invoice Row",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item",
+   "read_only": 1,
+   "options": "Item",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "item_id",
+   "fieldtype": "Data",
+   "label": "DigiTax Item ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Float",
+   "label": "Unit Price",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "discount_rate",
+   "fieldtype": "Float",
+   "label": "Discount Rate",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "discount_amount",
+   "fieldtype": "Float",
+   "label": "Discount Amount",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Float",
+   "label": "Total Amount",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "package_unit_quantity",
+   "fieldtype": "Float",
+   "label": "Package Unit Quantity",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "taxes_section",
+   "fieldtype": "Section Break",
+   "label": "ZRA Taxes"
+  },
+  {
+   "fieldname": "vat_taxable_amount",
+   "fieldtype": "Float",
+   "label": "VAT Taxable Amount",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "vat_tax_amount",
+   "fieldtype": "Float",
+   "label": "VAT Tax Amount",
+   "read_only": 1,
+   "precision": "4",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ipl_taxable_amount",
+   "fieldtype": "Float",
+   "label": "IPL Taxable Amount",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "ipl_tax_amount",
+   "fieldtype": "Float",
+   "label": "IPL Tax Amount",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "column_break_tl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tl_taxable_amount",
+   "fieldtype": "Float",
+   "label": "TL Taxable Amount",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "tl_tax_amount",
+   "fieldtype": "Float",
+   "label": "TL Tax Amount",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "excise_taxable_amount",
+   "fieldtype": "Float",
+   "label": "Excise Taxable Amount",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "excise_tax_amount",
+   "fieldtype": "Float",
+   "label": "Excise Tax Amount",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "column_break_tot",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tot_taxable_amount",
+   "fieldtype": "Float",
+   "label": "TOT Taxable Amount",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "tot_tax_amount",
+   "fieldtype": "Float",
+   "label": "TOT Tax Amount",
+   "read_only": 1,
+   "precision": "4"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-09 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Zambia Compliance Via Digitax",
+ "name": "ZRA SIS Sales Ledger Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

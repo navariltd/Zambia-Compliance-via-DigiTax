@@ -29,6 +29,7 @@
   "sales_information_submission_timeframe_section",
   "sales_information_submission_timeframe",
   "max_sales_submission_attempts",
+  "default_payment_type_code",
   "stock_section",
   "stock_auto_submission_enabled",
   "column_break_stock",
@@ -179,32 +180,37 @@
    "default": "0",
    "fieldname": "sales_auto_submission_enabled",
    "fieldtype": "Check",
-   "label": " Sales Auto Submission Enabled"
+   "label": "Send Sales Invoices to ZRA",
+   "description": "Record every submitted Sales Invoice, credit note and debit note dated on or after the Go-Live Date in the ZRA SIS Sales Ledger and send it to ZRA. Submitting is never blocked: invoices that cannot be sent yet wait in the ledger with the reason."
   },
   {
    "fieldname": "sales_submission_frequency",
    "fieldtype": "Select",
    "label": "Sales Submission Frequency",
-   "options": "\nAll\nHourly\nDaily\nWeekly\nMonthly\nYearly\nAnnual\nCron"
+   "options": "\nAll\nHourly\nDaily\nWeekly\nMonthly\nYearly\nAnnual\nCron",
+   "hidden": 1
   },
   {
    "description": "Defines the allowed period for entries to be sent to SIS, such as invoices and purchases, from the current time. For example, if set to 4 days, entries can only be sent within the last 4 days.",
    "fieldname": "sales_information_submission_timeframe_section",
    "fieldtype": "Section Break",
-   "label": "Sales Information Submission Timeframe"
+   "label": "Sales",
+   "depends_on": "eval:doc.sales_auto_submission_enabled"
   },
   {
    "depends_on": "eval: doc.sales_auto_submission_enabled == 1",
    "fieldname": "sales_information_submission_timeframe",
    "fieldtype": "Duration",
-   "label": "Sales Information Submission Timeframe"
+   "label": "Sales Information Submission Timeframe",
+   "hidden": 1
   },
   {
-   "depends_on": "eval: doc.sales_auto_submission_enabled == 1",
-   "description": "Maximum attempts allowed to resubmit failed sales invoices before restrictions apply.",
+   "depends_on": null,
+   "description": "How many times the hourly job resends a sale DigiTax rejected (for example for low stock) before it waits for a manual Retry.",
    "fieldname": "max_sales_submission_attempts",
    "fieldtype": "Int",
-   "label": "Max Sales Submission Attempts"
+   "label": "Automatic Retries for Rejected Sales",
+   "default": "5"
   },
   {
    "fieldname": "stock_section",
@@ -223,11 +229,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:doc.stock_auto_submission_enabled",
+   "depends_on": null,
    "fieldname": "go_live_date",
    "fieldtype": "Date",
    "label": "Go-Live Date",
-   "description": "Stock movements dated before this are not sent."
+   "description": "Stock movements and sales dated before this are not sent."
   },
   {
    "fieldname": "purchases_section",
@@ -269,6 +275,14 @@
    "fieldname": "default_tax_rate",
    "fieldtype": "Float",
    "label": "Default Tax Rate"
+  },
+  {
+   "fieldname": "default_payment_type_code",
+   "fieldtype": "Select",
+   "label": "Default Payment Type",
+   "options": "\n01 - Cash\n02 - Credit\n03 - Cash/Credit\n04 - Bank Check\n05 - Debit & Credit Card\n06 - Mobile Money\n07 - Other",
+   "default": "01 - Cash",
+   "description": "Sent for paid invoices whose payment type is not known from the invoice or its POS payments."
   }
  ],
  "grid_page_length": 50,

@@ -1,0 +1,610 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:trader_invoice_number",
+ "creation": "2026-11-09 10:00:00.000000",
+ "description": "One entry per document sent (or to be sent) to ZRA through DigiTax: sales, credit notes and debit notes. This ledger is the source of truth; the invoice's ZRA fields are copied from it.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "receipt_type",
+  "status",
+  "reference_doctype",
+  "reference_name",
+  "company",
+  "settings",
+  "column_break_doc",
+  "trader_invoice_number",
+  "posting_date",
+  "kind",
+  "customer",
+  "original_entry",
+  "original_sale_id",
+  "reason_code",
+  "previous_entry",
+  "document_key",
+  "status_section",
+  "problems",
+  "last_error",
+  "error_class",
+  "attempts",
+  "column_break_status",
+  "queued_on",
+  "sent_on",
+  "completed_on",
+  "last_checked_on",
+  "next_attempt_at",
+  "next_check_at",
+  "receipt_section",
+  "sale_id",
+  "sale_number",
+  "remote_status",
+  "receipt_type_code",
+  "receipt_number",
+  "sdc_id",
+  "remote_created_at",
+  "column_break_receipt",
+  "receipt_signature",
+  "internal_data",
+  "receipt_url",
+  "qr_code",
+  "amounts_section",
+  "currency",
+  "exchange_rate",
+  "erpnext_total",
+  "erpnext_tax",
+  "column_break_amounts",
+  "zra_total",
+  "zra_tax",
+  "tax_variance",
+  "tax_summary_section",
+  "taxable_amount_vat",
+  "tax_amount_vat",
+  "taxable_amount_ipl",
+  "tax_amount_ipl",
+  "taxable_amount_tl",
+  "tax_amount_tl",
+  "column_break_tax_summary",
+  "taxable_amount_excise",
+  "tax_amount_excise",
+  "taxable_amount_tot",
+  "tax_amount_tot",
+  "lines_section",
+  "items",
+  "payload_section",
+  "request_payload",
+  "payload_hash",
+  "response_payload",
+  "callback_token"
+ ],
+ "fields": [
+  {
+   "fieldname": "receipt_type",
+   "fieldtype": "Select",
+   "label": "Receipt Type",
+   "read_only": 1,
+   "options": "Sale\nCredit Note\nDebit Note",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "read_only": 1,
+   "options": "Not Ready\nQueued\nSending\nPending\nCompleted\nRejected\nUnknown\nFailed\nSuperseded\nCancelled",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Document Type",
+   "read_only": 1,
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Document",
+   "read_only": 1,
+   "options": "reference_doctype",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "read_only": 1,
+   "options": "Company",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "settings",
+   "fieldtype": "Link",
+   "label": "ZRA SIS Settings",
+   "read_only": 1,
+   "options": "ZRA SIS Settings"
+  },
+  {
+   "fieldname": "column_break_doc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trader_invoice_number",
+   "fieldtype": "Data",
+   "label": "Trader Invoice Number",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1,
+   "description": "Sent to DigiTax as trader_invoice_number. A retry after ZRA marks a sale failed gets a new number ending in -1, -2 and so on."
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Sale Date",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kind",
+   "fieldtype": "Select",
+   "label": "Kind of Sale",
+   "read_only": 1,
+   "options": "NORMAL\nLPO\nEXPORT"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "read_only": 1,
+   "options": "Customer"
+  },
+  {
+   "fieldname": "original_entry",
+   "fieldtype": "Link",
+   "label": "Original Sale Entry",
+   "read_only": 1,
+   "options": "ZRA SIS Sales Ledger",
+   "depends_on": "eval:doc.receipt_type != 'Sale'"
+  },
+  {
+   "fieldname": "original_sale_id",
+   "fieldtype": "Data",
+   "label": "Original Sale ID",
+   "read_only": 1,
+   "depends_on": "eval:doc.receipt_type != 'Sale'"
+  },
+  {
+   "fieldname": "reason_code",
+   "fieldtype": "Data",
+   "label": "Reason Code",
+   "read_only": 1,
+   "depends_on": "eval:doc.receipt_type != 'Sale'"
+  },
+  {
+   "fieldname": "previous_entry",
+   "fieldtype": "Link",
+   "label": "Replaces Entry",
+   "read_only": 1,
+   "options": "ZRA SIS Sales Ledger",
+   "depends_on": "previous_entry"
+  },
+  {
+   "fieldname": "document_key",
+   "fieldtype": "Data",
+   "label": "Document Key",
+   "read_only": 1,
+   "unique": 1,
+   "hidden": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "problems",
+   "fieldtype": "Small Text",
+   "label": "Problems",
+   "read_only": 1,
+   "depends_on": "problems",
+   "description": "Why this entry cannot be sent yet. Fix these and click Retry; they are also re-checked every hour."
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error",
+   "read_only": 1,
+   "depends_on": "last_error"
+  },
+  {
+   "fieldname": "error_class",
+   "fieldtype": "Data",
+   "label": "Error Class",
+   "read_only": 1,
+   "depends_on": "error_class"
+  },
+  {
+   "fieldname": "attempts",
+   "fieldtype": "Int",
+   "label": "Attempts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "queued_on",
+   "fieldtype": "Datetime",
+   "label": "Queued On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sent_on",
+   "fieldtype": "Datetime",
+   "label": "Sent On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_on",
+   "fieldtype": "Datetime",
+   "label": "Completed On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_checked_on",
+   "fieldtype": "Datetime",
+   "label": "Last Checked On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_attempt_at",
+   "fieldtype": "Datetime",
+   "label": "Next Attempt At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_check_at",
+   "fieldtype": "Datetime",
+   "label": "Next Status Check At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "receipt_section",
+   "fieldtype": "Section Break",
+   "label": "ZRA Receipt"
+  },
+  {
+   "fieldname": "sale_id",
+   "fieldtype": "Data",
+   "label": "DigiTax Sale ID",
+   "read_only": 1,
+   "unique": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sale_number",
+   "fieldtype": "Data",
+   "label": "Sale Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remote_status",
+   "fieldtype": "Data",
+   "label": "DigiTax Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "receipt_type_code",
+   "fieldtype": "Data",
+   "label": "Receipt Type Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "receipt_number",
+   "fieldtype": "Data",
+   "label": "Receipt Number",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sdc_id",
+   "fieldtype": "Data",
+   "label": "SDC ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remote_created_at",
+   "fieldtype": "Data",
+   "label": "Created On DigiTax",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_receipt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "receipt_signature",
+   "fieldtype": "Data",
+   "label": "Receipt Signature",
+   "read_only": 1
+  },
+  {
+   "fieldname": "internal_data",
+   "fieldtype": "Small Text",
+   "label": "Internal Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "receipt_url",
+   "fieldtype": "Small Text",
+   "label": "Receipt URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "qr_code",
+   "fieldtype": "Attach Image",
+   "label": "QR Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amounts_section",
+   "fieldtype": "Section Break",
+   "label": "Amounts"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "read_only": 1,
+   "options": "Currency"
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate to ZMW",
+   "read_only": 1,
+   "precision": "6"
+  },
+  {
+   "fieldname": "erpnext_total",
+   "fieldtype": "Float",
+   "label": "ERPNext Total (incl. Tax)",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "erpnext_tax",
+   "fieldtype": "Float",
+   "label": "ERPNext Tax",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "column_break_amounts",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zra_total",
+   "fieldtype": "Float",
+   "label": "ZRA Total (incl. Tax)",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "zra_tax",
+   "fieldtype": "Float",
+   "label": "ZRA Tax",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "tax_variance",
+   "fieldtype": "Float",
+   "label": "Tax Difference (ZRA - ERPNext)",
+   "read_only": 1,
+   "precision": "4",
+   "description": "ZRA computes tax from each item's registered tax category. A difference means ERPNext's tax templates do not match the item's ZRA category."
+  },
+  {
+   "fieldname": "tax_summary_section",
+   "fieldtype": "Section Break",
+   "label": "ZRA Tax Summary",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "taxable_amount_vat",
+   "fieldtype": "Float",
+   "label": "Taxable Amount VAT",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "tax_amount_vat",
+   "fieldtype": "Float",
+   "label": "Tax Amount VAT",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "taxable_amount_ipl",
+   "fieldtype": "Float",
+   "label": "Taxable Amount IPL",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "tax_amount_ipl",
+   "fieldtype": "Float",
+   "label": "Tax Amount IPL",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "taxable_amount_tl",
+   "fieldtype": "Float",
+   "label": "Taxable Amount TL",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "tax_amount_tl",
+   "fieldtype": "Float",
+   "label": "Tax Amount TL",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "column_break_tax_summary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "taxable_amount_excise",
+   "fieldtype": "Float",
+   "label": "Taxable Amount Excise",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "tax_amount_excise",
+   "fieldtype": "Float",
+   "label": "Tax Amount Excise",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "taxable_amount_tot",
+   "fieldtype": "Float",
+   "label": "Taxable Amount TOT",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "tax_amount_tot",
+   "fieldtype": "Float",
+   "label": "Tax Amount TOT",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "lines_section",
+   "fieldtype": "Section Break",
+   "label": "Lines"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Lines",
+   "options": "ZRA SIS Sales Ledger Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payload_section",
+   "fieldtype": "Section Break",
+   "label": "Request and Response",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "request_payload",
+   "fieldtype": "JSON",
+   "label": "Request Sent",
+   "read_only": 1,
+   "description": "Exactly what was last sent to DigiTax."
+  },
+  {
+   "fieldname": "payload_hash",
+   "fieldtype": "Data",
+   "label": "Request Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "response_payload",
+   "fieldtype": "JSON",
+   "label": "Latest DigiTax Record",
+   "read_only": 1
+  },
+  {
+   "fieldname": "callback_token",
+   "fieldtype": "Data",
+   "label": "Callback Token",
+   "read_only": 1,
+   "hidden": 1,
+   "no_copy": 1
+  }
+ ],
+ "in_create": 1,
+ "links": [
+  {
+   "link_doctype": "ZRA SIS Sales Ledger",
+   "link_fieldname": "original_entry",
+   "group": "Notes"
+  }
+ ],
+ "modified": "2026-11-09 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Zambia Compliance Via Digitax",
+ "name": "ZRA SIS Sales Ledger",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Accounts User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Sales User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "reference_name,receipt_number,sale_id,status",
+ "show_title_field_in_link": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "reference_name",
+ "track_changes": 1
+}
