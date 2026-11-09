@@ -19,8 +19,7 @@ from frappe.utils import add_to_date, flt, get_datetime, now_datetime
 
 from ..digitax.client import DigitaxClient, DigitaxError
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
-from ..utils.payload_utils import build_callback_url
-from .common import enqueue_job, get_active_settings, get_auto_register_settings, resolve_settings_name
+from .common import build_callback_url, enqueue_job, get_active_settings, get_auto_register_settings, resolve_settings_name
 
 STATUS_PENDING = "PENDING"
 STATUS_FAILED = "FAILED"
@@ -243,9 +242,11 @@ def apply_remote_item(item_name: str, data: dict, settings_name: str) -> None:
 	frappe.db.set_value("Item", item_name, values)
 
 	if status == STATUS_COMPLETED and previous_status != STATUS_COMPLETED:
+		from .sales import enqueue_recheck
 		from .stock import schedule_opening_stock
 
 		schedule_opening_stock(item_name)
+		enqueue_recheck()  # sales waiting for this item
 
 
 def record_failure(item_name: str, message: str) -> None:

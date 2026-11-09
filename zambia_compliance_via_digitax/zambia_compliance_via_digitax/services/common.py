@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import re
 from datetime import date, datetime
+from urllib.parse import urlparse
 
 import frappe
 from frappe import _
-from frappe.utils import convert_utc_to_system_timezone
+from frappe.utils import convert_utc_to_system_timezone, get_url
 
 from ..doctype.doctype_names_mapping import SETTINGS_DOCTYPE_NAME
 
@@ -86,6 +87,23 @@ def enqueue_job(method: str, key: str, queue: str = "short", timeout: int | None
 		enqueue_after_commit=True,
 		**kwargs,
 	)
+
+
+def build_callback_url(method: str, settings_name: str | None = None) -> str:
+	"""Full URL DigiTax should call for a whitelisted `method`. Sandbox settings may set a Callback Base URL
+	(e.g. an ngrok tunnel to a localhost site); otherwise the site's own URL is used."""
+	if settings_name:
+		environment, base = frappe.db.get_value(
+			SETTINGS_DOCTYPE_NAME, settings_name, ["environment", "callback_base_url"]
+		) or (None, None)
+		if environment == "Sandbox" and base:
+			return f"{base.rstrip('/')}/api/method/{method}"
+
+	base_url = get_url()
+	parsed = urlparse(base_url)
+	if parsed.hostname and (parsed.hostname == "localhost" or parsed.hostname.replace(".", "").isdigit()):
+		base_url = f"{parsed.scheme}://{parsed.netloc}"
+	return f"{base_url}/api/method/{method}"
 
 
 def parse_utc_datetime(value: str | None) -> datetime | None:

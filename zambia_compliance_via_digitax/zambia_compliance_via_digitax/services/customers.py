@@ -139,6 +139,10 @@ def apply_remote_customer(customer_name: str, data: dict, settings_name: str) ->
 		},
 	)
 
+	from .sales import enqueue_recheck
+
+	enqueue_recheck()  # sales waiting for this customer (e.g. LPO)
+
 
 def record_failure(customer_name: str, message: str) -> None:
 	frappe.db.set_value(

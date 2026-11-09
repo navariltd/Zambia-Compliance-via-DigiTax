@@ -7,11 +7,17 @@ Needs a site with active ZRA SIS Settings, a registered (COMPLETED) item and a r
 from unittest.mock import patch
 
 import frappe
+import requests
 from frappe.tests import IntegrationTestCase
 from frappe.utils import add_days, today
 
+from ..apis import sales as sales_api
 from ..doctype.doctype_names_mapping import SALES_LEDGER_DOCTYPE_NAME, SETTINGS_DOCTYPE_NAME
 from ..services import sales
+from .test_purchases import FakeDigitax
+from .test_stock import REQUEST, response
+
+SALE_ID = "sale_TEST0000000000000000000009"
 
 
 def row(**values):
@@ -122,7 +128,13 @@ class SalesTestCase(IntegrationTestCase):
 			"Sales Taxes and Charges Template", {"company": self.company}, "name"
 		)
 
-		self.patches = [patch.object(frappe.db, "commit"), patch("frappe.enqueue")]
+		self.patches = [
+			patch.object(frappe.db, "commit"),
+			patch("frappe.enqueue"),
+			patch(
+				"zambia_compliance_via_digitax.zambia_compliance_via_digitax.services.stock.process_stock_queue"
+			),
+		]
 		for p in self.patches:
 			p.start()
 
@@ -331,3 +343,189 @@ class TestLedgerIsReadOnly(SalesTestCase):
 		self.assertRaises(
 			frappe.ValidationError, frappe.delete_doc, SALES_LEDGER_DOCTYPE_NAME, entry.name, force=True
 		)
+
+
+class TestSending(SalesTestCase):
+	def sale(self, invoice, status="pending", **values):
+		data = {
+			"id": SALE_ID,
+			"trader_invoice_number": invoice.name,
+			"sale_number": "SAL26-TEST",
+			"receipt_type_code": "S",
+			"status": status,
+			"item_list": [],
+		}
+		if status == "completed":
+			data.update(
+				{
+					"receipt_number": 77,
+					"sdc_id": "SDC-1",
+					"internal_data": "INTERNAL",
+					"receipt_signature": "SIGNATURE",
+					"receipt_url": "https://sandbox.zra.org.zm/receipt/77",
+					"sales_tax_summary": {"taxable_amount_vat": 200, "tax_amount_vat": 32},
+					"item_list": [
+						{
+							"item_id": self.item.custom_smart_remote_id,
+							"total_amount": 232,
+							"vat_taxable_amount": 200,
+							"vat_tax_amount": 32,
+						}
+					],
+				}
+			)
+		data.update(values)
+		return data
+
+	def submitted(self, **values):
+		invoice = self.invoice(**values)
+		invoice.submit()
+		return invoice
+
+	def entry(self, invoice):
+		return frappe.get_doc(
+			SALES_LEDGER_DOCTYPE_NAME,
+			frappe.db.get_value("Sales Invoice", invoice.name, "custom_sis_ledger_entry"),
+		)
+
+	def run_queue(self, routes):
+		fake = FakeDigitax(routes)
+		with patch(REQUEST, side_effect=fake):
+			sales.process_sales_queue()
+		return fake
+
+	def test_submit_with_problems_is_not_blocked(self):
+		other = frappe.db.get_value(
+			"Item", {"custom_smart_remote_id": ["is", "not set"], "is_sales_item": 1}, "name"
+		)
+		if not other:
+			self.skipTest("No unregistered item")
+		invoice = self.submitted(items=[{"item_code": other, "qty": 1, "rate": 10}])
+		self.assertEqual(invoice.docstatus, 1)
+		entry = self.entry(invoice)
+		self.assertEqual(entry.status, sales.STATUS_NOT_READY)
+		self.assertIn(other, entry.problems)
+		self.assertEqual(frappe.db.get_value("Sales Invoice", invoice.name, "custom_sis_status"), "Not Ready")
+
+	def test_sale_is_sent_once_and_completed(self):
+		invoice = self.submitted()
+		entry = self.entry(invoice)
+		self.assertEqual(entry.status, sales.STATUS_QUEUED)
+		self.assertTrue(
+			[c for c in frappe.enqueue.call_args_list if c.args and c.args[0] == sales.PROCESS_JOB]
+		)
+
+		fake = self.run_queue({("POST", "/sales"): response(201, self.sale(invoice))})
+		self.run_queue({})  # a second run sends nothing
+		[body] = fake.sent("POST", "/sales")
+		self.assertEqual(body["trader_invoice_number"], invoice.name)
+		self.assertIn(f"entry={entry.name}&token=", body["callback_url"])
+		entry.reload()
+		self.assertEqual(
+			(entry.status, entry.sale_id, entry.attempts), (sales.STATUS_PENDING_ZRA, SALE_ID, 1)
+		)
+		self.assertTrue(entry.payload_hash)
+		self.assertTrue([c for c in frappe.enqueue.call_args_list if c.args and c.args[0] == sales.CHECK_JOB])
+
+		fake = FakeDigitax({("GET", f"/sales/{SALE_ID}"): response(200, self.sale(invoice, "completed"))})
+		with patch(REQUEST, side_effect=fake):
+			sales.check_sale_job(entry.name)
+		entry.reload()
+		self.assertEqual(entry.status, sales.STATUS_COMPLETED_ZRA)
+		self.assertEqual((entry.receipt_number, entry.sdc_id, entry.zra_tax), ("77", "SDC-1", 32))
+		self.assertTrue(entry.qr_code)
+		self.assertEqual(entry.items[0].vat_tax_amount, 32)
+		invoice.reload()
+		self.assertEqual(invoice.custom_sis_status, "Completed")
+		self.assertEqual(
+			(invoice.custom_receipt_number, invoice.custom_sdc_id, invoice.custom_successfully_submitted),
+			("77", "SDC-1", 1),
+		)
+		self.assertEqual(invoice.items[0].custom_vat_tax_amount, 32)
+
+	def test_timeout_is_looked_up_before_resending(self):
+		invoice = self.submitted()
+		with patch(REQUEST, side_effect=requests.exceptions.Timeout()):
+			sales.process_sales_queue()
+		entry = self.entry(invoice)
+		self.assertEqual((entry.status, entry.error_class), (sales.STATUS_UNKNOWN, sales.TRANSIENT))
+
+		sales.requeue_due_entries()
+		fake = self.run_queue(
+			{("GET", "/sales"): response(200, {"data": [self.sale(invoice, "completed")], "pagination": {}})}
+		)
+		self.assertEqual(fake.sent("POST", "/sales"), [])  # found it, so not sent again
+		self.assertEqual(self.entry(invoice).status, sales.STATUS_COMPLETED_ZRA)
+
+	def test_duplicate_answer_finds_the_sale(self):
+		invoice = self.submitted()
+		fake = self.run_queue(
+			{
+				("POST", "/sales"): response(
+					400, {"message": "trader_invoice_number already exists", "code": "400"}
+				),
+				("GET", "/sales"): response(200, {"data": [self.sale(invoice)], "pagination": {}}),
+			}
+		)
+		self.assertEqual(len(fake.sent("POST", "/sales")), 1)
+		self.assertEqual(self.entry(invoice).status, sales.STATUS_PENDING_ZRA)
+
+	def test_rejected_sale_is_retried_with_the_same_number(self):
+		invoice = self.submitted()
+		self.run_queue(
+			{("POST", "/sales"): response(400, {"message": "quantity exceeds stock", "code": "400"})}
+		)
+		entry = self.entry(invoice)
+		self.assertEqual((entry.status, entry.error_class), (sales.STATUS_REJECTED, sales.REJECTED))
+		self.assertIn("quantity exceeds stock", entry.last_error)
+
+		self.assertTrue(sales.send_or_retry(invoice.name)["ok"])
+		fake = self.run_queue({("POST", "/sales"): response(201, self.sale(invoice))})
+		[body] = fake.sent("POST", "/sales")
+		self.assertEqual(body["trader_invoice_number"], invoice.name)
+		self.assertEqual(self.entry(invoice).attempts, 2)
+
+	def test_failed_sale_is_retried_under_a_new_number(self):
+		invoice = self.submitted()
+		self.run_queue({("POST", "/sales"): response(201, self.sale(invoice, "failed"))})
+		failed = self.entry(invoice)
+		self.assertEqual(failed.status, sales.STATUS_FAILED)
+
+		sales.send_or_retry(invoice.name)
+		retry = self.entry(invoice)
+		self.assertEqual(retry.trader_invoice_number, f"{invoice.name}-1")
+		self.assertEqual(retry.previous_entry, failed.name)
+		self.assertEqual(
+			frappe.db.get_value(SALES_LEDGER_DOCTYPE_NAME, failed.name, "status"), sales.STATUS_SUPERSEDED
+		)
+		fake = self.run_queue(
+			{
+				("POST", "/sales"): response(
+					201,
+					self.sale(
+						invoice, id="sale_TEST0000000000000000000010", trader_invoice_number=retry.name
+					),
+				)
+			}
+		)
+		self.assertEqual(fake.sent("POST", "/sales")[0]["trader_invoice_number"], f"{invoice.name}-1")
+
+	def test_callback_needs_the_token(self):
+		invoice = self.submitted()
+		entry = self.entry(invoice)
+		frappe.enqueue.reset_mock()
+		sales_api.sale_callback(entry=entry.name, token="wrong")
+		self.assertFalse(frappe.enqueue.called)
+		sales_api.sale_callback(entry=entry.name, token=entry.callback_token, id="anything")
+		self.assertEqual(frappe.enqueue.call_args.args[0], sales.CHECK_JOB)
+		self.assertEqual(frappe.enqueue.call_args.kwargs["entry"], entry.name)
+
+	def test_cancel_before_sending_but_not_after(self):
+		queued = self.submitted()
+		queued.cancel()
+		self.assertEqual(self.entry(queued).status, sales.STATUS_CANCELLED)
+		self.assertFalse(self.entry(queued).document_key)
+
+		sent = self.submitted()
+		self.run_queue({("POST", "/sales"): response(201, self.sale(sent))})
+		self.assertRaises(frappe.ValidationError, sent.cancel)
