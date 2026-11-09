@@ -345,7 +345,7 @@ class TestLedgerIsReadOnly(SalesTestCase):
 		)
 
 
-class TestSending(SalesTestCase):
+class SendingTestCase(SalesTestCase):
 	def sale(self, invoice, status="pending", **values):
 		data = {
 			"id": SALE_ID,
@@ -394,6 +394,8 @@ class TestSending(SalesTestCase):
 			sales.process_sales_queue()
 		return fake
 
+
+class TestSending(SendingTestCase):
 	def test_submit_with_problems_is_not_blocked(self):
 		other = frappe.db.get_value(
 			"Item", {"custom_smart_remote_id": ["is", "not set"], "is_sales_item": 1}, "name"
@@ -529,3 +531,92 @@ class TestSending(SalesTestCase):
 		sent = self.submitted()
 		self.run_queue({("POST", "/sales"): response(201, self.sale(sent))})
 		self.assertRaises(frappe.ValidationError, sent.cancel)
+
+
+class TestSendingNotes(SendingTestCase):
+	def note(self, original, **values):
+		doc = frappe.get_doc(
+			{
+				"doctype": "Sales Invoice",
+				"company": self.company,
+				"customer": original.customer,
+				"is_return": 1,
+				"return_against": original.name,
+				"posting_date": today(),
+				"set_posting_time": 1,
+				"items": [{"item_code": self.item.name, "qty": -1, "rate": 100}],
+				"taxes_and_charges": original.taxes_and_charges,
+				**values,
+			}
+		)
+		doc.set_missing_values()
+		if original.taxes_and_charges and not doc.taxes:
+			doc.set_taxes()
+		doc.calculate_taxes_and_totals()
+		doc.insert()
+		doc.submit()
+		return doc
+
+	def complete(self, invoice):
+		self.run_queue({("POST", "/sales"): response(201, self.sale(invoice, "completed"))})
+		self.assertEqual(self.entry(invoice).status, sales.STATUS_COMPLETED_ZRA)
+
+	def test_credit_note_waits_then_is_sent(self):
+		original = self.submitted()
+		note = self.note(original, custom_sis_refund_reason="01 - Wrong Product")
+		entry = self.entry(note)
+		self.assertEqual((entry.status, entry.receipt_type), (sales.STATUS_NOT_READY, sales.CREDIT_NOTE))
+
+		self.complete(original)  # completing the original queues a re-check of waiting notes
+		self.assertTrue(
+			[c for c in frappe.enqueue.call_args_list if c.args and c.args[0] == sales.RECHECK_JOB]
+		)
+		sales.recheck_not_ready_entries()
+		entry.reload()
+		self.assertEqual(entry.status, sales.STATUS_QUEUED)
+		self.assertEqual(entry.original_entry, self.entry(original).name)
+
+		note_sale = self.sale(note, id="sale_TEST0000000000000000000011", receipt_type_code="R")
+		fake = self.run_queue({("POST", "/credit-notes"): response(201, note_sale)})
+		[body] = fake.sent("POST", "/credit-notes")
+		self.assertEqual(body["sale_id"], SALE_ID)
+		self.assertEqual(body["refund_reason_code"], "01")
+		self.assertEqual(body["trader_invoice_number"], note.name)
+		self.assertEqual(body["items"][0]["quantity"], 1)
+		self.assertNotIn("kind", body)
+		self.assertEqual(self.entry(note).status, sales.STATUS_PENDING_ZRA)
+
+	def test_debit_note(self):
+		original = self.submitted()
+		self.complete(original)
+		note = self.note(
+			original,
+			is_return=0,
+			is_debit_note=1,
+			custom_sis_debit_reason="02 - Wrong Invoice Amount",
+			items=[{"item_code": self.item.name, "qty": 1, "rate": 10}],
+		)
+		entry = self.entry(note)
+		self.assertEqual((entry.status, entry.receipt_type), (sales.STATUS_QUEUED, sales.DEBIT_NOTE))
+
+		note_sale = self.sale(note, id="sale_TEST0000000000000000000012", receipt_type_code="D")
+		fake = self.run_queue({("POST", "/debit-notes"): response(201, note_sale)})
+		[body] = fake.sent("POST", "/debit-notes")
+		self.assertEqual(
+			(body["sale_id"], body["debit_reason_code"], body["debit_date"]), (SALE_ID, "02", today())
+		)
+		assert_line_math(self, body["items"][0])
+
+	def test_note_is_looked_up_among_credit_notes(self):
+		original = self.submitted()
+		self.complete(original)
+		note = self.note(original)
+		with patch(REQUEST, side_effect=requests.exceptions.Timeout()):
+			sales.process_sales_queue()
+		sales.requeue_due_entries()
+		note_sale = self.sale(note, id="sale_TEST0000000000000000000013", status="completed")
+		fake = self.run_queue(
+			{("GET", "/credit-notes"): response(200, {"data": [note_sale], "pagination": {}})}
+		)
+		self.assertEqual(fake.sent("POST", "/credit-notes"), [])
+		self.assertEqual(self.entry(note).status, sales.STATUS_COMPLETED_ZRA)

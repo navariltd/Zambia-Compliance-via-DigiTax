@@ -363,7 +363,9 @@ def build_note_header(invoice, receipt_type: str, result: frappe._dict) -> dict:
 		problems.append(_("Set Return Against to the original invoice; ZRA notes must refer to a sale."))
 		return {}
 
-	original = get_current_entry(SALES_INVOICE, invoice.return_against, ["name", "status", "sale_id", "kind"])
+	original = get_current_entry(
+		SALES_INVOICE, invoice.return_against, ["name", "status", "sale_id", "kind", "currency"]
+	)
 	if not original or original.status != STATUS_COMPLETED_ZRA or not original.sale_id:
 		problems.append(
 			_(
@@ -375,6 +377,13 @@ def build_note_header(invoice, receipt_type: str, result: frappe._dict) -> dict:
 	result.original_entry = original.name
 	result.kind = original.kind
 	payload["sale_id"] = original.sale_id
+	if original.currency and invoice.currency != original.currency:
+		# DigiTax takes note prices in the original sale's currency and has no currency field for notes.
+		problems.append(
+			_("This note is in {0} but the original sale was in {1}. Make the note in {1}.").format(
+				invoice.currency, original.currency
+			)
+		)
 
 	original_lines = {}
 	for line in frappe.get_all(
