@@ -620,3 +620,53 @@ class TestSendingNotes(SendingTestCase):
 		)
 		self.assertEqual(fake.sent("POST", "/credit-notes"), [])
 		self.assertEqual(self.entry(note).status, sales.STATUS_COMPLETED_ZRA)
+
+
+class TestReconciliation(SendingTestCase):
+	def report(self):
+		from ..report.zra_sis_sales_reconciliation.zra_sis_sales_reconciliation import execute
+
+		_columns, rows = execute(
+			{"company": self.company, "from_date": today(), "to_date": today(), "only_issues": 0}
+		)
+		return {row.invoice: row for row in rows}
+
+	def test_report_flags_open_and_completed_sales(self):
+		queued = self.submitted()
+		done = self.submitted()
+		frappe.db.set_value(
+			SALES_LEDGER_DOCTYPE_NAME, self.entry(queued).name, "status", sales.STATUS_COMPLETED_ZRA
+		)  # ledger says Completed but has no ZRA total
+		self.run_queue({("POST", "/sales"): response(201, self.sale(done, "completed"))})
+
+		rows = self.report()
+		self.assertEqual(rows[done.name].issue, "OK")
+		self.assertEqual(rows[queued.name].issue, "ZRA total differs from the invoice")
+
+	def test_report_flags_invoices_missing_from_the_ledger(self):
+		invoice = self.submitted()
+		frappe.db.set_value("Sales Invoice", invoice.name, "custom_sis_ledger_entry", None)
+		self.assertEqual(self.report()[invoice.name].issue, "Missing from the ledger")
+
+
+class TestBackfill(SendingTestCase):
+	def test_old_sales_get_a_pending_entry(self):
+		from ..patches import backfill_sales_ledger
+
+		invoice = self.submitted()
+		entry = self.entry(invoice)
+		frappe.db.delete(SALES_LEDGER_DOCTYPE_NAME, {"name": entry.name})
+		frappe.db.set_value(
+			"Sales Invoice", invoice.name, {"custom_sis_ledger_entry": None, "custom_sales_id": SALE_ID}
+		)
+
+		backfill_sales_ledger.execute()
+		backfill_sales_ledger.execute()  # runs once per invoice
+		self.assertEqual(frappe.db.count(SALES_LEDGER_DOCTYPE_NAME, {"reference_name": invoice.name}), 1)
+		entry = self.entry(invoice)
+		self.assertEqual((entry.status, entry.sale_id), (sales.STATUS_PENDING_ZRA, SALE_ID))
+
+		fake = FakeDigitax({("GET", f"/sales/{SALE_ID}"): response(200, self.sale(invoice, "completed"))})
+		with patch(REQUEST, side_effect=fake):
+			sales.check_due_entries()
+		self.assertEqual(self.entry(invoice).status, sales.STATUS_COMPLETED_ZRA)

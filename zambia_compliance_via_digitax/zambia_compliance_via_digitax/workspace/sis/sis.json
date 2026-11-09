@@ -74,7 +74,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Masters",
-   "link_count": 6,
+   "link_count": 8,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -98,6 +98,28 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ZRA Sales Ledger",
+   "link_count": 0,
+   "link_to": "ZRA SIS Sales Ledger",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link",
+   "report_ref_doctype": null
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "ZRA Sales Reconciliation",
+   "link_count": 0,
+   "link_to": "ZRA SIS Sales Reconciliation",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link",
+   "report_ref_doctype": "Sales Invoice"
   },
   {
    "hidden": 0,
@@ -345,7 +367,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-24 12:00:00.000000",
+ "modified": "2026-11-09 10:00:00.000000",
  "modified_by": "Administrator",
  "module": "Zambia Compliance Via Digitax",
  "name": "SIS",
