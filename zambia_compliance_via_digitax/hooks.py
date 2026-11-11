@@ -25,16 +25,13 @@ fixtures = [
 
 # required_apps = []
 
-# Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "zambia_compliance_via_digitax",
-# 		"logo": "/assets/zambia_compliance_via_digitax/logo.png",
-# 		"title": "Zambia Compliance Via Digitax",
-# 		"route": "/zambia_compliance_via_digitax",
-# 		"has_permission": "zambia_compliance_via_digitax.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": app_name,
+		"logo": "/assets/zambia_compliance_via_digitax/Zambia.png",
+		"title": "ZRA SIS",
+	}
+]
 
 # Includes in <head>
 # ------------------
@@ -73,7 +70,8 @@ doctype_js = {
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "zambia_compliance_via_digitax/public/icons.svg"
+# "zra-sis-duotone" (the app logo), used by the dock row and the sidebar header
+app_include_icons = ["/assets/zambia_compliance_via_digitax/icons/zambia_compliance_via_digitax-icons.svg"]
 
 # Home Pages
 # ----------

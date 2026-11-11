@@ -1,0 +1,24 @@
+{
+ "app": "zambia_compliance_via_digitax",
+ "creation": "2026-11-11 12:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Dock",
+ "idx": 0,
+ "items": [
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "zra-sis-duotone",
+   "link_to": "ZRA SIS",
+   "link_type": "Sidebar",
+   "title": "ZRA SIS"
+  }
+ ],
+ "modified": "2026-11-11 12:00:00.000000",
+ "modified_by": "Administrator",
+ "mount_on": "",
+ "name": "zambia_compliance_via_digitax",
+ "owner": "Administrator",
+ "standard": 1,
+ "user": ""
+}
